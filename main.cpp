@@ -567,7 +567,7 @@ drawimage(grap[atype[t]][3],xx[0]/100,xx[1]/100);
 
 // 「重組先生」（原作惡搞角色）
 if (atype[t]==6){
-if (atm[t]>=10 && atm[t]<=19 || atm[t]>=100 && atm[t]<=119 || atm[t]>=200){
+if ((atm[t]>=10 && atm[t]<=19) || (atm[t]>=100 && atm[t]<=119) || atm[t]>=200){
 drawimage(grap[150][3],xx[0]/100,xx[1]/100);
 }else{
 drawimage(grap[6][3],xx[0]/100,xx[1]/100);
@@ -677,15 +677,15 @@ xx[6]=ttype[t]+xx[9];drawimage(grap[xx[6]][1],xx[0]/100,xx[1]/100);
 
 if(txtype[t] != 10){
 
-if (ttype[t]==100 || ttype[t]==101 || ttype[t]==102 || ttype[t]==103 ||  ttype[t]==104 && txtype[t]==1 || ttype[t]==114 && txtype[t]==1 || ttype[t]==116){
+if (ttype[t]==100 || ttype[t]==101 || ttype[t]==102 || ttype[t]==103 || (ttype[t]==104 && txtype[t]==1) || (ttype[t]==114 && txtype[t]==1) || ttype[t]==116){
 xx[6]=2+xx[9];drawimage(grap[xx[6]][1],xx[0]/100,xx[1]/100);
 }
 
-if (ttype[t]==112 || ttype[t]==104 && txtype[t]==0 || ttype[t]==115 && txtype[t]==1){
+if (ttype[t]==112 || (ttype[t]==104 && txtype[t]==0) || (ttype[t]==115 && txtype[t]==1)){
 xx[6]=1+xx[9];drawimage(grap[xx[6]][1],xx[0]/100,xx[1]/100);
 }
 
-if (ttype[t]==111 || ttype[t]==113 || ttype[t]==115 && txtype[t]==0 || ttype[t]==124){
+if (ttype[t]==111 || ttype[t]==113 || (ttype[t]==115 && txtype[t]==0) || ttype[t]==124){
 xx[6]=3+xx[9];drawimage(grap[xx[6]][1],xx[0]/100,xx[1]/100);
 }
 
@@ -1470,7 +1470,7 @@ mkeytm=3;
 
 if (mtm<=1){mc=0;md=0;}
 
-if (mtm>=2 && (mtype==301 && mtm<=102 || mtype==302 && mtm<=60)){
+if (mtm>=2 && ((mtype==301 && mtm<=102) || (mtype==302 && mtm<=60))){
 xx[5]=500;
 ma-=xx[5];fx+=xx[5];fzx+=xx[5];
 }
@@ -1927,7 +1927,7 @@ sgtype[t]=1;sr[t]=0;
 if (sxtype[t]==2 && sb[28]>=48000 && t!=28 && sgtype[t]==0 && mhp>=1){
 sgtype[t]=1;sr[t]=0;
 }
-if ((sxtype[t]==3 && mb>=30000 || sxtype[t]==4 && mb>=25000) && sgtype[t]==0 && mhp>=1 && ma+mnobia>xx[8]+xx[0]+3000-300 && ma<xx[8]+sc[t]-xx[0]){
+if (((sxtype[t]==3 && mb>=30000) || (sxtype[t]==4 && mb>=25000)) && sgtype[t]==0 && mhp>=1 && ma+mnobia>xx[8]+xx[0]+3000-300 && ma<xx[8]+sc[t]-xx[0]){
 sgtype[t]=1;sr[t]=0;
 if (sxtype[t]==4)sr[t]=100;
 }
@@ -2014,7 +2014,7 @@ mtype=3;mtm=0;ot(oto[7]);mxtype=6;
 else{
 if (ma+mnobia>xx[8]+xx[0] && ma<xx[8]+sc[t]-xx[0] && mb+mnobib>xx[9] && mb<xx[9]+sd[t]+xx[0]){
 if (stype[t]==100){
-if (sxtype[t]==0 || sxtype[t]==1 && ttype[1]!=3){
+if (sxtype[t]==0 || (sxtype[t]==1 && ttype[1]!=3)){
 ayobi(sa[t]+1000,32000,0,0,0,3,0);sa[t]=-800000000;ot(oto[10]);
 }
 }
@@ -2208,7 +2208,7 @@ if (srmuki[t]==1)ma+=srsok[t];
 // 落下
 if ((sracttype[t]==1) && sron[t]==0)sron[t]=1;
 
-if (sracttype[t]==1 && sron[t]==1 || sracttype[t]==3 || sracttype[t]==5){
+if ((sracttype[t]==1 && sron[t]==1) || sracttype[t]==3 || sracttype[t]==5){
 mb+=sre[t];
 //if (srmuki[t]==0)
 //if (srf[t]<0)
@@ -3312,7 +3312,7 @@ ab[t]=xx[9]+xx[1]+xx[0]+fy;if (ad[t]<0){ad[t]=0;}//=-ad[t]*2/3;}
 
 // 左右側碰撞
 xx[27]=0;
-if ((atype[t]>=100 || (ttype[tt]!=7 || ttype[tt]==7 && atype[t]==2)) && ttype[tt]!=117){
+if ((atype[t]>=100 || (ttype[tt]!=7 || (ttype[tt]==7 && atype[t]==2))) && ttype[tt]!=117){
 if (aa[t]+anobia[t]-fx>xx[8] && aa[t]-fx<xx[8]+xx[2] && ab[t]+anobib[t]-fy>xx[9]+xx[1]/2-xx[0] && ab[t]-fy<xx[9]+xx[2]){aa[t]=xx[8]-anobia[t]+fx;ac[t]=0;amuki[t]=0;xx[27]=1;}
 if (aa[t]+anobia[t]-fx>xx[8]+xx[1]-xx[0]*2 && aa[t]-fx<xx[8]+xx[1] && ab[t]+anobib[t]-fy>xx[9]+xx[1]/2-xx[0] && ab[t]-fy<xx[9]+xx[2]){aa[t]=xx[8]+xx[1]+fx;ac[t]=0;amuki[t]=1;xx[27]=1;}
 // 龜殼擊破
@@ -5475,7 +5475,8 @@ eco++;if (eco>=emax)eco=0;
 void ayobi(int xa,int xb,int xc,int xd,int xnotm,int xtype,int xxtype){
 int rz=0;
 for (t1=0;t1<=1;t1++){t1=2;
-if (aa[aco]>=-9000 && aa[aco]<=30000)t1=0;rz++;
+if (aa[aco]>=-9000 && aa[aco]<=30000) t1=0;
+rz++;
 
 if (rz<=amax){t1=3;
 
