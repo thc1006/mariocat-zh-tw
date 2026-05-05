@@ -5,8 +5,8 @@
 # 編譯目標：dist/MarioCat_zh.exe
 # ─────────────────────────────────────────────────────────────────────────
 
-CXX      := i686-w64-mingw32-g++
-WINDRES  := i686-w64-mingw32-windres
+CXX      := x86_64-w64-mingw32-g++
+WINDRES  := x86_64-w64-mingw32-windres
 
 DXLIB_INC := dxlib/include
 DXLIB_LIB := dxlib/lib
@@ -29,12 +29,10 @@ CXXFLAGS := \
     -finput-charset=UTF-8 \
     -fexec-charset=CP950 \
     -I$(DXLIB_INC) \
-    -O2 -Wall -Wno-unused-variable -Wno-write-strings \
-    -m32
+    -O2 -Wall -Wno-unused-variable -Wno-write-strings
 
 LDFLAGS := \
     -L$(DXLIB_LIB) \
-    -m32 \
     -static-libgcc -static-libstdc++ \
     -mwindows
 

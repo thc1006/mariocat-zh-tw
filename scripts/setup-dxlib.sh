@@ -25,27 +25,35 @@ fi
 echo "[setup-dxlib] 下載 DxLib_GCC${DXLIB_VERSION}.zip（約 150 MB）..."
 wget -q --show-progress -O "${DXLIB_ZIP}" "${DXLIB_URL}"
 
-echo "[setup-dxlib] 解壓（zip 內檔名為 Shift_JIS）..."
+echo "[setup-dxlib] 解壓（zip 內檔名為 Shift_JIS，用 7z 處理）..."
 RAW_DIR="/tmp/DxLib_raw"
 rm -rf "${RAW_DIR}"
 mkdir -p "${RAW_DIR}"
-unzip -O CP932 -q "${DXLIB_ZIP}" -d "${RAW_DIR}"
+# 7z 預設會把 CP932 檔名轉成 UTF-8，比舊版 unzip 的 -O 旗標可靠
+7z x -bb0 -bd "${DXLIB_ZIP}" -o"${RAW_DIR}" > /dev/null
 
-echo "[setup-dxlib] 在 ${RAW_DIR} 內尋找符合 GCC ${GCC_VER_HINT}.x 的子資料夾..."
-# 偵測：DxLib for GCC 的「プロジェクトに追加すべきファイル_GCC(MinGW)用」資料夾下，
-# 會有多個 GCC 版本對應的子資料夾。我們找含「DxLib.h」、且路徑中含 "GCC ${GCC_VER_HINT}" 的最深目錄
-CANDIDATE=$(find "${RAW_DIR}" -type f -name 'DxLib.h' 2>/dev/null | \
-    awk -F'/DxLib.h' '{print $1}' | \
-    grep -F "32" | \
-    grep -F "GCC ${GCC_VER_HINT}" | head -n1 || true)
+echo "[setup-dxlib] 在 ${RAW_DIR} 內挑 64-bit 且非 ucrt（msvcrt）的子資料夾..."
+# DxLib for GCC 子資料夾名稱是純 ASCII，類似
+#   12_2_0_x86_64_release_win32_seh_ucrt_rt_v10_rev2  → ucrt（Debian mingw 不相容）
+#   13_1_0_x86_64_w64                                  → msvcrt（與 Debian mingw 對齊）
+#   8_1_0_x86_64_posix_sjis_rt_v6_rev0                 → msvcrt + posix
+# 偵測順序：x86_64 + 不含 ucrt → 任一 x86_64 → 任一含 DxLib.h
+ALL_DXLIB_H=$(find "${RAW_DIR}" -type f -name 'DxLib.h' 2>/dev/null)
 
-# 若沒找到對應版本就用第一個 32-bit 候選
-if [[ -z "${CANDIDATE}" ]]; then
-    echo "[setup-dxlib] 找不到 GCC ${GCC_VER_HINT}.x 對應目錄，回退到任一 32-bit 候選"
-    CANDIDATE=$(find "${RAW_DIR}" -type f -name 'DxLib.h' 2>/dev/null | \
-        awk -F'/DxLib.h' '{print $1}' | \
-        grep -F "32" | head -n1 || true)
-fi
+pick() {
+    echo "${ALL_DXLIB_H}" | awk -F'/DxLib.h' '{print $1}' | \
+        awk -v p="$1" -v exclude="$2" '
+            { base = $0; sub(".*/", "", base) }
+            base ~ p && (exclude == "" || base !~ exclude) { print; exit }
+        '
+}
+
+# 優先：x86_64 且不含 ucrt（與 Debian msvcrt mingw 相容）
+CANDIDATE=$(pick "x86_64" "ucrt")
+# 退一步：任一 x86_64（會撈到 ucrt 版，可能 link 失敗）
+[[ -z "${CANDIDATE}" ]] && CANDIDATE=$(pick "x86_64" "")
+# 再退一步：任一含 DxLib.h
+[[ -z "${CANDIDATE}" ]] && CANDIDATE=$(echo "${ALL_DXLIB_H}" | head -n1 | awk -F'/DxLib.h' '{print $1}')
 
 if [[ -z "${CANDIDATE}" ]]; then
     echo "[setup-dxlib] ✗ 找不到任何含 DxLib.h 的 32-bit 目錄，無法繼續"
@@ -56,10 +64,12 @@ echo "[setup-dxlib] 採用：${CANDIDATE}"
 
 # 複製到 ASCII 路徑
 mkdir -p "${DXLIB_OUT}/include" "${DXLIB_OUT}/lib"
-# include 只需要 DxLib.h（DxLib 是 single-header 風格）
-cp "${CANDIDATE}/DxLib.h" "${DXLIB_OUT}/include/"
+# include：DxLib.h 會 include 一票 DxCompileConfig.h、DxAudio.h 等附屬標頭，全部複製
+find "${CANDIDATE}" -maxdepth 1 -name '*.h' -exec cp {} "${DXLIB_OUT}/include/" \;
 # lib：複製所有 .a
-find "${CANDIDATE}" -maxdepth 1 -name '*.a' -exec cp -v {} "${DXLIB_OUT}/lib/" \;
+find "${CANDIDATE}" -maxdepth 1 -name '*.a' -exec cp {} "${DXLIB_OUT}/lib/" \;
+echo "  include 檔數：$(ls "${DXLIB_OUT}/include" | wc -l)"
+echo "  lib 檔數    ：$(ls "${DXLIB_OUT}/lib" | wc -l)"
 
 # 清理暫存
 rm -rf "${RAW_DIR}" "${DXLIB_ZIP}"

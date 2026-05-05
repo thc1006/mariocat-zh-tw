@@ -8,10 +8,10 @@ void loadg();
 
 // 使用 std::string
 
-// 程式狀態（main 變數的語意）
-// main = 10  → 遊戲進行中
-// main = 100 → 標題畫面
-int main=100,maintm=0;
+// 程式狀態（mainst 變數的語意）
+// mainst = 10  → 遊戲進行中
+// mainst = 100 → 標題畫面
+int mainst=100,maintm=0;
 
 // 關卡資訊
 int stagecolor=0;
@@ -91,8 +91,8 @@ void stagep();
 
 
 
-// main = 1   → 關卡內
-// main = 10  → 進入關卡前的過場
+// mainst = 1   → 關卡內
+// mainst = 10  → 進入關卡前的過場
 //
 
 
@@ -202,7 +202,7 @@ int srsok[srmax],srmovep[srmax],srmove[srmax];
 // 畫面捲動範圍
 int fx=0,fy=0,fzx,fzy,scrollx,scrolly;
 // 整體位移補正用座標
-int fma=0,fmb=0;
+int _fma=0,_fmb=0;
 // 強制捲動旗標（強制往右滾的關卡）
 int kscroll=0;
 // 畫面尺寸（紅白機解析度 × 2，256×224 → 480×420）
@@ -211,7 +211,7 @@ int fxmax=48000,fymax=42000;
 
 
 // 關卡資訊
-byte stagedate[17][2001];
+unsigned char stagedate[17][2001];
 
 // 畫面整片黑用的計時器
 int blacktm=1,blackx=0;

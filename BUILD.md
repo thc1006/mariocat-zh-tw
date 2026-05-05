@@ -68,10 +68,13 @@ docker compose run --rm build make
 > 新增 console 專案匯入 `main.cpp` / `main.h` / `loadg.cpp`，
 > 設定 character set 為 UTF-8、加入 DxLib include + lib，編譯流程跟原作一樣。
 
-## 為什麼要用 32-bit？
+## 為什麼用 64-bit？
 
-原作 `MarioCat.exe` 是 32-bit；DxLib for GCC 對 32-bit 支援度最完整、
-社群文件也最齊。除非你打算大改 codebase，否則 32-bit 是最穩的選擇。
+原作 `MarioCat.exe` 是 32-bit，但 DxLib_GCC 3.24f SDK 對 GCC 12.x
+只附 64-bit (`x86_64_release_win32_seh_ucrt`) 預編 .a，
+對齊容器內的 mingw-w64 GCC 12.2.0 最穩，因此產出 64-bit `.exe`。
+原作的 32-bit `MarioCat.exe` 在 64-bit Windows 也照樣能跑，所以
+這個切換對玩家完全沒影響。
 
 ## 編碼策略說明
 

@@ -5,6 +5,10 @@
 #   docker compose run --rm build make                           # 之後：每次重 build
 #
 # 產出：./dist/MarioCat_zh.exe
+#
+# 顯式指定 project name（避免目錄名為中文時 docker compose 推不出 name）
+name: cat-mario-zh
+
 services:
   build:
     build:
