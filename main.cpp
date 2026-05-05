@@ -1140,7 +1140,9 @@ if (main==100){
 setcolor(160,180,250);
 fillrect(0,0,fxmax,fymax);
 
-drawimage(mgrap[30],240-380/2,60);
+// 中文化標題圖（res/syobon3_v2.PNG，392×50）。x 用視窗中心 240 減半圖寬置中；
+// y 比原本下挪 3 px 補回新舊圖高度差（舊圖 56 → 新圖 50），讓視覺位置與原版接近
+drawimage(mgrap[30],240-392/2,63);
 
 drawimage(grap[0][4],12*30,10*29-12);
 drawimage(grap[1][4],6*30,12*29-12);

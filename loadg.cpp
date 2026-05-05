@@ -48,8 +48,8 @@ mgrap[5] = LoadGraph( "res/brock2.png" ) ;
 mgrap[6] = LoadGraph( "res/omake.png" ) ;
 // 額外素材 2
 mgrap[7] = LoadGraph( "res/omake2.png" ) ;
-// 標題畫面圖檔
-mgrap[30] = LoadGraph( "res/syobon3.PNG" ) ;
+// 標題畫面圖檔（中文化版：貓貓貓 瑪利歐 392×50；舊版 378×56 已封存為 syobon3.PNG）
+mgrap[30] = LoadGraph( "res/syobon3_v2.PNG" ) ;
 
 
 // 切割玩家圖（不同動作的子圖）
