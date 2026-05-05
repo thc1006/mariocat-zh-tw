@@ -592,10 +592,11 @@ function renderStage() {
             ctx.strokeStyle = 'rgba(0,0,0,0.3)';
             ctx.strokeRect(sx, sy, TILE, TILE);
         } else if (b.t === 2 && sprites.brock) {
-            // 磚塊 sprite — 用 atlas 的 (33*1,0) 位置（原作 grap[1][1] 是磚塊）
-            ctx.drawImage(sprites.brock, 33, 0, 30, 30, sx, sy, 30, 30);
+            // 磚塊 sprite — atlas (99,0)（pixel-sample 確認 col 3 是棕色磚塊紋理；
+            // col 0/1 是黑色 placeholder 給 stealth 磚塊用，col 2 是 ?）
+            ctx.drawImage(sprites.brock, 99, 0, 30, 30, sx, sy, 30, 30);
         } else if (b.t === 3 && sprites.brock) {
-            // ? 磚 — atlas (33*2,0)
+            // ? 磚 — atlas (66,0)
             ctx.drawImage(sprites.brock, 66, 0, 30, 30, sx, sy, 30, 30);
         } else if (b.t === 4) {
             // 陷阱 ?（黃底跟普通 ? 磚一樣，視覺上 indistinguishable，這就是整人哏）
@@ -624,7 +625,7 @@ function renderStage() {
             ctx.strokeRect(sx, sy, TILE, TILE);
         } else if (b.t === 8 && sprites.brock) {
             // fake block — 看起來跟一般磚塊完全一樣（站上去才知道你寄了）
-            ctx.drawImage(sprites.brock, 33, 0, 30, 30, sx, sy, 30, 30);
+            ctx.drawImage(sprites.brock, 99, 0, 30, 30, sx, sy, 30, 30);
         } else if (b.t === 9) {
             // hidden block — 不畫（隱形）
         } else if (b.t === 10) {
