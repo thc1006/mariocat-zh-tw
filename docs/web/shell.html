@@ -119,6 +119,10 @@ const statusEl = document.getElementById('status');
 const progressEl = document.getElementById('progress');
 
 var Module = {
+    // 必填：emscripten 用 OFFSCREENCANVASES_TO_PTHREAD=#canvas 編譯後，
+    // glue code 會 iterate Module.transferredCanvasNames，
+    // 沒在 Module 提供就會丟「not iterable」TypeError
+    transferredCanvasNames: ["#canvas"],
     canvas: (function() {
         const c = document.getElementById('canvas');
         // 在 wasm 載入前強制設 canvas size — emscripten Module.canvas 會用此值
