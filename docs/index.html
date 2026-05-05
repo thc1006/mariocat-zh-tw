@@ -43,15 +43,22 @@
 </section>
 
 <section class="experimental">
-    <h2>🧪 實驗版本（WebAssembly 編譯中）</h2>
+    <h2>🧪 實驗版本（WebAssembly 端口進度紀錄）</h2>
     <p>
-        本專案的 C++ 源碼已成功用 <strong>Emscripten + DxLib HTML5</strong> 交叉編譯成 WebAssembly bundle，
-        頁面、wasm 載入、主迴圈、WebGL context 都正常啟動，但 DxLib HTML5 預編 lib 對 WebGL ARRAY_BUFFER
-        binding 順序與現代瀏覽器嚴格規範有衝突，目前畫面渲染為黑屏。
-        若有興趣協助 debug 或想看技術細節：
+        本專案 5,500 行 C++ 源碼已成功用 <strong>Emscripten 3.1.20 + DxLib HTML5（自編 lib）</strong> 交叉編譯成 WebAssembly。
+        經過 21 輪 build 修通了：跨平台 #ifdef、COOP/COEP service worker（GitHub Pages SAB 解鎖）、Asyncify 物件 scope hoisting、
+        OFFSCREEN_FRAMEBUFFER、FULL_ES2/3、USE_PTHREADS + PROXY_TO_PTHREAD、emscripten_set_main_loop callback……
     </p>
     <p>
-        <a href="web/" target="_blank" rel="noopener" style="color:#ff9966">→ 開啟實驗版頁面（黑屏，僅供技術參考）</a>
+        最後卡在 <strong>DxLib HTML5 lib 內部 Asyncify rewind ABI 與 emscripten 3.1.20 wasm runtime 不相容</strong>：
+        audio decode 觸發 Asyncify.handleSleep 後 wasm rewind 路徑進入 <code>unreachable</code> trap，
+        mouse handler 也受影響。需 patch DxLib HTML5 源碼或精確版本 bisect，
+        非單純 build flag 能解。
+    </p>
+    <p>
+        <a href="web/" target="_blank" rel="noopener" style="color:#ff9966">→ 開啟實驗版頁面（黑屏，技術參考用）</a>
+        ｜
+        <a href="https://github.com/thc1006/mariocat-zh-tw/commits/main" target="_blank" rel="noopener" style="color:#ff9966">→ 21 輪 web build commit 軌跡</a>
     </p>
 </section>
 
