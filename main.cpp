@@ -240,7 +240,7 @@ SetWindowIconID(127);
 // 強制視窗化、不允許最大化
 ChangeWindowMode(TRUE ) ;
 // 修改視窗標題
-SetMainWindowText( "しょぼんのアクション" ) ;
+SetMainWindowText( "屎喔棒大冒險" ) ;
 // 關閉 DxLib 應用程式 log（避免產生 log 檔）
 SetOutApplicationLogValidFlag(false);
 
@@ -275,7 +275,7 @@ if (maint==3)break;
 // 結束 DxLib（釋放資源）
 DxLib_End() ;				
 
-// ソフトの終了 
+// 結束程式 
 return 0 ;				
 }
 
@@ -334,9 +334,9 @@ DrawFormatString(xx[0]/100+fma,xx[1]/100+fmb,GetColor(255,255,255),"51");
 }
 
 if (ntype[t]==101)
-DrawFormatString(xx[0]/100+fma,xx[1]/100+fmb,GetColor(255,255,255),"ゲームクリアー");
+DrawFormatString(xx[0]/100+fma,xx[1]/100+fmb,GetColor(255,255,255),"通關啦");
 if (ntype[t]==102)
-DrawFormatString(xx[0]/100+fma,xx[1]/100+fmb,GetColor(255,255,255),"プレイしてくれてありがとー");
+DrawFormatString(xx[0]/100+fma,xx[1]/100+fmb,GetColor(255,255,255),"謝謝你來玩～");
 
 }}//t
 
@@ -400,7 +400,7 @@ setcolor(60,60,60);
 if (t3==2)setcolor(250,250,250);
 t2=t3*2;if (t2==4)t2=1;
 //str("關卡通關",xx[0]/100+t2+fx/100,xx[1]/100+t2+fy/100);
-str("ステージ  クリアー",60+t2,90+t2);
+str("關卡  通關",60+t2,90+t2);
 }
 }//100
 */
@@ -930,17 +930,17 @@ if (mmsgtm>=1){
 mmsgtm--;
 xs[0]="";
 
-if (mmsgtype==1)xs[0]="お、おいしい!!";
-if (mmsgtype==2)xs[0]="毒は無いが……";
-if (mmsgtype==3)xs[0]="刺さった!!";
-if (mmsgtype==10)xs[0]="食べるべきではなかった!!";
-if (mmsgtype==11)xs[0]="俺は燃える男だ!!";
-if (mmsgtype==50)xs[0]="体が……焼ける……";
-if (mmsgtype==51)xs[0]="たーまやー!!";
-if (mmsgtype==52)xs[0]="見事にオワタ";
-if (mmsgtype==53)xs[0]="足が、足がぁ!!";
-if (mmsgtype==54)xs[0]="流石は摂氏800度!!";
-if (mmsgtype==55)xs[0]="溶岩と合体したい……";
+if (mmsgtype==1)xs[0]="喔、好吃!!";
+if (mmsgtype==2)xs[0]="雖然沒毒……";
+if (mmsgtype==3)xs[0]="刺中啦!!";
+if (mmsgtype==10)xs[0]="不該吃的!!";
+if (mmsgtype==11)xs[0]="老子是燃燒的男人!!";
+if (mmsgtype==50)xs[0]="身體……燒起來了……";
+if (mmsgtype==51)xs[0]="哇～煙火好美喔!!";
+if (mmsgtype==52)xs[0]="完美的 GG";
+if (mmsgtype==53)xs[0]="我的腳、我的腳啊!!";
+if (mmsgtype==54)xs[0]="不愧是攝氏 800 度!!";
+if (mmsgtype==55)xs[0]="想跟岩漿融為一體……";
 //if (mmsgtype==56)xs[0]="";
 
 //if (stagecolor<=1 || stagecolor==3)setc0();
@@ -966,57 +966,57 @@ amsgtm[t]--;//end();
 xs[0]="";
 
 //if (amsgtype[t]==1001)xs[0]="";
-if (amsgtype[t]==1001)xs[0]="ヤッフー!!";
-if (amsgtype[t]==1002)xs[0]="え?俺勝っちゃったの?";
-if (amsgtype[t]==1003)xs[0]="貴様の死に場所はここだ!";
-if (amsgtype[t]==1004)xs[0]="二度と会う事もないだろう";
-if (amsgtype[t]==1005)xs[0]="俺、最強!!";
-if (amsgtype[t]==1006)xs[0]="一昨日来やがれ!!";
-if (amsgtype[t]==1007)xs[0]="漢に後退の二文字は無い!!";
-if (amsgtype[t]==1008)xs[0]="ハッハァ!!";
+if (amsgtype[t]==1001)xs[0]="耶比~!!";
+if (amsgtype[t]==1002)xs[0]="咦？我贏了喔？";
+if (amsgtype[t]==1003)xs[0]="你死定了就在這!";
+if (amsgtype[t]==1004)xs[0]="應該再也不會見面了吧";
+if (amsgtype[t]==1005)xs[0]="老子最強!!";
+if (amsgtype[t]==1006)xs[0]="前天再來啦!!";
+if (amsgtype[t]==1007)xs[0]="男子漢字典裡沒有後退兩個字!!";
+if (amsgtype[t]==1008)xs[0]="哈哈啊!!";
 
-if (amsgtype[t]==1011)xs[0]="ヤッフー!!";
-if (amsgtype[t]==1012)xs[0]="え?俺勝っちゃったの?";
-if (amsgtype[t]==1013)xs[0]="貴様の死に場所はここだ!";
-if (amsgtype[t]==1014)xs[0]="身の程知らずが……";
-if (amsgtype[t]==1015)xs[0]="油断が死を招く";
-if (amsgtype[t]==1016)xs[0]="おめでたい奴だ";
-if (amsgtype[t]==1017)xs[0]="屑が!!";
-if (amsgtype[t]==1018)xs[0]="無謀な……";
+if (amsgtype[t]==1011)xs[0]="耶比~!!";
+if (amsgtype[t]==1012)xs[0]="咦？我贏了喔？";
+if (amsgtype[t]==1013)xs[0]="你死定了就在這!";
+if (amsgtype[t]==1014)xs[0]="不知天高地厚的傢伙……";
+if (amsgtype[t]==1015)xs[0]="大意招來死亡";
+if (amsgtype[t]==1016)xs[0]="真是個天兵";
+if (amsgtype[t]==1017)xs[0]="廢物!!";
+if (amsgtype[t]==1018)xs[0]="魯莽至極……";
 
-if (amsgtype[t]==1021)xs[0]="ヤッフー!!";
-if (amsgtype[t]==1022)xs[0]="え?俺勝っちゃったの?";
-if (amsgtype[t]==1023)xs[0]="二度と会う事もないだろう";
-if (amsgtype[t]==1024)xs[0]="身の程知らずが……";
-if (amsgtype[t]==1025)xs[0]="僕は……負けない!!";
-if (amsgtype[t]==1026)xs[0]="貴様に見切れる筋は無い";
-if (amsgtype[t]==1027)xs[0]="今死ね、すぐ死ね、骨まで砕けろ!!";
-if (amsgtype[t]==1028)xs[0]="任務完了!!";
+if (amsgtype[t]==1021)xs[0]="耶比~!!";
+if (amsgtype[t]==1022)xs[0]="咦？我贏了喔？";
+if (amsgtype[t]==1023)xs[0]="應該再也不會見面了吧";
+if (amsgtype[t]==1024)xs[0]="不知天高地厚的傢伙……";
+if (amsgtype[t]==1025)xs[0]="我……不會輸的!!";
+if (amsgtype[t]==1026)xs[0]="你沒有看穿我招式的本事";
+if (amsgtype[t]==1027)xs[0]="現在去死、馬上去死、連骨頭都碎掉吧!!";
+if (amsgtype[t]==1028)xs[0]="任務完成!!";
 
-if (amsgtype[t]==1031)xs[0]="ヤッフー!!";
-if (amsgtype[t]==1032)xs[0]="え?俺勝っちゃったの?";
-if (amsgtype[t]==1033)xs[0]="貴様の死に場所はここだ!";
-if (amsgtype[t]==1034)xs[0]="身の程知らずが……";
-if (amsgtype[t]==1035)xs[0]="油断が死を招く";
-if (amsgtype[t]==1036)xs[0]="おめでたい奴だ";
-if (amsgtype[t]==1037)xs[0]="屑が!!";
-if (amsgtype[t]==1038)xs[0]="無謀な……";
+if (amsgtype[t]==1031)xs[0]="耶比~!!";
+if (amsgtype[t]==1032)xs[0]="咦？我贏了喔？";
+if (amsgtype[t]==1033)xs[0]="你死定了就在這!";
+if (amsgtype[t]==1034)xs[0]="不知天高地厚的傢伙……";
+if (amsgtype[t]==1035)xs[0]="大意招來死亡";
+if (amsgtype[t]==1036)xs[0]="真是個天兵";
+if (amsgtype[t]==1037)xs[0]="廢物!!";
+if (amsgtype[t]==1038)xs[0]="魯莽至極……";
 
-if (amsgtype[t]==15)xs[0]="鉄壁!!よって、無敵!!";
-if (amsgtype[t]==15)xs[0]="丸腰で勝てるとでも?";
-if (amsgtype[t]==15)xs[0]="パリイ!!";
-if (amsgtype[t]==18)xs[0]="自業自得だ";
+if (amsgtype[t]==15)xs[0]="鐵壁防禦!!所以、無敵!!";
+if (amsgtype[t]==15)xs[0]="空手就想贏？";
+if (amsgtype[t]==15)xs[0]="完美格擋!!";
+if (amsgtype[t]==18)xs[0]="自作自受啦";
 if (amsgtype[t]==20)xs[0]="Zzz";
-if (amsgtype[t]==21)xs[0]="ク、クマー";
+if (amsgtype[t]==21)xs[0]="熊、熊出沒";
 if (amsgtype[t]==24)xs[0]="?";
-if (amsgtype[t]==25)xs[0]="食べるべきではなかった!!";
-if (amsgtype[t]==30)xs[0]="うめぇ!!";
-if (amsgtype[t]==31)xs[0]="ブロックを侮ったな?";
-if (amsgtype[t]==32)xs[0]="シャキーン";
+if (amsgtype[t]==25)xs[0]="不該吃的!!";
+if (amsgtype[t]==30)xs[0]="好吃!!";
+if (amsgtype[t]==31)xs[0]="你太小看磚塊了吧?";
+if (amsgtype[t]==32)xs[0]="鏘─！";
 
 if (amsgtype[t]==50)xs[0]="波動砲!!";
-if (amsgtype[t]==85)xs[0]="裏切られたとでも思ったか?";
-if (amsgtype[t]==86)xs[0]="ポールアターック!!";
+if (amsgtype[t]==85)xs[0]="以為被背叛了嗎？";
+if (amsgtype[t]==86)xs[0]="旗杆攻擊!!";
 
 
 
@@ -1095,26 +1095,26 @@ if (blackx==1){zxon=0;}
 if (main==2){
 
 setcolor(255,255,255);
-str("制作・プレイに関わった方々",240-13*20/2,xx[12]/100);
-str("ステージ１　プレイ",240-9*20/2,xx[13]/100);
-str("先輩　Ⅹ～Ｚ",240-6*20/2,xx[14]/100);
-str("ステージ２　プレイ",240-9*20/2,xx[15]/100);
-str("友人　willowlet ",240-8*20/2,xx[16]/100);
-str("ステージ３　プレイ",240-9*20/2,xx[17]/100);
-str("友人　willowlet ",240-8*20/2,xx[18]/100);
-str("ステージ４　プレイ",240-9*20/2,xx[19]/100);
-str("友人２　ann ",240-6*20/2,xx[20]/100);
-str("ご協力",240-3*20/2,xx[21]/100);
-str("Ｔ先輩",240-3*20/2,xx[22]/100);
-str("Ｓ先輩",240-3*20/2,xx[23]/100);
-str("動画技術提供",240-6*20/2,xx[24]/100);
-str("Ｋ先輩",240-3*20/2,xx[25]/100);
-str("動画キャプチャ・編集・エンコード",240-16*20/2,xx[26]/100);
+str("製作．協同遊玩的夥伴們",240-13*20/2,xx[12]/100);
+str("第 1 關　試玩",240-9*20/2,xx[13]/100);
+str("學長　Ⅹ～Ｚ",240-6*20/2,xx[14]/100);
+str("第 2 關　試玩",240-9*20/2,xx[15]/100);
+str("朋友　willowlet ",240-8*20/2,xx[16]/100);
+str("第 3 關　試玩",240-9*20/2,xx[17]/100);
+str("朋友　willowlet ",240-8*20/2,xx[18]/100);
+str("第 4 關　試玩",240-9*20/2,xx[19]/100);
+str("朋友 2　ann ",240-6*20/2,xx[20]/100);
+str("感謝協力",240-3*20/2,xx[21]/100);
+str("Ｔ學長",240-3*20/2,xx[22]/100);
+str("Ｓ學長",240-3*20/2,xx[23]/100);
+str("影片技術提供",240-6*20/2,xx[24]/100);
+str("Ｋ學長",240-3*20/2,xx[25]/100);
+str("影片擷取．剪輯．編碼",240-16*20/2,xx[26]/100);
 str("willowlet ",240-5*20/2,xx[27]/100);
-str("プログラム・描画・ネタ・動画編集",240-16*20/2,xx[28]/100);
+str("程式．繪圖．哏．影片剪輯",240-16*20/2,xx[28]/100);
 str("ちく",240-2*20/2,xx[29]/100);
 
-str("プレイしていただき　ありがとうございました～",240-22*20/2,xx[30]/100);
+str("感謝您的遊玩～",240-22*20/2,xx[30]/100);
 }
 
 
@@ -1154,7 +1154,7 @@ drawimage(grap[6][1],29*t,14*29-12);
 
 
 setcolor(0,0,0);
-str("Enterキーを押せ!!",240-8*20/2,250);
+str("請按下 Enter 鍵!!",240-8*20/2,250);
 
 }//if (main==100){
 
@@ -5349,75 +5349,75 @@ if (tmsg==0){
 setc1();
 // 字型設定
 setfont(20,5);
-txmsg("テスト　hoge",0);
+txmsg("測試　hoge",0);
 }
 
 if (tmsg==1){
 setc1();
 txmsg("",0);
-txmsg("ステージ 1 より",0);
-txmsg("特殊的なものが増えたので",1);
-txmsg("気をつけてくれよ～",2);
-txmsg("後、アイテムの一部を利用するかも…",4);
-txmsg("                       ちく より",6);
+txmsg("來自第 1 關",0);
+txmsg("特殊機關變多了",1);
+txmsg("請小心啊～",2);
+txmsg("另外、可能會用到一些道具…",4);
+txmsg("                       ちく 留",6);
 }
 
 if (tmsg==2){
-txmsg("            ？が必要です ",3);
+txmsg("            需要「？」 ",3);
 txmsg("                         m9(^Д^)",6);
 }
 
 
 if (tmsg==3){
-txmsg("   別にコインに意味ないけどね ",3);
+txmsg("   雖然金幣本身沒什麼意義啦 ",3);
 txmsg("                      (・ω・ )ﾉｼ",6);
 }
 
 if (tmsg==4){
-txmsg("この先に隠しブロックがあります ",2);
-txmsg("注意してください !!",4);
+txmsg("前方有隱藏磚塊 ",2);
+txmsg("請務必小心 !!",4);
 }
 
 
 if (tmsg==5){
 txmsg("",0);
-txmsg(" 前回よりも難易度を下げましたので",1);
-txmsg(" 気楽にプレイしてください    ",3);
-txmsg("                       ちく より",6);
+txmsg(" 比上次的難度調低了一些",1);
+txmsg(" 請輕鬆地玩    ",3);
+txmsg("                       ちく 留",6);
 }
 
 if (tmsg==6){
 txmsg("",0);
-txmsg(" そこにいる敵のそばによると、      ",1);
-txmsg(" 自分と一緒にジャンプしてくれます。",2);
-txmsg("   可愛いですね。                  ",3);
+txmsg(" 靠近那邊的敵人時、              ",1);
+txmsg(" 牠會跟你一起跳。              ",2);
+txmsg("   滿可愛的對吧。                  ",3);
 }
 
 if (tmsg==7){
 txmsg("",0);
-txmsg(" あの敵は連れて来れましたか?、     ",1);
-txmsg(" 連れて来れなかった貴方は、        ",2);
-txmsg(" そこの落とし穴から Let's dive!    ",3);
+txmsg(" 那隻敵人有帶過來嗎?、               ",1);
+txmsg(" 沒帶過來的話、                    ",2);
+txmsg(" 從那邊的陷阱跳下去 Let's dive!    ",3);
 }
 
 if (tmsg==8){
-txmsg("そんな容易に",1);
-txmsg("ヒントに頼るもんじゃないぜ",2);
-txmsg("ほら、さっさと次行きな!!",3);
+txmsg("哪有那麼容易",1);
+txmsg("不要太依賴提示喔",2);
+txmsg("快、快點到下一關!!",3);
 }
 
 if (tmsg==9){
-txmsg(" 正真正銘のファイナルステージ。    ",1);
-txmsg(" クリアすれば遂にエンディング!!    ",2);
-txmsg(" その土管から戻ってもいいんだぜ?   ",3);
+txmsg(" 貨真價實的最終關卡。              ",1);
+txmsg(" 通關就會看到結局!!                ",2);
+txmsg(" 你也可以從那個水管回頭喔?         ",3);
 }
 
 if (tmsg==100){
-txmsg("え？私ですか？ ",0);
-txmsg("いやぁ、ただの通りすがりの",2);
-txmsg("ヒントブロックですよ～",3);
-txmsg("決して怪しいブロックじゃないですよ",5);
-txmsg("                          (…チッ)",6);
+txmsg("咦？是叫我嗎？ ",0);
+txmsg("嘿、我只是路過的",2);
+txmsg("一塊提示磚啦～",3);
+txmsg("絕對不是什麼奇怪的磚塊喔",5);
+txmsg("                          (…嘖)",6);
 }
 
 
