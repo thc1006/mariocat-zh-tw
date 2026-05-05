@@ -27,32 +27,32 @@ grap[t][tt]=0;
 //end();
 
 
-//画像読み込み
+// 圖像載入
 
-// 透過色を変更
+// 設定透明色（影像中該顏色會被視為透明）
 SetTransColor( 9*16+9 , 255 , 255 ) ;
 
-//プレイヤー
+// 玩家圖檔
 mgrap[0] = LoadGraph( "res/player.png" ) ;
-//ブロック
+// 磚塊圖檔
 mgrap[1] = LoadGraph( "res/brock.png" ) ;
-//アイテム
+// 道具圖檔
 mgrap[2] = LoadGraph( "res/item.png" ) ;
-//敵
+// 敵人圖檔
 mgrap[3] = LoadGraph( "res/teki.png" ) ;
-//背景
+// 背景圖檔
 mgrap[4] = LoadGraph( "res/haikei.png" ) ;
-//ブロック2
+// 磚塊圖檔（第二組，含特殊磚塊）
 mgrap[5] = LoadGraph( "res/brock2.png" ) ;
-//おまけ
+// 額外素材
 mgrap[6] = LoadGraph( "res/omake.png" ) ;
-//おまけ2
+// 額外素材 2
 mgrap[7] = LoadGraph( "res/omake2.png" ) ;
-//タイトル
+// 標題畫面圖檔
 mgrap[30] = LoadGraph( "res/syobon3.PNG" ) ;
 
 
-//プレイヤー読み込み
+// 切割玩家圖（不同動作的子圖）
 grap[40][0] = DerivationGraph( 0, 0, 30, 36, mgrap[0]) ;
 grap[0][0] = DerivationGraph( 31*4, 0, 30, 36, mgrap[0]) ;
 grap[1][0] = DerivationGraph( 31*1, 0, 30, 36, mgrap[0]) ;
@@ -61,7 +61,7 @@ grap[3][0] = DerivationGraph( 31*3, 0, 30, 36, mgrap[0]) ;
 grap[41][0] = DerivationGraph( 50, 0, 51, 73, mgrap[6]) ;
 
 x1=1;
-//ブロック読み込み
+// 切割磚塊圖（依顏色／場景變體）
 for (t=0;t<=6;t++){
 grap[t][x1] = DerivationGraph( 33*t, 0, 30, 30, mgrap[x1]) ;
 grap[t+30][x1] = DerivationGraph( 33*t, 33, 30, 30, mgrap[x1]) ;
@@ -73,7 +73,7 @@ grap[10][x1] = DerivationGraph( 33*9, 0, 30, 30, mgrap[x1]) ;
 grap[40][x1] = DerivationGraph( 33*9, 33, 30, 30, mgrap[x1]) ;
 grap[70][x1] = DerivationGraph( 33*9, 66, 30, 30, mgrap[x1]) ;
 
-//ブロック読み込み2
+// 切割磚塊圖（第二組）
 x1=5;
 for (t=0;t<=6;t++){
 grap[t][x1] = DerivationGraph( 33*t, 0, 30, 30, mgrap[x1]) ;
@@ -84,13 +84,13 @@ grap[12][5] = DerivationGraph( 33*0, 66, 30, 30, mgrap[x1]) ;
 grap[13][5] = DerivationGraph( 33*1, 66, 30, 30, mgrap[x1]) ;
 grap[14][5] = DerivationGraph( 33*2, 66, 30, 30, mgrap[x1]) ;
 
-//アイテム読み込み
+// 切割道具圖
 x1=2;
 for (t=0;t<=5;t++){
 grap[t][x1] = DerivationGraph( 33*t, 0, 30, 30, mgrap[x1]) ;
 }
 
-//敵キャラ読み込み
+// 切割敵人圖
 x1=3;
 grap[0][x1] = DerivationGraph( 33*0, 0, 30, 30, mgrap[x1]) ;
 grap[1][x1] = DerivationGraph( 33*1, 0, 30, 43, mgrap[x1]) ;
@@ -106,7 +106,7 @@ grap[151][x1] = DerivationGraph( 38*3+37*3, 0, 37, 47, mgrap[7]);
 grap[9][x1] = DerivationGraph( 33*7+1, 0, 26, 30, mgrap[x1]);
 grap[10][x1] = DerivationGraph( 214, 0, 46, 16, mgrap[6]);
 
-//モララー
+// モララー（troll 表情敵人，原作彩蛋）
 grap[30][x1] = DerivationGraph( 0,56, 30, 36, mgrap[7]);
 grap[155][x1] = DerivationGraph( 31*3,56, 30, 36, mgrap[7]);
 grap[31][x1] = DerivationGraph( 50, 74, 49, 79, mgrap[6]) ;
@@ -132,7 +132,7 @@ grap[105][x1] = DerivationGraph( 33*5, 0, 30, 30, mgrap[2]) ;
 grap[110][x1] = DerivationGraph( 33*4, 0, 30, 30, mgrap[2]) ;
 
 
-//背景読み込み
+// 切割背景圖
 x1=4;
 grap[0][x1] = DerivationGraph( 0, 0, 150, 90, mgrap[x1]) ;
 grap[1][x1] = DerivationGraph( 151, 0, 65, 29, mgrap[x1]) ;
@@ -142,11 +142,11 @@ grap[4][x1] = DerivationGraph( 151, 113, 51, 29,mgrap[x1]) ;
 grap[5][x1] = DerivationGraph( 222, 0, 28, 60,mgrap[x1]) ;
 grap[6][x1] = DerivationGraph( 151, 143, 90, 40,mgrap[x1]);
 
-//中間フラグ
+// 關卡中繼旗子
 grap[20][x1] = DerivationGraph( 40, 182, 40, 60, mgrap[x1]) ;
 
 
-//グラ
+// 其他圖元
 x1=5;
 grap[0][x1] = DerivationGraph( 167, 0, 45, 45, mgrap[6]) ;
 
@@ -158,7 +158,7 @@ grap[0][x1] = DerivationGraph( 167, 0, 45, 45, mgrap[6]) ;
 
 
 
-//敵サイズ収得
+// 取得敵人圖的尺寸（碰撞框會用到）
 //int GrHandle=0;
 x1=3;
 for (t=0;t<=140;t++){
@@ -168,7 +168,7 @@ anx[t]*=100;any[t]*=100;
 anx[79]=120*100;any[79]=15*100;
 anx[85]=25*100;any[85]=30*10*100;
 
-//背景サイズ収得
+// 取得背景圖的尺寸
 x1=4;
 for (t=0;t<40;t++){
 GetGraphSize(grap[t][x1] ,&ne[t] ,&nf[t]);
@@ -190,7 +190,7 @@ anx[3]=30;any[3]=44;
 
 
 
-//wav読み込み
+// 音效／背景音樂載入
 //try{
 //oto[2] = LoadSoundMem( "SE/1.WAV" ) ;
 SetCreateSoundDataType(DX_SOUNDDATATYPE_MEMPRESS);
@@ -232,7 +232,7 @@ x1=40;
 ChangeVolumeSoundMem( 255 * x1 / 100, oto[103] ) ;
 
 
-//ループ設定-20000-20秒
+// 迴圈點設定（20000 取樣 = 20 秒）
 //SetLoopPosSoundMem( 1,oto[104]) ;
 //SetLoopSamplePosSoundMem(44100,oto[104]);
 //SetLoopSamplePosSoundMem(22050,oto[104]);
@@ -241,4 +241,11 @@ ChangeVolumeSoundMem( 255 * x1 / 100, oto[103] ) ;
 
 
 
+
+// ─── 中文字型設定 ───────────────────────────────────────
+// 因為遊戲文字已翻譯為繁體中文，DxLib 預設字型在繁中 Windows 不一定畫得出來。
+// 這邊明確指定「微軟正黑體」並啟用 EDGE（描邊）模式，避免在深色背景看不清。
+ChangeFont( "Microsoft JhengHei" , DX_CHARSET_DEFAULT ) ;
+SetFontSize( 16 ) ;
+SetFontThickness( 4 ) ;
 }
