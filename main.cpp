@@ -240,7 +240,7 @@ SetWindowIconID(127);
 // 強制視窗化、不允許最大化
 ChangeWindowMode(TRUE ) ;
 // 修改視窗標題
-SetMainWindowText( "屎喔棒大冒險" ) ;
+SetMainWindowText( "貓利歐：屎喔棒大冒險" ) ;
 // 關閉 DxLib 應用程式 log（避免產生 log 檔）
 SetOutApplicationLogValidFlag(false);
 
@@ -336,7 +336,7 @@ DrawFormatString(xx[0]/100+fma,xx[1]/100+fmb,GetColor(255,255,255),"51");
 if (ntype[t]==101)
 DrawFormatString(xx[0]/100+fma,xx[1]/100+fmb,GetColor(255,255,255),"通關啦");
 if (ntype[t]==102)
-DrawFormatString(xx[0]/100+fma,xx[1]/100+fmb,GetColor(255,255,255),"謝謝你來玩～");
+DrawFormatString(xx[0]/100+fma,xx[1]/100+fmb,GetColor(255,255,255),"謝謝你被虐了一輪～");
 
 }}//t
 
@@ -400,7 +400,7 @@ setcolor(60,60,60);
 if (t3==2)setcolor(250,250,250);
 t2=t3*2;if (t2==4)t2=1;
 //str("關卡通關",xx[0]/100+t2+fx/100,xx[1]/100+t2+fy/100);
-str("關卡  通關",60+t2,90+t2);
+str("關卡  全破",60+t2,90+t2);
 }
 }//100
 */
@@ -930,14 +930,14 @@ if (mmsgtm>=1){
 mmsgtm--;
 xs[0]="";
 
-if (mmsgtype==1)xs[0]="喔、好吃!!";
-if (mmsgtype==2)xs[0]="雖然沒毒……";
-if (mmsgtype==3)xs[0]="刺中啦!!";
-if (mmsgtype==10)xs[0]="不該吃的!!";
+if (mmsgtype==1)xs[0]="喔、有夠讚!!";
+if (mmsgtype==2)xs[0]="雖然沒毒啦……";
+if (mmsgtype==3)xs[0]="刺進去了!!";
+if (mmsgtype==10)xs[0]="早知道就不吃了!!";
 if (mmsgtype==11)xs[0]="老子是燃燒的男人!!";
-if (mmsgtype==50)xs[0]="身體……燒起來了……";
-if (mmsgtype==51)xs[0]="哇～煙火好美喔!!";
-if (mmsgtype==52)xs[0]="完美的 GG";
+if (mmsgtype==50)xs[0]="我的身體……燒起來了……";
+if (mmsgtype==51)xs[0]="哇～煙火大會!!";
+if (mmsgtype==52)xs[0]="完美、寄了";
 if (mmsgtype==53)xs[0]="我的腳、我的腳啊!!";
 if (mmsgtype==54)xs[0]="不愧是攝氏 800 度!!";
 if (mmsgtype==55)xs[0]="想跟岩漿融為一體……";
@@ -967,56 +967,56 @@ xs[0]="";
 
 //if (amsgtype[t]==1001)xs[0]="";
 if (amsgtype[t]==1001)xs[0]="耶比~!!";
-if (amsgtype[t]==1002)xs[0]="咦？我贏了喔？";
-if (amsgtype[t]==1003)xs[0]="你死定了就在這!";
+if (amsgtype[t]==1002)xs[0]="啊咧？我贏了喔？";
+if (amsgtype[t]==1003)xs[0]="你的葬身之地就在這!";
 if (amsgtype[t]==1004)xs[0]="應該再也不會見面了吧";
-if (amsgtype[t]==1005)xs[0]="老子最強!!";
-if (amsgtype[t]==1006)xs[0]="前天再來啦!!";
-if (amsgtype[t]==1007)xs[0]="男子漢字典裡沒有後退兩個字!!";
-if (amsgtype[t]==1008)xs[0]="哈哈啊!!";
+if (amsgtype[t]==1005)xs[0]="老子最頂!!";
+if (amsgtype[t]==1006)xs[0]="下輩子再來啦!!";
+if (amsgtype[t]==1007)xs[0]="男人字典裡沒在寫後退的!!";
+if (amsgtype[t]==1008)xs[0]="哈哈哈!!";
 
 if (amsgtype[t]==1011)xs[0]="耶比~!!";
-if (amsgtype[t]==1012)xs[0]="咦？我贏了喔？";
-if (amsgtype[t]==1013)xs[0]="你死定了就在這!";
-if (amsgtype[t]==1014)xs[0]="不知天高地厚的傢伙……";
-if (amsgtype[t]==1015)xs[0]="大意招來死亡";
+if (amsgtype[t]==1012)xs[0]="啊咧？我贏了喔？";
+if (amsgtype[t]==1013)xs[0]="你的葬身之地就在這!";
+if (amsgtype[t]==1014)xs[0]="不知天高地厚……";
+if (amsgtype[t]==1015)xs[0]="大意 = 寄";
 if (amsgtype[t]==1016)xs[0]="真是個天兵";
-if (amsgtype[t]==1017)xs[0]="廢物!!";
-if (amsgtype[t]==1018)xs[0]="魯莽至極……";
+if (amsgtype[t]==1017)xs[0]="雜碎!!";
+if (amsgtype[t]==1018)xs[0]="太衝了啦……";
 
 if (amsgtype[t]==1021)xs[0]="耶比~!!";
-if (amsgtype[t]==1022)xs[0]="咦？我贏了喔？";
+if (amsgtype[t]==1022)xs[0]="啊咧？我贏了喔？";
 if (amsgtype[t]==1023)xs[0]="應該再也不會見面了吧";
-if (amsgtype[t]==1024)xs[0]="不知天高地厚的傢伙……";
+if (amsgtype[t]==1024)xs[0]="不知天高地厚……";
 if (amsgtype[t]==1025)xs[0]="我……不會輸的!!";
-if (amsgtype[t]==1026)xs[0]="你沒有看穿我招式的本事";
+if (amsgtype[t]==1026)xs[0]="你才看不穿我的招式啦";
 if (amsgtype[t]==1027)xs[0]="現在去死、馬上去死、連骨頭都碎掉吧!!";
-if (amsgtype[t]==1028)xs[0]="任務完成!!";
+if (amsgtype[t]==1028)xs[0]="任務達成!!";
 
 if (amsgtype[t]==1031)xs[0]="耶比~!!";
-if (amsgtype[t]==1032)xs[0]="咦？我贏了喔？";
-if (amsgtype[t]==1033)xs[0]="你死定了就在這!";
-if (amsgtype[t]==1034)xs[0]="不知天高地厚的傢伙……";
-if (amsgtype[t]==1035)xs[0]="大意招來死亡";
+if (amsgtype[t]==1032)xs[0]="啊咧？我贏了喔？";
+if (amsgtype[t]==1033)xs[0]="你的葬身之地就在這!";
+if (amsgtype[t]==1034)xs[0]="不知天高地厚……";
+if (amsgtype[t]==1035)xs[0]="大意 = 寄";
 if (amsgtype[t]==1036)xs[0]="真是個天兵";
-if (amsgtype[t]==1037)xs[0]="廢物!!";
-if (amsgtype[t]==1038)xs[0]="魯莽至極……";
+if (amsgtype[t]==1037)xs[0]="雜碎!!";
+if (amsgtype[t]==1038)xs[0]="太衝了啦……";
 
 if (amsgtype[t]==15)xs[0]="鐵壁防禦!!所以、無敵!!";
-if (amsgtype[t]==15)xs[0]="空手就想贏？";
-if (amsgtype[t]==15)xs[0]="完美格擋!!";
+if (amsgtype[t]==15)xs[0]="空手就想嗆爆我？";
+if (amsgtype[t]==15)xs[0]="啷─格擋!!";
 if (amsgtype[t]==18)xs[0]="自作自受啦";
 if (amsgtype[t]==20)xs[0]="Zzz";
-if (amsgtype[t]==21)xs[0]="熊、熊出沒";
+if (amsgtype[t]==21)xs[0]="噢、熊出沒~";
 if (amsgtype[t]==24)xs[0]="?";
-if (amsgtype[t]==25)xs[0]="不該吃的!!";
-if (amsgtype[t]==30)xs[0]="好吃!!";
+if (amsgtype[t]==25)xs[0]="早知道就不吃了!!";
+if (amsgtype[t]==30)xs[0]="夠味!!";
 if (amsgtype[t]==31)xs[0]="你太小看磚塊了吧?";
 if (amsgtype[t]==32)xs[0]="鏘─！";
 
 if (amsgtype[t]==50)xs[0]="波動砲!!";
 if (amsgtype[t]==85)xs[0]="以為被背叛了嗎？";
-if (amsgtype[t]==86)xs[0]="旗杆攻擊!!";
+if (amsgtype[t]==86)xs[0]="旗杆 ATTACK!!";
 
 
 
@@ -1154,7 +1154,7 @@ drawimage(grap[6][1],29*t,14*29-12);
 
 
 setcolor(0,0,0);
-str("請按下 Enter 鍵!!",240-8*20/2,250);
+str("按下 Enter 鍵!!",240-8*20/2,250);
 
 }//if (main==100){
 
@@ -5349,7 +5349,7 @@ if (tmsg==0){
 setc1();
 // 字型設定
 setfont(20,5);
-txmsg("測試　hoge",0);
+txmsg("測試 hoge",0);
 }
 
 if (tmsg==1){
@@ -5357,7 +5357,7 @@ setc1();
 txmsg("",0);
 txmsg("來自第 1 關",0);
 txmsg("特殊機關變多了",1);
-txmsg("請小心啊～",2);
+txmsg("自己小心啊～",2);
 txmsg("另外、可能會用到一些道具…",4);
 txmsg("                       ちく 留",6);
 }
@@ -5375,14 +5375,14 @@ txmsg("                      (・ω・ )ﾉｼ",6);
 
 if (tmsg==4){
 txmsg("前方有隱藏磚塊 ",2);
-txmsg("請務必小心 !!",4);
+txmsg("小心一點 !!",4);
 }
 
 
 if (tmsg==5){
 txmsg("",0);
-txmsg(" 比上次的難度調低了一些",1);
-txmsg(" 請輕鬆地玩    ",3);
+txmsg(" 這次難度有調低一點啦",1);
+txmsg(" 放輕鬆玩就好    ",3);
 txmsg("                       ちく 留",6);
 }
 
@@ -5402,8 +5402,8 @@ txmsg(" 從那邊的陷阱跳下去 Let's dive!    ",3);
 
 if (tmsg==8){
 txmsg("哪有那麼容易",1);
-txmsg("不要太依賴提示喔",2);
-txmsg("快、快點到下一關!!",3);
+txmsg("別太依賴提示啦",2);
+txmsg("快點滾去下一關!!",3);
 }
 
 if (tmsg==9){
@@ -5414,8 +5414,8 @@ txmsg(" 你也可以從那個水管回頭喔?         ",3);
 
 if (tmsg==100){
 txmsg("咦？是叫我嗎？ ",0);
-txmsg("嘿、我只是路過的",2);
-txmsg("一塊提示磚啦～",3);
+txmsg("啊我就只是個路過的",2);
+txmsg("提示磚啦～",3);
 txmsg("絕對不是什麼奇怪的磚塊喔",5);
 txmsg("                          (…嘖)",6);
 }
