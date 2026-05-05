@@ -233,6 +233,20 @@ long stime;
 // 程式從 WinMain 開始執行
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,LPSTR lpCmdLine, int nCmdShow ){
 
+// 把 CWD 切成 .exe 自己所在的資料夾，這樣相對路徑（res/、BGM/、SE/）
+// 不論使用者怎麼啟動（雙擊、PowerShell、捷徑）都能找到資源檔。
+// 用 wchar_t 版本以支援含中文／日文的安裝路徑。
+{
+    wchar_t exePath[MAX_PATH];
+    if (GetModuleFileNameW(NULL, exePath, MAX_PATH) > 0) {
+        wchar_t *lastSlash = wcsrchr(exePath, L'\\');
+        if (lastSlash) {
+            *lastSlash = L'\0';
+            SetCurrentDirectoryW(exePath);
+        }
+    }
+}
+
 // 設定視窗解析度
 SetGraphMode( fxmax/100 , fymax/100 , 16 ) ;
 //
