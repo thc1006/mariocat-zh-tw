@@ -1,4 +1,4 @@
-#include "DxLib.h"
+ï»¿#include "DxLib.h"
 
 void end();
 
@@ -27,32 +27,32 @@ grap[t][tt]=0;
 //end();
 
 
-//‰æ‘œ“Ç‚İ‚İ
+//ç”»åƒèª­ã¿è¾¼ã¿
 
-// “§‰ßF‚ğ•ÏX
+// é€éè‰²ã‚’å¤‰æ›´
 SetTransColor( 9*16+9 , 255 , 255 ) ;
 
-//ƒvƒŒƒCƒ„[
+//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
 mgrap[0] = LoadGraph( "res/player.png" ) ;
-//ƒuƒƒbƒN
+//ãƒ–ãƒ­ãƒƒã‚¯
 mgrap[1] = LoadGraph( "res/brock.png" ) ;
-//ƒAƒCƒeƒ€
+//ã‚¢ã‚¤ãƒ†ãƒ 
 mgrap[2] = LoadGraph( "res/item.png" ) ;
-//“G
+//æ•µ
 mgrap[3] = LoadGraph( "res/teki.png" ) ;
-//”wŒi
+//èƒŒæ™¯
 mgrap[4] = LoadGraph( "res/haikei.png" ) ;
-//ƒuƒƒbƒN2
+//ãƒ–ãƒ­ãƒƒã‚¯2
 mgrap[5] = LoadGraph( "res/brock2.png" ) ;
-//‚¨‚Ü‚¯
+//ãŠã¾ã‘
 mgrap[6] = LoadGraph( "res/omake.png" ) ;
-//‚¨‚Ü‚¯2
+//ãŠã¾ã‘2
 mgrap[7] = LoadGraph( "res/omake2.png" ) ;
-//ƒ^ƒCƒgƒ‹
+//ã‚¿ã‚¤ãƒˆãƒ«
 mgrap[30] = LoadGraph( "res/syobon3.PNG" ) ;
 
 
-//ƒvƒŒƒCƒ„[“Ç‚İ‚İ
+//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼èª­ã¿è¾¼ã¿
 grap[40][0] = DerivationGraph( 0, 0, 30, 36, mgrap[0]) ;
 grap[0][0] = DerivationGraph( 31*4, 0, 30, 36, mgrap[0]) ;
 grap[1][0] = DerivationGraph( 31*1, 0, 30, 36, mgrap[0]) ;
@@ -61,7 +61,7 @@ grap[3][0] = DerivationGraph( 31*3, 0, 30, 36, mgrap[0]) ;
 grap[41][0] = DerivationGraph( 50, 0, 51, 73, mgrap[6]) ;
 
 x1=1;
-//ƒuƒƒbƒN“Ç‚İ‚İ
+//ãƒ–ãƒ­ãƒƒã‚¯èª­ã¿è¾¼ã¿
 for (t=0;t<=6;t++){
 grap[t][x1] = DerivationGraph( 33*t, 0, 30, 30, mgrap[x1]) ;
 grap[t+30][x1] = DerivationGraph( 33*t, 33, 30, 30, mgrap[x1]) ;
@@ -73,7 +73,7 @@ grap[10][x1] = DerivationGraph( 33*9, 0, 30, 30, mgrap[x1]) ;
 grap[40][x1] = DerivationGraph( 33*9, 33, 30, 30, mgrap[x1]) ;
 grap[70][x1] = DerivationGraph( 33*9, 66, 30, 30, mgrap[x1]) ;
 
-//ƒuƒƒbƒN“Ç‚İ‚İ2
+//ãƒ–ãƒ­ãƒƒã‚¯èª­ã¿è¾¼ã¿2
 x1=5;
 for (t=0;t<=6;t++){
 grap[t][x1] = DerivationGraph( 33*t, 0, 30, 30, mgrap[x1]) ;
@@ -84,13 +84,13 @@ grap[12][5] = DerivationGraph( 33*0, 66, 30, 30, mgrap[x1]) ;
 grap[13][5] = DerivationGraph( 33*1, 66, 30, 30, mgrap[x1]) ;
 grap[14][5] = DerivationGraph( 33*2, 66, 30, 30, mgrap[x1]) ;
 
-//ƒAƒCƒeƒ€“Ç‚İ‚İ
+//ã‚¢ã‚¤ãƒ†ãƒ èª­ã¿è¾¼ã¿
 x1=2;
 for (t=0;t<=5;t++){
 grap[t][x1] = DerivationGraph( 33*t, 0, 30, 30, mgrap[x1]) ;
 }
 
-//“GƒLƒƒƒ‰“Ç‚İ‚İ
+//æ•µã‚­ãƒ£ãƒ©èª­ã¿è¾¼ã¿
 x1=3;
 grap[0][x1] = DerivationGraph( 33*0, 0, 30, 30, mgrap[x1]) ;
 grap[1][x1] = DerivationGraph( 33*1, 0, 30, 43, mgrap[x1]) ;
@@ -106,7 +106,7 @@ grap[151][x1] = DerivationGraph( 38*3+37*3, 0, 37, 47, mgrap[7]);
 grap[9][x1] = DerivationGraph( 33*7+1, 0, 26, 30, mgrap[x1]);
 grap[10][x1] = DerivationGraph( 214, 0, 46, 16, mgrap[6]);
 
-//ƒ‚ƒ‰ƒ‰[
+//ãƒ¢ãƒ©ãƒ©ãƒ¼
 grap[30][x1] = DerivationGraph( 0,56, 30, 36, mgrap[7]);
 grap[155][x1] = DerivationGraph( 31*3,56, 30, 36, mgrap[7]);
 grap[31][x1] = DerivationGraph( 50, 74, 49, 79, mgrap[6]) ;
@@ -132,7 +132,7 @@ grap[105][x1] = DerivationGraph( 33*5, 0, 30, 30, mgrap[2]) ;
 grap[110][x1] = DerivationGraph( 33*4, 0, 30, 30, mgrap[2]) ;
 
 
-//”wŒi“Ç‚İ‚İ
+//èƒŒæ™¯èª­ã¿è¾¼ã¿
 x1=4;
 grap[0][x1] = DerivationGraph( 0, 0, 150, 90, mgrap[x1]) ;
 grap[1][x1] = DerivationGraph( 151, 0, 65, 29, mgrap[x1]) ;
@@ -142,11 +142,11 @@ grap[4][x1] = DerivationGraph( 151, 113, 51, 29,mgrap[x1]) ;
 grap[5][x1] = DerivationGraph( 222, 0, 28, 60,mgrap[x1]) ;
 grap[6][x1] = DerivationGraph( 151, 143, 90, 40,mgrap[x1]);
 
-//’†ŠÔƒtƒ‰ƒO
+//ä¸­é–“ãƒ•ãƒ©ã‚°
 grap[20][x1] = DerivationGraph( 40, 182, 40, 60, mgrap[x1]) ;
 
 
-//ƒOƒ‰
+//ã‚°ãƒ©
 x1=5;
 grap[0][x1] = DerivationGraph( 167, 0, 45, 45, mgrap[6]) ;
 
@@ -158,7 +158,7 @@ grap[0][x1] = DerivationGraph( 167, 0, 45, 45, mgrap[6]) ;
 
 
 
-//“GƒTƒCƒYû“¾
+//æ•µã‚µã‚¤ã‚ºåå¾—
 //int GrHandle=0;
 x1=3;
 for (t=0;t<=140;t++){
@@ -168,7 +168,7 @@ anx[t]*=100;any[t]*=100;
 anx[79]=120*100;any[79]=15*100;
 anx[85]=25*100;any[85]=30*10*100;
 
-//”wŒiƒTƒCƒYû“¾
+//èƒŒæ™¯ã‚µã‚¤ã‚ºåå¾—
 x1=4;
 for (t=0;t<40;t++){
 GetGraphSize(grap[t][x1] ,&ne[t] ,&nf[t]);
@@ -190,7 +190,7 @@ anx[3]=30;any[3]=44;
 
 
 
-//wav“Ç‚İ‚İ
+//wavèª­ã¿è¾¼ã¿
 //try{
 //oto[2] = LoadSoundMem( "SE/1.WAV" ) ;
 SetCreateSoundDataType(DX_SOUNDDATATYPE_MEMPRESS);
@@ -232,7 +232,7 @@ x1=40;
 ChangeVolumeSoundMem( 255 * x1 / 100, oto[103] ) ;
 
 
-//ƒ‹[ƒvİ’è-20000-20•b
+//ãƒ«ãƒ¼ãƒ—è¨­å®š-20000-20ç§’
 //SetLoopPosSoundMem( 1,oto[104]) ;
 //SetLoopSamplePosSoundMem(44100,oto[104]);
 //SetLoopSamplePosSoundMem(22050,oto[104]);
