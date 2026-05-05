@@ -68,6 +68,8 @@ MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL='*' docker run --rm \
         -s USE_BULLET=1 \
         -s USE_PTHREADS=1 \
         -s PROXY_TO_PTHREAD=1 \
+        -s OFFSCREEN_FRAMEBUFFER=1 \
+        -s OFFSCREENCANVAS_SUPPORT=1 \
         -s ALLOW_MEMORY_GROWTH=1 \
         -s INITIAL_MEMORY=128MB \
         -pthread \
