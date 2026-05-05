@@ -1,6 +1,9 @@
 ﻿#include "DxLib.h"
 #include <stdio.h>
 #include <math.h>
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
 
 void loadg();
 
@@ -292,6 +295,12 @@ while( ProcessMessage() == 0 && CheckHitKey( KEY_INPUT_ESCAPE ) == 0){
 
 maint=0;Mainprogram();
 if (maint==3)break;
+
+#ifdef __EMSCRIPTEN__
+// HTML5 / WebAssembly 必須每幀 yield 給 browser，否則 ASYNCIFY 不會 frame，
+// 整個 tab 會卡死黑屏。emscripten_sleep(1) 跟 requestAnimationFrame 接得起來
+emscripten_sleep(1);
+#endif
 }
 
 
