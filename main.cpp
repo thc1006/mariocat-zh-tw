@@ -124,6 +124,8 @@ int sgtype[smax];
 int mainmsgtype;
 int ma,mb,mnobia,mnobib,mhp;
 int mc,md,macttype,atkon,atktm,mactsok,msstar,nokori=2,mactp,mact;
+// 中文化版搞怪：累計死亡次數（session 內持久），用來觸發階段性視窗標題嗆聲
+int dethco=0;
 
 int mtype,mxtype,mtm,mzz;
 int mzimen,mrzimen,mkasok,mmuki,mmukitm,mjumptm,mkeytm,mcleartm;
@@ -955,7 +957,12 @@ if (mmsgtype==52)xs[0]="完美、寄了";
 if (mmsgtype==53)xs[0]="我的腳、我的腳啊!!";
 if (mmsgtype==54)xs[0]="不愧是攝氏 800 度!!";
 if (mmsgtype==55)xs[0]="想跟岩漿融為一體……";
-//if (mmsgtype==56)xs[0]="";
+// 中文化版多加幾條死亡口頭禪（slot 56-60，作者原本就留空在這）
+if (mmsgtype==56)xs[0]="我就爛!!";
+if (mmsgtype==57)xs[0]="破防了……";
+if (mmsgtype==58)xs[0]="下輩子當人吧";
+if (mmsgtype==59)xs[0]="這款不適合我";
+if (mmsgtype==60)xs[0]="媽我在這";
 
 //if (stagecolor<=1 || stagecolor==3)setc0();
 //if (stagecolor==2)setc1();
@@ -1382,6 +1389,13 @@ if (mmutekitm>=-1)mmutekitm--;
 // HP 歸零時
 if (mhp<=0 && mhp>=-9){
 mkeytm=12;mhp=-20;mtype=200;mtm=0;ot(oto[12]);StopSoundMem(oto[0]);StopSoundMem(oto[11]);StopSoundMem(oto[16]);
+// 中文化版搞怪：死亡計數器累積到一定次數，視窗標題會冒出來酸你
+dethco++;
+if (dethco==5)   SetMainWindowText("貓利歐：屎喔棒大冒險（死 5 次了喔）");
+if (dethco==10)  SetMainWindowText("貓利歐：屎喔棒大冒險（10 次！要不要喝口水）");
+if (dethco==20)  SetMainWindowText("貓利歐：屎喔棒大冒險（20 次，去睡覺啦）");
+if (dethco==50)  SetMainWindowText("（不是每個人都適合這款、沒關係）");
+if (dethco==100) SetMainWindowText("（你贏了，我服了）");
 }//mhp
 //if (mhp<=-10){
 if (mtype==200){

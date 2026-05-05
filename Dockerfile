@@ -11,6 +11,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # 交叉編譯工具（Debian 預設 mingw-w64 用 msvcrt 而非 ucrt）+ 解壓日文檔名 zip
 # 對應的 DxLib SDK 子資料夾要選 msvcrt 命名風格（不含 _ucrt_）
+# nsis 用來把遊戲打成單檔 portable launcher（像 iPlay99 那種）
 RUN apt-get update && apt-get install -y --no-install-recommends \
         g++-mingw-w64-x86-64 \
         gcc-mingw-w64-x86-64 \
@@ -18,6 +19,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         make \
         wget \
         p7zip-full \
+        nsis \
+        imagemagick \
         ca-certificates \
         file \
         findutils \

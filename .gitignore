@@ -29,3 +29,6 @@ Thumbs.db
 # 編碼轉換暫存
 *.utf8.txt
 *.cp932.bak
+
+# 編譯中間產物
+app.res

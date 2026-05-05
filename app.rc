@@ -1,0 +1,4 @@
+// Windows resource：把 icon.ico 嵌入 .exe，這樣檔案總管/工作列就會看到圖示
+// IDI_ICON1 編號刻意取 1，跟原作 SetWindowIconID(127) 不衝突——後者是
+// runtime 視窗左上角的小圖示，這個是 .exe 在 Explorer 顯示的大圖示。
+1 ICON "icon.ico"

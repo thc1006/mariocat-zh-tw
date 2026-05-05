@@ -14,6 +14,7 @@ DXLIB_LIB := dxlib/lib
 # 來源檔（單檔架構：main.cpp 直接 include 字串標頭，loadg.cpp 是另一個 TU）
 SRCS := main.cpp loadg.cpp
 OBJS := $(SRCS:.cpp=.o)
+APP_RES := app.res
 
 OUT_DIR := dist
 TARGET  := $(OUT_DIR)/MarioCat_zh.exe
@@ -46,9 +47,19 @@ LDLIBS := \
     -lgdi32 -lwinmm -lddraw -ld3dx9 -ldxguid -ldinput8 \
     -lole32 -loleaut32 -limm32 -luuid -lpsapi -ladvapi32
 
-.PHONY: all clean check-dxlib
+.PHONY: all clean check-dxlib package
 
 all: $(TARGET)
+
+# 把遊戲打成 portable launcher 單檔 .exe（像 iPlay99_MarioCat.exe 那樣即點即玩）
+# 需求：已先成功 make 過、且 res/、BGM/、SE/、說明.txt 在當前目錄
+package: $(TARGET)
+	@echo
+	@echo "=== 用 7z SFX 打包成 portable launcher ==="
+	@if [ ! -f MarioCat_zh.exe ]; then cp $(TARGET) MarioCat_zh.exe; fi
+	@bash scripts/build-launcher.sh
+	@echo
+	@echo "  把 dist/MarioCat_zh_Launcher.exe 丟給朋友，雙擊就能玩"
 
 check-dxlib:
 	@if [ ! -f $(DXLIB_INC)/DxLib.h ]; then \
@@ -62,13 +73,17 @@ $(OUT_DIR):
 %.o: %.cpp main.h | check-dxlib
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(TARGET): $(OBJS) | $(OUT_DIR)
-	$(CXX) $(OBJS) $(LDFLAGS) $(LDLIBS) -o $(TARGET)
+# windres 編譯 .rc → COFF object，把 icon.ico 嵌入 .exe
+$(APP_RES): app.rc icon.ico
+	$(WINDRES) $< -O coff -o $@
+
+$(TARGET): $(OBJS) $(APP_RES) | $(OUT_DIR)
+	$(CXX) $(OBJS) $(APP_RES) $(LDFLAGS) $(LDLIBS) -o $(TARGET)
 	@echo
 	@echo "✓ 編譯完成：$(TARGET)"
 	@echo "  → 把 dist/MarioCat_zh.exe 連同 res/、BGM/、SE/ 一起放到 Windows 上即可執行"
 
 clean:
-	@rm -f $(OBJS)
+	@rm -f $(OBJS) $(APP_RES)
 	@rm -rf $(OUT_DIR)
 	@echo "已清除 .o 與 dist/"
