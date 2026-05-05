@@ -184,6 +184,21 @@ section h2 {
     justify-content: center;
 }
 .compare figure { text-align: center; flex: 1; min-width: 250px; }
+.experimental {
+    background: #1a1a25;
+    border: 1px dashed #555;
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    color: #aaa;
+}
+.experimental h2 {
+    color: #ff9966;
+    border-color: #ff9966;
+}
+.experimental p {
+    margin-bottom: 0.8rem;
+}
+
 .compare img {
     image-rendering: pixelated;
     width: 100%;
