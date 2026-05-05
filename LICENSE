@@ -1,0 +1,126 @@
+License & Attribution
+
+================================================================================
+
+本專案是基於日本免費遊戲「しょぼんのアクション」(Syobon Action / Cat Mario)
+ver 0.80 的繁體中文化衍生作品。原作者保有所有原始智慧財產權。
+
+This project is a derivative work based on the Japanese freeware game
+"Syobon Action" (しょぼんのアクション / Cat Mario) ver 0.80,
+released in 2007 by 「ちく」 (Chiku).
+
+================================================================================
+ORIGINAL WORK — © 2007 ちく (Chiku)
+================================================================================
+
+The following are property of the original author 「ちく」 and are
+redistributed under the original freeware terms:
+
+  - Game design, level design, and original gameplay mechanics
+  - Engine code (main.cpp, main.h, loadg.cpp before translation)
+  - All audio assets in BGM/ and SE/
+    (castle.mp3, dungeon.mp3, field.mp3, puyo.mp3, star4.mp3,
+     and all sound effects in SE/)
+  - All graphics assets in res/
+    (player.PNG, brock.PNG, brock2.PNG, haikei.PNG, item.PNG,
+     omake.PNG, omake2.PNG, syobon3.PNG, teki.PNG)
+  - Original Japanese text and story content
+
+Original distribution terms (per the original _____.txt by 「ちく」)：
+
+  > 不特定多数の人間に配布する場合には、著作者 ちく を明記して下さい。
+  > 散布給不特定多數人時，請務必註明原作者「ちく」。
+
+This redistribution complies with the original terms by clearly crediting
+「ちく」 as the original author throughout the documentation, source
+comments, in-game staff roll, and this LICENSE file.
+
+================================================================================
+MODIFICATIONS — © 2026 thc1006
+================================================================================
+
+The following modifications and additions are licensed under the MIT License
+(see below):
+
+  - Traditional Chinese (zh-TW) translation of all source code comments
+    (351 comment lines in main.cpp, 42 in main.h, 24 in loadg.cpp)
+  - Traditional Chinese localization of 92 in-game text strings,
+    including PTT/Dcard-style internet slang adaptation (v2 localization)
+  - New title screen image res/syobon3_v2.PNG
+    (Chinese-language reskin; replaces res/syobon3.PNG which is preserved)
+  - Build system: Dockerfile, Makefile, scripts/build-launcher.sh,
+    scripts/setup-dxlib.sh, app.rc, icon.ico
+  - Single-file portable launcher packaging (uses chrislake/7zsfxmm
+    modified SFX module — see "Third-party tools" below)
+  - Death counter system with progressive window-title taunts
+  - Additional death messages in slots 56-65
+  - Window icon embedded via Windows resource (.rc)
+  - Encoding migration from CP932 (Shift_JIS) to UTF-8 with BOM
+  - CRT and threading runtime fixes for 64-bit MinGW-w64 build
+  - WinMain working-directory fix (GetModuleFileNameW + SetCurrentDirectoryW)
+  - Defensive guards for missing audio files (oto[107] / last.mp3 case)
+  - Compiler warning fixes (-Wparentheses, -Wmisleading-indentation)
+  - Removal of 5 obviously-dead code blocks (J2ME/Java leftovers)
+  - Documentation: README.md, BUILD.md, this LICENSE
+
+The MIT License only applies to the modifications listed above. The
+underlying game design, engine code, audio, and graphics remain the
+property of the original author.
+
+--------------------------------------------------------------------------------
+MIT License (applies to modifications only)
+--------------------------------------------------------------------------------
+
+Copyright (c) 2026 thc1006
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+================================================================================
+THIRD-PARTY TOOLS USED IN BUILD (not redistributed in source form)
+================================================================================
+
+The following tools are used during build but are not part of this
+repository's source tree (they are downloaded at build time or fetched
+once into tools/):
+
+  - DxLib by 山田巧: https://dxlib.xsrv.jp/
+      Downloaded by scripts/setup-dxlib.sh; not redistributed in this repo.
+
+  - 7zsd.sfx (Modified 7-Zip SFX module) by Oleg Scherbakov / chrislake:
+      https://github.com/chrislake/7zsfxmm
+      Stored in tools/7zsd.sfx for launcher packaging. Released under its
+      own license (LGPL-style); see upstream repository.
+
+  - Official 7-Zip 7z.sfx (extracted from 7-zip.org installer):
+      Stored in tools/7z.sfx. © Igor Pavlov; LGPL.
+
+================================================================================
+SUMMARY
+================================================================================
+
+  Original game (engine, gameplay, audio, graphics, design)
+    → © 2007 ちく — redistributed with original-author attribution
+       per the original freeware terms.
+
+  Translation, build system, launcher, search-and-fix patches, docs
+    → © 2026 thc1006 — MIT License.
+
+If you redistribute this project further, you MUST clearly retain the
+attribution to the original author 「ちく」. This is a non-negotiable
+requirement of the original work's license.

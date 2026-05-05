@@ -963,6 +963,12 @@ if (mmsgtype==57)xs[0]="破防了……";
 if (mmsgtype==58)xs[0]="下輩子當人吧";
 if (mmsgtype==59)xs[0]="這款不適合我";
 if (mmsgtype==60)xs[0]="媽我在這";
+// v1.1 再加 5 條（slot 61-65）— 全部走台灣鄉民風
+if (mmsgtype==61)xs[0]="我選擇死亡";
+if (mmsgtype==62)xs[0]="笑死 又寄了";
+if (mmsgtype==63)xs[0]="已寄爆";
+if (mmsgtype==64)xs[0]="真的會謝";
+if (mmsgtype==65)xs[0]="不忍卒睹";
 
 //if (stagecolor<=1 || stagecolor==3)setc0();
 //if (stagecolor==2)setc1();
@@ -1390,12 +1396,19 @@ if (mmutekitm>=-1)mmutekitm--;
 if (mhp<=0 && mhp>=-9){
 mkeytm=12;mhp=-20;mtype=200;mtm=0;ot(oto[12]);StopSoundMem(oto[0]);StopSoundMem(oto[11]);StopSoundMem(oto[16]);
 // 中文化版搞怪：死亡計數器累積到一定次數，視窗標題會冒出來酸你
+// v1.1 把階梯切細，從前期關心變後期狠酸
 dethco++;
 if (dethco==5)   SetMainWindowText("貓利歐：屎喔棒大冒險（死 5 次了喔）");
 if (dethco==10)  SetMainWindowText("貓利歐：屎喔棒大冒險（10 次！要不要喝口水）");
 if (dethco==20)  SetMainWindowText("貓利歐：屎喔棒大冒險（20 次，去睡覺啦）");
+if (dethco==30)  SetMainWindowText("（30 次了 認真的嗎？）");
 if (dethco==50)  SetMainWindowText("（不是每個人都適合這款、沒關係）");
+if (dethco==70)  SetMainWindowText("（70 次… 我都看不下去了）");
 if (dethco==100) SetMainWindowText("（你贏了，我服了）");
+if (dethco==150) SetMainWindowText("（150 次… 你的人生是不是哪邊卡住了）");
+if (dethco==200) SetMainWindowText("（200 次… 建議你刪了這個遊戲）");
+if (dethco==300) SetMainWindowText("（300 次… 真心欽佩）");
+if (dethco==500) SetMainWindowText("（500 次… 你已經沒救了 但繼續加油）");
 }//mhp
 //if (mhp<=-10){
 if (mtype==200){

@@ -1,6 +1,13 @@
 # 貓利歐：屎喔棒大冒險（Cat Mario / Syobon Action — 繁體中文版）
 
-把日本經典整人遊戲「**しょぼんのアクション**」(Syobon Action / Cat Mario) 完整翻譯成台灣繁體中文，並加上幾項本地化搞怪。原作由「ちく」於 2007 年發表，是公認最難最欠揍的 2D 平台遊戲之一。
+> **原作著作權聲明**
+> 本專案是 2007 年由日本作者「**ちく**」(Chiku) 發表的免費遊戲
+> 「**しょぼんのアクション**」(Syobon Action / Cat Mario) 之繁體中文化衍生作品。
+> 遊戲設計、引擎程式碼、所有圖片素材（`res/`）與音樂音效（`BGM/`、`SE/`）
+> 之**著作權皆屬原作者「ちく」所有**。本中文版本依原作條款散布並完整保留原作者署名。
+> 詳細授權見 [`LICENSE`](LICENSE)。
+
+把日本經典整人遊戲完整翻譯成台灣繁體中文，並加上幾項本地化搞怪。原作公認是最難最欠揍的 2D 平台遊戲之一。
 
 > 玩了之後可能會對人類產生不信任感。請小心服用。
 
@@ -85,14 +92,23 @@ docker compose run --rm build make package
 
 ## 致謝
 
-- **原作者「ちく」**：2007 年發表 Syobon Action / しょぼんのアクション 原始版本
-- **DxLib**：[dxlib.xsrv.jp](https://dxlib.xsrv.jp/)
-- **chrislake/7zsfxmm**：[github.com/chrislake/7zsfxmm](https://github.com/chrislake/7zsfxmm) — Modified 7z SFX module
+- **原作者「ちく」(Chiku)** — 2007 年發表 Syobon Action / しょぼんのアクション
+  原始版本。本專案的遊戲設計、引擎程式碼、圖片素材（`res/`）、音樂與
+  音效（`BGM/`、`SE/`）皆出自其手，**著作權悉屬原作者所有**。
+- **DxLib**（山田巧）— [dxlib.xsrv.jp](https://dxlib.xsrv.jp/)
+- **chrislake / 7zsfxmm** — [github.com/chrislake/7zsfxmm](https://github.com/chrislake/7zsfxmm)（Modified 7z SFX module）
+- **7-Zip**（Igor Pavlov）— SFX module 來源
 
 ---
 
 ## 授權
 
-原作以「**散布給不特定多數人時須註明原作者ちく**」之條件釋出，本繁體中文版本完整保留原作者資訊。
+本專案採雙層授權結構，詳細條款見 [`LICENSE`](LICENSE)：
 
-修改內容（翻譯、icon、搞怪邏輯、建置腳本、launcher 包裝）以 MIT 授權釋出。
+| 範圍 | 授權方 | 條款 |
+|---|---|---|
+| 原作引擎、玩法、所有 `res/` `BGM/` `SE/` 素材 | © 2007 ちく | 原作 freeware 條款 — **散布時須註明原作者「ちく」** |
+| 翻譯、icon、搞怪邏輯、建置系統、launcher 包裝、文件 | © 2026 thc1006 | MIT License |
+
+⚠ **若你 fork 或進一步散布本專案，必須完整保留對原作者「ちく」的署名**。
+這是原作授權條款的硬性要求。
