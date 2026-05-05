@@ -1,0 +1,28 @@
+build/
+dist/
+*.obj
+*.o
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.a
+*.exe.bak
+
+# 容器相關
+.docker/
+*.dockerfile.bak
+
+# IDE
+.vs/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 編碼轉換暫存
+*.utf8.txt
+*.cp932.bak
