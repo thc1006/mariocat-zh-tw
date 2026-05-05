@@ -1,0 +1,20 @@
+# 貓利歐 中文化版 建置容器
+#
+# 用法：
+#   docker compose run --rm build bash scripts/setup-dxlib.sh   # 第一次：下載 DxLib SDK
+#   docker compose run --rm build make                           # 之後：每次重 build
+#
+# 產出：./dist/MarioCat_zh.exe
+services:
+  build:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: cat-mario-build:debian-mingw
+    working_dir: /work
+    volumes:
+      - .:/work
+      # DxLib SDK 解壓後留在容器外側 ./dxlib/，避免 image 變肥
+      # 第一次跑 setup-dxlib.sh 會把 SDK 解到這
+    tty: true
+    stdin_open: true

@@ -9,6 +9,9 @@ dist/
 *.a
 *.exe.bak
 
+# DxLib SDK（每位開發者自行 setup，不入 repo，~150 MB）
+dxlib/
+
 # 容器相關
 .docker/
 *.dockerfile.bak
