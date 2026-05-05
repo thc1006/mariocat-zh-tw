@@ -3435,63 +3435,18 @@ void setre(){}//g.setFlipMode(Graphics.FLIP_HORIZONTAL);}
 void setre2(){}//g.setFlipMode(Graphics.FLIP_VERTICAL);}
 void setno(){}//g.setFlipMode(Graphics.FLIP_NONE);}
 
-/*
-// 文字繪製
-void str(char d[],int a,int b){
-//char d[]=c;
-DrawString(a,b,d,color);
-}
-*/
-
 // 文字繪製
 void str(string x,int a,int b){
-//char d[]="啊";
 DrawString(a,b,x.c_str(),color);
-//DrawString(10,10,xs[3].c_str(),color);
 
 xx[2]=4;
 
 
 }
 
-/*
-// 數值轉字串
-void strchange(string x,int a){
-}
-*/
 
-/*
-// 對齊中央 // (font)
-void str1(String c,int r,int b){
-int a=0,x=0;
-int d=6;
-
-//x=c.length()*d;//tiny.6
-x=r*d;
-a=120-x/2;
-
-g.drawString(c,a,b);
-}
-*/
-
-
-//string→int
-/*
-char str[] = "12345";
-int num;
-
-num = atoi(str);
-*/
-
-
-// 變更字型樣式
+// 變更字型樣式（DxLib 全域字型由 SetFontSize/ChangeFont 直接控制，此函式目前留空當佔位）
 void setfont(int a){
-/*
-if (a==0)g.setFont(Font.getFont(Font.SIZE_TINY));
-if (a==1)g.setFont(Font.getFont(Font.SIZE_SMALL));
-if (a==2)g.setFont(Font.getFont(Font.SIZE_MEDIUM));
-if (a==3)g.setFont(Font.getFont(Font.SIZE_LARGE));
-*/
 }
 
 // 播放音樂
