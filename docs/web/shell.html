@@ -121,6 +121,9 @@ const progressEl = document.getElementById('progress');
 var Module = {
     canvas: (function() {
         const c = document.getElementById('canvas');
+        // 在 wasm 載入前強制設 canvas size — emscripten Module.canvas 會用此值
+        // 對齊 DxLib SetGraphMode(fxmax/100, fymax/100) → 480×420
+        c.width = 480; c.height = 420;
         c.addEventListener("webglcontextlost", e => {
             statusEl.classList.add('error');
             statusEl.textContent = 'WebGL context 掉了，請 refresh 頁面';
