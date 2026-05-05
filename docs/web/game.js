@@ -74,10 +74,33 @@ const TAUNT_THRESHOLDS = [
 ];
 
 // ─── 載入 ───────────────────────────────────────────────────────
+// DxLib 用 cyan (R=153, G=255, B=255) 當透明色 key（SetTransColor(9*16+9,255,255)），
+// PNG 本身沒有 alpha channel。瀏覽器原生 drawImage 不認得這個 convention，
+// 所以載入時把 cyan 像素的 alpha 設成 0，回傳 offscreen canvas（可被 drawImage 引用）
 function loadImg(src) {
     return new Promise((resolve, reject) => {
         const img = new Image();
-        img.onload = () => resolve(img);
+        img.onload = () => {
+            const c = document.createElement('canvas');
+            c.width = img.width; c.height = img.height;
+            const cctx = c.getContext('2d');
+            cctx.drawImage(img, 0, 0);
+            try {
+                const data = cctx.getImageData(0, 0, c.width, c.height);
+                const px = data.data;
+                for (let i = 0; i < px.length; i += 4) {
+                    // 涵蓋 cyan 與其變體（壓縮後可能差幾個值）
+                    if (px[i] < 200 && px[i+1] > 240 && px[i+2] > 240) {
+                        px[i+3] = 0;
+                    }
+                }
+                cctx.putImageData(data, 0, 0);
+            } catch (e) {
+                // CORS 阻擋的話用 fallback：直接回 img（cyan 邊會看到）
+                resolve(img); return;
+            }
+            resolve(c);
+        };
         img.onerror = reject;
         img.src = src;
     });
@@ -561,7 +584,7 @@ function renderStage() {
         if (sx < -40 || sx > W + 10) continue;
 
         if (b.t === 1) {
-            // 一般地面（綠草）
+            // 一般地面（綠草）— 自繪
             ctx.fillStyle = '#28c428';
             ctx.fillRect(sx, sy, TILE, 4);
             ctx.fillStyle = '#a0612e';
@@ -569,15 +592,17 @@ function renderStage() {
             ctx.strokeStyle = 'rgba(0,0,0,0.3)';
             ctx.strokeRect(sx, sy, TILE, TILE);
         } else if (b.t === 2 && sprites.brock) {
-            // 磚塊 sprite
-            ctx.drawImage(sprites.brock, 0, 0, 30, 30, sx, sy, 30, 30);
+            // 磚塊 sprite — 用 atlas 的 (33*1,0) 位置（原作 grap[1][1] 是磚塊）
+            ctx.drawImage(sprites.brock, 33, 0, 30, 30, sx, sy, 30, 30);
         } else if (b.t === 3 && sprites.brock) {
-            // ? 磚 — 用 brock sprite 第二格
-            ctx.drawImage(sprites.brock, 33 * 2, 0, 30, 30, sx, sy, 30, 30);
+            // ? 磚 — atlas (33*2,0)
+            ctx.drawImage(sprites.brock, 66, 0, 30, 30, sx, sy, 30, 30);
         } else if (b.t === 4) {
-            // 陷阱 ?
+            // 陷阱 ?（黃底跟普通 ? 磚一樣，視覺上 indistinguishable，這就是整人哏）
             ctx.fillStyle = '#ffc850';
             ctx.fillRect(sx, sy, TILE, TILE);
+            ctx.strokeStyle = '#000';
+            ctx.strokeRect(sx, sy, TILE, TILE);
             ctx.fillStyle = '#000';
             ctx.font = 'bold 24px sans-serif';
             ctx.fillText('?', sx + 8, sy + 22);
@@ -598,8 +623,8 @@ function renderStage() {
             ctx.strokeStyle = '#005010';
             ctx.strokeRect(sx, sy, TILE, TILE);
         } else if (b.t === 8 && sprites.brock) {
-            // fake block — 看起來跟 brock 一樣
-            ctx.drawImage(sprites.brock, 0, 0, 30, 30, sx, sy, 30, 30);
+            // fake block — 看起來跟一般磚塊完全一樣（站上去才知道你寄了）
+            ctx.drawImage(sprites.brock, 33, 0, 30, 30, sx, sy, 30, 30);
         } else if (b.t === 9) {
             // hidden block — 不畫（隱形）
         } else if (b.t === 10) {
