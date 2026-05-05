@@ -255,8 +255,8 @@ SetWindowIconID(127);
 ChangeWindowMode(TRUE ) ;
 // 修改視窗標題
 SetMainWindowText( "貓利歐：屎喔棒大冒險" ) ;
-// 關閉 DxLib 應用程式 log（避免產生 log 檔）
-SetOutApplicationLogValidFlag(false);
+// 開啟 DxLib 應用程式 log（閃退時會寫到 Log.txt 方便除錯，找到原因後可改回 false）
+SetOutApplicationLogValidFlag(true);
 
 
 // 初始化 DxLib（失敗就立刻結束程式）
