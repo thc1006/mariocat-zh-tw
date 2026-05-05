@@ -195,16 +195,16 @@ anx[3]=30;any[3]=44;
 //oto[2] = LoadSoundMem( "SE/1.WAV" ) ;
 SetCreateSoundDataType(DX_SOUNDDATATYPE_MEMPRESS);
 oto[100]=LoadSoundMem( "BGM/field.mp3" ) ;
-if (oto[100] != -1) ChangeVolumeSoundMem(50, oto[100]);
+if (oto[100] != -1) ChangeVolumeSoundMem(180, oto[100]);
 oto[103]=LoadSoundMem( "BGM/dungeon.mp3" ) ;
-if (oto[103] != -1) ChangeVolumeSoundMem(50, oto[103]);
+if (oto[103] != -1) ChangeVolumeSoundMem(180, oto[103]);
 oto[104]=LoadSoundMem( "BGM/star4.mp3");
 oto[105]=LoadSoundMem( "BGM/castle.mp3");
-if (oto[105] != -1) ChangeVolumeSoundMem(50, oto[105]);
+if (oto[105] != -1) ChangeVolumeSoundMem(180, oto[105]);
 oto[106]=LoadSoundMem( "BGM/puyo.mp3");
 // 註：本素材包缺 BGM/last.mp3，oto[107] 會是 -1，不能傳給 ChangeVolumeSoundMem
 oto[107]=LoadSoundMem( "BGM/last.mp3");
-if (oto[107] != -1) ChangeVolumeSoundMem(50, oto[107]);
+if (oto[107] != -1) ChangeVolumeSoundMem(180, oto[107]);
 
 SetCreateSoundDataType(DX_SOUNDDATATYPE_MEMNOPRESS);
 oto[1] = LoadSoundMem( "SE/jump.mp3" );
@@ -229,7 +229,9 @@ oto[18] = LoadSoundMem("SE/tekifire.mp3");
 //}catch( int num){end();}
 
 
-x1=40;
+// dungeon BGM 二次調整（覆蓋上面的 180）：本作地下關 BGM 變化比較單調，
+// 拉到 70% 跟 field/castle 等的視聽量級對齊
+x1=70;
 if (oto[103] != -1) ChangeVolumeSoundMem( 255 * x1 / 100, oto[103] ) ;
 
 
