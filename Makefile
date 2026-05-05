@@ -33,7 +33,7 @@ CXXFLAGS := \
 
 LDFLAGS := \
     -L$(DXLIB_LIB) \
-    -static-libgcc -static-libstdc++ \
+    -static -static-libgcc -static-libstdc++ \
     -mwindows
 
 # DxLib 連結順序不能亂（官方文件強調）
