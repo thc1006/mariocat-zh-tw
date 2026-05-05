@@ -37,3 +37,6 @@ Thumbs.db
 
 # 編譯中間產物
 app.res
+
+# Web build 暫存區（DxLib HTML5 SDK，~9 MB，由 build-web.sh 自動下載）
+web-build/

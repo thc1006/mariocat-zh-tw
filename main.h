@@ -49,7 +49,7 @@ int maint;
 // 子函式群
 // （等待／延遲類）
 void wait(int interval);
-void wait2(long stime, long etime,int FLAME_TIME);
+void wait2(long frametm, long etime,int FLAME_TIME);
 int rand(int Rand);
 void end();
 
@@ -225,4 +225,4 @@ string xs[31];
 
 
 // 計時器（用來測 frame 時間）
-long stime;
+long frametm;

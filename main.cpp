@@ -50,7 +50,7 @@ int maint;
 // 子函式群
 // （等待／延遲類）
 void wait(int interval);
-void wait2(long stime, long etime,int FLAME_TIME);
+void wait2(long frametm, long etime,int FLAME_TIME);
 int rand(int Rand);
 void end();
 
@@ -228,16 +228,19 @@ string xs[31];
 
 
 // 計時器（用來測 frame 時間）
-long stime;
+long frametm;
 
 
 
-// 程式從 WinMain 開始執行
+// 程式入口：Windows 走 WinMain、Emscripten/HTML5 走標準 main()
+#ifdef __EMSCRIPTEN__
+int main( int argc, char** argv ){
+#else
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,LPSTR lpCmdLine, int nCmdShow ){
-
 // 把 CWD 切成 .exe 自己所在的資料夾，這樣相對路徑（res/、BGM/、SE/）
 // 不論使用者怎麼啟動（雙擊、PowerShell、捷徑）都能找到資源檔。
 // 用 wchar_t 版本以支援含中文／日文的安裝路徑。
+// （Emscripten 的虛擬檔系統根目錄就是 preload-file 掛載點，無此問題）
 {
     wchar_t exePath[MAX_PATH];
     if (GetModuleFileNameW(NULL, exePath, MAX_PATH) > 0) {
@@ -248,15 +251,20 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,LPSTR lpCmdLine
         }
     }
 }
+#endif
 
 // 設定視窗解析度
 SetGraphMode( fxmax/100 , fymax/100 , 16 ) ;
-//
+#ifndef __EMSCRIPTEN__
+// SetWindowIconID 與 ChangeWindowMode 在 HTML5 沒意義（瀏覽器自帶視窗管理）
 SetWindowIconID(127);
 // 強制視窗化、不允許最大化
 ChangeWindowMode(TRUE ) ;
+#endif
 // 修改視窗標題
+#ifndef __EMSCRIPTEN__
 SetMainWindowText( "貓利歐：屎喔棒大冒險" ) ;
+#endif
 // 關閉 DxLib 應用程式 log（避免產生 Log.txt；除錯時改成 true）
 SetOutApplicationLogValidFlag(false);
 
@@ -1204,7 +1212,7 @@ ScreenFlip();
 // 主程式
 void Mainprogram(){
 
-stime=long(GetNowCount());
+frametm=long(GetNowCount());
 
 
 if (ending==1)mainst=2;
@@ -1397,7 +1405,10 @@ if (mhp<=0 && mhp>=-9){
 mkeytm=12;mhp=-20;mtype=200;mtm=0;ot(oto[12]);StopSoundMem(oto[0]);StopSoundMem(oto[11]);StopSoundMem(oto[16]);
 // 中文化版搞怪：死亡計數器累積到一定次數，視窗標題會冒出來酸你
 // v1.1 把階梯切細，從前期關心變後期狠酸
+// HTML5 build 不支援 SetMainWindowText（瀏覽器的 tab 標題由 JS 控制），
+// 整段用 #ifdef 包起，免得 emscripten clang 找不到符號
 dethco++;
+#ifndef __EMSCRIPTEN__
 if (dethco==5)   SetMainWindowText("貓利歐：屎喔棒大冒險（死 5 次了喔）");
 if (dethco==10)  SetMainWindowText("貓利歐：屎喔棒大冒險（10 次！要不要喝口水）");
 if (dethco==20)  SetMainWindowText("貓利歐：屎喔棒大冒險（20 次，去睡覺啦）");
@@ -1409,6 +1420,7 @@ if (dethco==150) SetMainWindowText("（150 次… 你的人生是不是哪邊卡
 if (dethco==200) SetMainWindowText("（200 次… 建議你刪了這個遊戲）");
 if (dethco==300) SetMainWindowText("（300 次… 真心欽佩）");
 if (dethco==500) SetMainWindowText("（500 次… 你已經沒救了 但繼續加油）");
+#endif
 }//mhp
 //if (mhp<=-10){
 if (mtype==200){
@@ -3288,7 +3300,7 @@ rpaint();
 //30-fps
 xx[0]=30;
 if (CheckHitKey(KEY_INPUT_SPACE)==1){xx[0]=60;}
-wait2(stime,long(GetNowCount()),1000/xx[0]);
+wait2(frametm,long(GetNowCount()),1000/xx[0]);
 //wait(20);
 
 }//Mainprogram()
@@ -3405,9 +3417,9 @@ WaitTimer(interval) ;
 }
 
 // 計時器（用來測 frame 時間）
-void wait2(long stime, long etime,int FLAME_TIME){
-if (etime-stime<FLAME_TIME)
-wait(FLAME_TIME-(etime-stime));
+void wait2(long frametm, long etime,int FLAME_TIME){
+if (etime-frametm<FLAME_TIME)
+wait(FLAME_TIME-(etime-frametm));
 }
 
 

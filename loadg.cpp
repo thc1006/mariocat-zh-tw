@@ -246,9 +246,10 @@ if (oto[103] != -1) ChangeVolumeSoundMem( 255 * x1 / 100, oto[103] ) ;
 
 
 // ─── 中文字型設定 ───────────────────────────────────────
-// 因為遊戲文字已翻譯為繁體中文，DxLib 預設字型在繁中 Windows 不一定畫得出來。
-// 這邊明確指定「微軟正黑體」並啟用 EDGE（描邊）模式，避免在深色背景看不清。
+// Windows 端用「微軟正黑體」描邊；HTML5 端走 DxLib 預設字型（瀏覽器處理 fallback）
+#ifndef __EMSCRIPTEN__
 ChangeFont( "Microsoft JhengHei" , DX_CHARSET_DEFAULT ) ;
+#endif
 SetFontSize( 16 ) ;
 SetFontThickness( 4 ) ;
 }

@@ -47,9 +47,13 @@ LDLIBS := \
     -lgdi32 -lwinmm -lddraw -ld3dx9 -ldxguid -ldinput8 \
     -lole32 -loleaut32 -limm32 -luuid -lpsapi -ladvapi32
 
-.PHONY: all clean check-dxlib package
+.PHONY: all clean check-dxlib package web
 
 all: $(TARGET)
+
+# 把遊戲編成 WebAssembly + HTML5（docs/web/，可放 GitHub Pages）
+web:
+	@bash scripts/build-web.sh
 
 # 把遊戲打成 portable launcher 單檔 .exe（像 iPlay99_MarioCat.exe 那樣即點即玩）
 # 需求：已先成功 make 過、且 res/、BGM/、SE/、說明.txt 在當前目錄
