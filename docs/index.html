@@ -43,22 +43,23 @@
 </section>
 
 <section class="experimental">
-    <h2>🧪 實驗版本（WebAssembly 端口進度紀錄）</h2>
+    <h2>🧪 WebAssembly 端口（v2.0 routine 紀錄）</h2>
     <p>
-        本專案 5,500 行 C++ 源碼已成功用 <strong>Emscripten 3.1.20 + DxLib HTML5（自編 lib）</strong> 交叉編譯成 WebAssembly。
-        經過 21 輪 build 修通了：跨平台 #ifdef、COOP/COEP service worker（GitHub Pages SAB 解鎖）、Asyncify 物件 scope hoisting、
-        OFFSCREEN_FRAMEBUFFER、FULL_ES2/3、USE_PTHREADS + PROXY_TO_PTHREAD、emscripten_set_main_loop callback……
+        本專案 5,500 行 C++ 源碼經過 <strong>23 輪 build + lib 源碼 patch</strong>，與 <strong>Emscripten 3.1.20 + DxLib HTML5</strong>
+        整合到極深層級。已修通：跨平台 #ifdef 守衛、COOP/COEP service worker（解 SAB）、自編 DxLib HTML5 lib、Asyncify 物件 scope
+        hoisting、Module.Asyncify 命名空間 patch、修補 lib EM_ASM_INT brace bug（DxLib v3.24b 內 #ifdef ASYNCIFY 區段未測過的真實 bug）。
     </p>
     <p>
-        最後卡在 <strong>DxLib HTML5 lib 內部 Asyncify rewind ABI 與 emscripten 3.1.20 wasm runtime 不相容</strong>：
-        audio decode 觸發 Asyncify.handleSleep 後 wasm rewind 路徑進入 <code>unreachable</code> trap，
-        mouse handler 也受影響。需 patch DxLib HTML5 源碼或精確版本 bisect，
-        非單純 build flag 能解。
+        無法跨越的最後關卡：<strong>emscripten 3.1.20 的 ASYNCIFY wasm-level instrumentation 不認得 DxLib lib 內 audio decode
+        的 indirect call chain</strong>，rewind 進入 wasm <code>unreachable</code> trap。需要精確的 emscripten 版本 bisect（可能不存在）、
+        或大改 DxLib 整個 audio subsystem 改用 emscripten 3.x 的 promise integration pattern。屬於上游 lib 維護工作。
     </p>
     <p>
-        <a href="web/" target="_blank" rel="noopener" style="color:#ff9966">→ 開啟實驗版頁面（黑屏，技術參考用）</a>
+        <a href="web/" target="_blank" rel="noopener" style="color:#ff9966">→ 開啟實驗版（黑屏／技術參考）</a>
         ｜
-        <a href="https://github.com/thc1006/mariocat-zh-tw/commits/main" target="_blank" rel="noopener" style="color:#ff9966">→ 21 輪 web build commit 軌跡</a>
+        <a href="https://github.com/thc1006/mariocat-zh-tw/commits/main" target="_blank" rel="noopener" style="color:#ff9966">→ 23 個 commit 軌跡</a>
+        ｜
+        <a href="https://github.com/thc1006/mariocat-zh-tw/blob/main/web-build/DxLibForHTML5/HTML5/DxBaseImageHTML5.cpp" target="_blank" rel="noopener" style="color:#ff9966">→ lib 源碼 patch（含 brace bug 修正）</a>
     </p>
 </section>
 
