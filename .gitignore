@@ -12,6 +12,11 @@ dist/
 # DxLib SDK（每位開發者自行 setup，不入 repo，~150 MB）
 dxlib/
 
+# 部署測試用：copy from dist/ 到 root 跑跑看的暫存執行檔
+/MarioCat_zh.exe
+/MarioCat_zh_Launcher.exe
+Log.txt
+
 # 容器相關
 .docker/
 *.dockerfile.bak
