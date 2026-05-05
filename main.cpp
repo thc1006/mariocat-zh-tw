@@ -4,57 +4,57 @@
 
 void loadg();
 
-//String 使用
+// 使用 std::string
 #include <string>
 using namespace std;
 
 
-//プログラム中
-//main-10
-//タイトル-100
+// 程式狀態（main 變數的語意）
+// main = 10  → 遊戲進行中
+// main = 100 → 標題畫面
 int main=100,maintm=0;
 
-//ステージ
+// 關卡資訊
 int stagecolor=0;
 int sta=1,stb=4,stc=0;
 
-//クイック
+// 快速模式（fast=1 表示啟用兩倍速）
 int fast=1;
 
-//トラップ表示
+// 陷阱顯示開關
 int trap=1;
 
-//中間ゲート
+// 中繼點（中間旗子）狀態
 int tyuukan=0;
 
 
-//スタッフロール
+// 工作人員名單（過關後跑的字幕）
 int ending=0;
 
 
-//ステージ読み込みループ(いじらない)
+// 關卡讀取迴圈用變數（請勿亂改）
 int stagerr,stagepoint;
-//オーバーフローさせる
+// 強制讓計數溢位用
 int over=0;
 
-//ステージスイッチ
+// 關卡切換旗標
 int stageonoff=0;
 
 
-//メインプログラム
+// 主程式
 void Mainprogram();
 void rpaint();
 int maint;
 
 
-//サブクラス
-//(ウエイト系
+// 子函式群
+// （等待／延遲類）
 void wait(int interval);
 void wait2(long stime, long etime,int FLAME_TIME);
 int rand(int Rand);
 void end();
 
-//描画
+// 繪圖相關
 int color;
 void setfont(int a);
 void setcolor(int red, int green, int blue);
@@ -78,7 +78,7 @@ void setno();
 int oto[151];
 void ot(int x);void bgmchange(int x);
 
-//文字
+// 文字繪製
 void str(string c,int a,int b);
 
 
@@ -92,27 +92,27 @@ void stagep();
 
 
 
-//1-ステージ
-//10-ステージ前
+// main = 1   → 關卡內
+// main = 10  → 進入關卡前的過場
 //
 
 
 
-//ループ
+// 迴圈用的暫存變數
 int t,tt,t1,t2,t3,t4;
 
 
-//初期化
+// 初始化旗標（zxon、zzxon 用於關卡進場）
 int zxon,zzxon;
 
-//キーコンフィグ
+// 按鍵設定
 int key,keytm;
 
-//三角関数
+// 三角函數常數（圓周率）
 double pai=3.1415926535;
 
 
-//地面
+// 地面（牆壁、水管、機關地形）
 #define smax 31
 int sx,sco;
 int sa[smax],sb[smax],sc[smax],sd[smax],stype[smax],sxtype[smax],sr[smax];
@@ -120,7 +120,7 @@ int sgtype[smax];
 
 
 
-//プレイヤー
+// 玩家狀態（位置、方向、跳躍計時等）
 int mainmsgtype;
 int ma,mb,mnobia,mnobib,mhp;
 int mc,md,macttype,atkon,atktm,mactsok,msstar,nokori=2,mactp,mact;
@@ -130,7 +130,7 @@ int mzimen,mrzimen,mkasok,mmuki,mmukitm,mjumptm,mkeytm,mcleartm;
 int mmutekitm,mmutekion;
 int mztm,mztype;
 int actaon[7];
-//メッセージ
+// 對話框／訊息提示
 int mmsgtm,mmsgtype;
 
 int mascrollmax=21000;//9000
@@ -138,7 +138,7 @@ int mascrollmax=21000;//9000
 
 
 
-//ブロック
+// 磚塊（會被頂、會出道具、可踩）
 void tyobi(int x,int y,int type);
 void brockbreak(int t);
 #define tmax 641
@@ -146,12 +146,12 @@ int tco;
 int ta[tmax],tb[tmax],tc[tmax],td[tmax],thp[tmax],ttype[tmax];
 int titem[tmax],txtype[tmax];
 
-//メッセージブロック
+// 訊息磚塊（碰到會跳出文字框）
 int tmsgtm,tmsgtype,tmsgx,tmsgy,tmsgnobix,tmsgnobiy,tmsg;
 void ttmsg();void txmsg(string x,int a);
 void setfont(int x,int y);
 
-//効果を持たないグラ
+// 純裝飾用、不影響遊戲邏輯的圖元（金幣、磚塊碎片等）
 void eyobi(int xa,int xb,int xc,int xd,int xe,int xf,int xnobia,int xnobib,int xgtype,int xtm);
 #define emax 201
 int eco;
@@ -161,7 +161,7 @@ int egtype[emax];
 
 
 
-//敵キャラ
+// 敵人角色
 void ayobi(int xa,int xb,int xc,int xd,int xnotm,int xtype,int xxtype);
 void tekizimen();
 #define amax 24
@@ -174,21 +174,21 @@ int anotm[amax],anx[160],any[160];
 int atm[amax],a2tm[amax];
 int amsgtm[amax],amsgtype[amax];
 
-//敵出現
+// 敵人出現排程（從哪裡冒出來）
 #define bmax 81
 int bco;
 int ba[bmax],bb[bmax],btm[bmax];
 int btype[bmax],bxtype[bmax],bz[bmax];
 
 
-//背景
+// 背景物件（雲、樹、城堡等）
 #define nmax 41
 int nxxmax,nco;
 int na[nmax],nb[nmax],nc[nmax],nd[nmax],ntype[nmax];
 int ne[nmax],nf[nmax],ng[nmax],nx[nmax];
 
 
-//リフト
+// 升降梯／移動平台
 #define srmax 21
 int srco;
 int sra[srmax],srb[srmax],src[srmax],srd[srmax],sre[srmax],srf[srmax];
@@ -200,69 +200,69 @@ int srsok[srmax],srmovep[srmax],srmove[srmax];
 
 
 
-//スクロール範囲
+// 畫面捲動範圍
 int fx=0,fy=0,fzx,fzy,scrollx,scrolly;
-//全体のポイント
+// 整體位移補正用座標
 int fma=0,fmb=0;
-//強制スクロール
+// 強制捲動旗標（強制往右滾的關卡）
 int kscroll=0;
-//画面サイズ(ファミコンサイズ×2)(256-224)
+// 畫面尺寸（紅白機解析度 × 2，256×224 → 480×420）
 int fxmax=48000,fymax=42000;
 
 
 
-//ステージ
+// 關卡資訊
 byte stagedate[17][2001];
 
-//画面黒
+// 畫面整片黑用的計時器
 int blacktm=1,blackx=0;
 
 
 
-//自由な値
+// 萬用暫存（迴圈內常用的 scratch 變數）
 int xx[91];
 double xd[11];
 string xs[31];
 
 
-//タイマー測定
+// 計時器（用來測 frame 時間）
 long stime;
 
 
 
-// プログラムは WinMain から始まります
+// 程式從 WinMain 開始執行
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,LPSTR lpCmdLine, int nCmdShow ){
 
-//画面サイズ設定
+// 設定視窗解析度
 SetGraphMode( fxmax/100 , fymax/100 , 16 ) ;
 //
 SetWindowIconID(127);
-//最大化の防止
+// 強制視窗化、不允許最大化
 ChangeWindowMode(TRUE ) ;
-//タイトルの変更
+// 修改視窗標題
 SetMainWindowText( "しょぼんのアクション" ) ;
-//applog無効
+// 關閉 DxLib 應用程式 log（避免產生 log 檔）
 SetOutApplicationLogValidFlag(false);
 
 
-// ＤＸライブラリ初期化処理(エラーが起きたら直ちに終了)
+// 初始化 DxLib（失敗就立刻結束程式）
 if( DxLib_Init() == -1 )return -1 ;
 
-// 点を打つ
+// 畫一個像素
 //DrawPixel( 320 , 240 , 0xffff ) ;
 
-// キー入力待ち
+// 等待按鍵輸入
 //WaitKey();
 
 
-//全ロード
+// 載入所有資源（圖檔、音效、BGM）
 loadg();
 
-//フォント
+// 字型設定
 SetFontSize(16) ;
 SetFontThickness(4) ;
 
-//ループ
+// 迴圈用的暫存變數
 //for (maint=0;maint<=2;maint++){
 while( ProcessMessage() == 0 && CheckHitKey( KEY_INPUT_ESCAPE ) == 0){
 
@@ -272,7 +272,7 @@ if (maint==3)break;
 
 
 
-//ＤＸライブラリ使用の終了処理
+// 結束 DxLib（釋放資源）
 DxLib_End() ;				
 
 // ソフトの終了 
@@ -281,10 +281,10 @@ return 0 ;
 
 
 
-//メイン描画
+// 主畫面繪製函式
 void rpaint(){
 
-//ダブルバッファリング
+// 雙緩衝（先畫到後緩衝再 flip）
 SetDrawScreen(DX_SCREEN_BACK);
 
 ClearDrawScreen();
@@ -299,7 +299,7 @@ fillrect(0,0,fxmax,fymax);
 
 
 /*
-//文字を書く
+// 寫字
 setcolor(0,0,120);
 
 xs[1]="";
@@ -314,7 +314,7 @@ str(xs[3],10,10);
 if (main==1 && zxon>=1){
 
 
-//背景
+// 背景物件（雲、樹、城堡等）
 for (t=0;t<nmax;t++){
 xx[0]=na[t]-fx;xx[1]=nb[t]-fy;
 xx[2]=ne[ntype[t]]*100;xx[3]=nf[ntype[t]]*100;
@@ -342,17 +342,17 @@ DrawFormatString(xx[0]/100+fma,xx[1]/100+fmb,GetColor(255,255,255),"プレイし
 
 
 
-//グラ
+// 圖元
 for (t=0;t<emax;t++){
 xx[0]=ea[t]-fx;xx[1]=eb[t]-fy;
 xx[2]=enobia[t]/100;xx[3]=enobib[t]/100;
 if (xx[0]+xx[2]*100>=-10 && xx[1]<=fxmax && xx[1]+xx[3]*100>=-10-8000 && xx[3]<=fymax){
 
-//コイン
+// 金幣
 if (egtype[t]==0)
 drawimage(grap[0][2],xx[0]/100,xx[1]/100);
 
-//ブロックの破片
+// 磚塊被打碎後的碎片
 if (egtype[t]==1){
 if (stagecolor<=1 || stagecolor==3)setcolor(9*16,6*16,3*16);
 if (stagecolor==2)setcolor(0,120,160);
@@ -363,14 +363,14 @@ setcolor(0,0,0);
 drawarc(xx[0]/100,xx[1]/100,7,7);
 }
 
-//リフトの破片
+// 升降梯被破壞的碎片
 if (egtype[t]==2 || egtype[t]==3){
 if (egtype[t]==3)mirror=1;
 drawimage(grap[0][5],xx[0]/100,xx[1]/100);
 mirror=0;
 }
 
-//ポール
+// 旗杆（過關用）
 if (egtype[t]==4){
 setc1();
 fillrect((xx[0])/100+10,(xx[1])/100, 10, xx[3]);
@@ -384,7 +384,7 @@ drawarc((xx[0])/100+15-1,(xx[1])/100,10,10);
 
 //if (egtype[t]==1){
 //drawimage(image[0],xx[0]/100+fma+5,xx[1]/100+fmb+5,0,0,10,10);
-//おもしろ
+// 趣味用（未啟用）
 //drawimage(image[2],xx[0]/100+fma,xx[1]/100+fmb,0,0,20,20);
 //}
 //if (egtype[t]==2)
@@ -399,7 +399,7 @@ for (t3=0;t3<=2;t3++){
 setcolor(60,60,60);
 if (t3==2)setcolor(250,250,250);
 t2=t3*2;if (t2==4)t2=1;
-//str("ステージ  クリアー",xx[0]/100+t2+fx/100,xx[1]/100+t2+fy/100);
+//str("關卡通關",xx[0]/100+t2+fx/100,xx[1]/100+t2+fy/100);
 str("ステージ  クリアー",60+t2,90+t2);
 }
 }//100
@@ -411,7 +411,7 @@ str("ステージ  クリアー",60+t2,90+t2);
 
 
 
-//リフト
+// 升降梯／移動平台
 for (t=0;t<srmax;t++){
 xx[0]=sra[t]-fx;xx[1]=srb[t]-fy;
 if (xx[0]+src[t]>=-10 && xx[1]<=fxmax+12100 && src[t]/100>=1){
@@ -465,7 +465,7 @@ if (srgtype[t]==7)setcolor(0,210,0);
 drawrect(xx[0]/100+fma,xx[1]/100+0+fmb, src[t]/100, srd[t]/100);
 }}
 
-//(トゲ)
+// （尖刺）
 if (srtype[t]==1 || srtype[t]==2){
 if (srtype[t]==2)setre2();
 //drawimage(image[6],xx[0]/100+fma,xx[1]/100+fmb,0,0,src[t]/100, srd[t]/100+2);
@@ -496,7 +496,7 @@ drawimage(image[6],xx[0]/100+fma+tt*(xx[6]),xx[1]/100+fmb,0,0,xx[7], srd[t]/100+
 
 
 
-//プレイヤー描画
+// 玩家繪製
 setcolor(0,0,255);
 //mirror=1;
 
@@ -505,7 +505,7 @@ if (mmuki==0)mirror=1;
 
 if (mtype!=200 && mtype!=1){
 if (mzimen==1){
-// 読みこんだグラフィックを拡大描画
+// 讀進來的圖直接放大繪製
 //DrawExtendGraph(ma/100,mb/100,ma/100+100,mb/100+100,grap[0][0], TRUE ) ;
 if (mact==0)drawimage(grap[0][0],ma/100,mb/100);
 if (mact==1)drawimage(grap[1][0],ma/100,mb/100);
@@ -514,7 +514,7 @@ if (mzimen==0){
 drawimage(grap[2][0],ma/100,mb/100);
 }
 }
-//巨大化
+// 玩家變大狀態
 else if (mtype==1){
 drawimage(grap[41][0],ma/100,mb/100);
 }
@@ -536,7 +536,7 @@ mirror=0;
 
 //for (t=0;t<bmax;t++){DrawFormatString((ba[t]-fx)/100+40,(bb[t]-fy)/100,GetColor(250,250,250),"%d",t);}
 
-//敵キャラ
+// 敵人角色
 for (t=0;t<amax;t++){
 
 xx[0]=aa[t]-fx;xx[1]=ab[t]-fy;
@@ -558,14 +558,14 @@ if (atype[t]>=100 && amuki[t]==1)mirror=0;
 //drawstring(grap[atype[t]][3],xx[0]/100,xx[1]/100);
 
 
-//メイン
+// 主要敵人繪製分支
 if (atype[t]<200 && xx[16]==0 && atype[t]!=6 && atype[t]!=79 && atype[t]!=86 && atype[t]!=30){
 if (!((atype[t]==80 || atype[t]==81) && axtype[t]==1)){
 drawimage(grap[atype[t]][3],xx[0]/100,xx[1]/100);
 }}
 
 
-//デフラグさん
+// 「重組先生」（原作惡搞角色）
 if (atype[t]==6){
 if (atm[t]>=10 && atm[t]<=19 || atm[t]>=100 && atm[t]<=119 || atm[t]>=200){
 drawimage(grap[150][3],xx[0]/100,xx[1]/100);
@@ -574,7 +574,7 @@ drawimage(grap[6][3],xx[0]/100,xx[1]/100);
 }
 }
 
-//モララー
+// 「モララー」（2ch 表情符號惡搞角色）
 if (atype[t]==30){
 if (axtype[t]==0)drawimage(grap[30][3],xx[0]/100,xx[1]/100);
 if (axtype[t]==1)drawimage(grap[155][3],xx[0]/100,xx[1]/100);
@@ -582,7 +582,7 @@ if (axtype[t]==1)drawimage(grap[155][3],xx[0]/100,xx[1]/100);
 
 
 
-//ステルス雲
+// 隱形雲（看不見的踏腳平台）
 if ((atype[t]==81) && axtype[t]==1){
 drawimage(grap[130][3],xx[0]/100,xx[1]/100);
 }
@@ -625,7 +625,7 @@ xx[6]=4+xx[9];drawimage(grap[xx[6]][1],xx[0]/100+10,xx[1]/100+9);
 
 }
 
-//偽ポール
+// 假旗杆（碰到不會過關的陷阱旗杆）
 if (atype[t]==85){
 setc1();
 fillrect((xx[0])/100+10,(xx[1])/100, 10, xx[3]);
@@ -639,7 +639,7 @@ drawarc((xx[0])/100+15-1,(xx[1])/100,10,10);
 }//85
 
 
-//ニャッスン
+// 「貓彈跳」（一種貓型彈跳敵人）
 if (atype[t]==86){
 if (ma>=aa[t]-fx-mnobia-4000 && ma<=aa[t]-fx+anobia[t]+4000){
 drawimage(grap[152][3],xx[0]/100,xx[1]/100);
@@ -661,7 +661,7 @@ mirror=0;
 
 
 
-//ブロック描画
+// 磚塊繪製
 for (t=0;t<tmax;t++){
 xx[0]=ta[t]-fx;xx[1]=tb[t]-fy;
 xx[2]=32;xx[3]=xx[2];
@@ -704,7 +704,7 @@ xx[6]=1+xx[9];drawimage(grap[xx[6]][1],xx[0]/100,xx[1]/100);
 //xx[6]=5+xx[9];drawimage(grap[xx[6]][1],xx[0]/100,xx[1]/100);
 }
 
-//ジャンプ台
+// 彈跳台
 if (ttype[t]==120 && txtype[t]!=1){
 drawimage(grap[16][1],xx[0]/100+3,xx[1]/100+2);
 }
@@ -721,10 +721,10 @@ if (ttype[t]==142)drawimage(grap[14][5],xx[0]/100,xx[1]/100);
 if (ttype[t]==300 || ttype[t]==301)
 drawimage(grap[1][5],xx[0]/100,xx[1]/100);
 
-//Pスイッチ
+// P 開關（踩了會切換場景的特殊開關）
 if (ttype[t]==400){drawimage(grap[2][5],xx[0]/100,xx[1]/100);}
 
-//コイン
+// 金幣
 if (ttype[t]==800){drawimage(grap[0][2],xx[0]/100+2,xx[1]/100+1);}
 
 //if (stagecolor==1)t-=30;
@@ -739,7 +739,7 @@ if (ttype[t]==800){drawimage(grap[0][2],xx[0]/100+2,xx[1]/100+1);}
 
 
 
-//地面(壁)//土管も
+// 地面（牆壁），水管也走這條
 for (t=0;t<smax;t++){
 if (sa[t]-fx+sc[t]>=-10 && sa[t]-fx<=fxmax+1100){
 
@@ -748,14 +748,14 @@ setcolor(40,200,40);
 fillrect((sa[t]-fx)/100+fma,(sb[t]-fy)/100+fmb, sc[t]/100, sd[t]/100);
 drawrect((sa[t]-fx)/100+fma,(sb[t]-fy)/100+fmb, sc[t]/100, sd[t]/100);
 }
-//土管
+// 水管
 if (stype[t]==1){
 setcolor(0,230,0);
 fillrect((sa[t]-fx)/100+fma,(sb[t]-fy)/100+fmb, sc[t]/100, sd[t]/100);
 setc0();
 drawrect((sa[t]-fx)/100+fma,(sb[t]-fy)/100+fmb, sc[t]/100, sd[t]/100);
 }
-//土管(下)
+// 水管（朝下）
 if (stype[t]==2){
 setcolor(0,230,0);
 fillrect((sa[t]-fx)/100+fma,(sb[t]-fy)/100+fmb+1, sc[t]/100, sd[t]/100);
@@ -764,7 +764,7 @@ drawline((sa[t]-fx)/100+fma,(sb[t]-fy)/100+fmb, (sa[t]-fx)/100+fma,(sb[t]-fy)/10
 drawline((sa[t]-fx)/100+fma+sc[t]/100,(sb[t]-fy)/100+fmb, (sa[t]-fx)/100+fma+sc[t]/100,(sb[t]-fy)/100+fmb+sd[t]/100);
 }
 
-//土管(横)
+// 水管（橫向）
 if (stype[t]==5){
 setcolor(0,230,0);
 fillrect((sa[t]-fx)/100+fma,(sb[t]-fy)/100+fmb+1, sc[t]/100, sd[t]/100);
@@ -774,7 +774,7 @@ drawline((sa[t]-fx)/100+fma,(sb[t]-fy)/100+fmb+sd[t]/100, (sa[t]-fx)/100+fma+sc[
 }
 
 
-//落ちてくるブロック
+// 從天而降的磚塊（陷阱）
 if (stype[t]==51){
 if (sxtype[t]==0){
 for (t3=0;t3<=sc[t]/3000;t3++){
@@ -797,7 +797,7 @@ drawimage(grap[65][1],(sa[t]-fx)/100+fma+29*t3,(sb[t]-fy)/100+fmb);
 }//51
 
 
-//落ちるやつ
+// 會掉下來的物件
 if (stype[t]==52){
 xx[29]=0;if (stagecolor==2){xx[29]=30;}if (stagecolor==4){xx[29]=60;}
 
@@ -821,7 +821,7 @@ if (sxtype[t]==2){
 }}
 
 
-//ステージトラップ
+// 關卡陷阱
 if (trap==1){
 if (stype[t]>=100 && stype[t]<=299){
 if (stagecolor<=1 || stagecolor==3)setc0();
@@ -829,7 +829,7 @@ if (stagecolor==2 || stagecolor==4)setc1();
 drawrect((sa[t]-fx)/100+fma,(sb[t]-fy)/100+fmb, sc[t]/100, sd[t]/100);
 }}
 
-//ゴール
+// 終點
 if (stype[t]==300){
 setc1();
 fillrect((sa[t]-fx)/100+10,(sb[t]-fy)/100, 10, sd[t]/100-8);
@@ -841,18 +841,18 @@ setc0();
 drawarc((sa[t]-fx)/100+15-1,(sb[t]-fy)/100,10,10);
 }
 
-//中間
+// 中繼點
 if (stype[t]==500){
 drawimage(grap[20][4],(sa[t]-fx)/100,(sb[t]-fy)/100);
 }
 }}//t
 
 
-//描画上書き(土管)
+// 繪製覆蓋（水管要畫在玩家上面）
 for (t=0;t<smax;t++){
 if (sa[t]-fx+sc[t]>=-10 && sa[t]-fx<=fxmax+1100){
 
-//入る土管(右)
+// 可進入的水管（右側出口）
 if (stype[t]==40){
 setcolor(0,230,0);
 fillrect((sa[t]-fx)/100+fma,(sb[t]-fy)/100+fmb+1, sc[t]/100, sd[t]/100);
@@ -860,7 +860,7 @@ setc0();
 drawrect((sa[t]-fx)/100+fma,(sb[t]-fy)/100+fmb+1, sc[t]/100, sd[t]/100);
 }
 
-//とぶ土管
+// 會飛的水管
 if (stype[t]==50){
 setcolor(0,230,0);
 fillrect((sa[t]-fx)/100+fma+5,(sb[t]-fy)/100+fmb+30, 50, sd[t]/100-30);
@@ -874,7 +874,7 @@ setc0();
 drawrect((sa[t]-fx)/100+fma,(sb[t]-fy)/100+fmb+1, 60, 30);
 }
 
-//地面(ブロック)
+// 地面（磚塊鋪成的）
 if (stype[t]==200){
 for (t3=0;t3<=sc[t]/3000;t3++){for (t2=0;t2<=sd[t]/3000;t2++){
 drawimage(grap[65][1],(sa[t]-fx)/100+fma+29*t3,(sb[t]-fy)/100+29*t2+fmb);
@@ -887,7 +887,7 @@ drawimage(grap[65][1],(sa[t]-fx)/100+fma+29*t3,(sb[t]-fy)/100+29*t2+fmb);
 
 
 
-//ファイアバー
+// 火棒（旋轉的火焰陷阱）
 for (t=0;t<amax;t++){
 
 xx[0]=aa[t]-fx;xx[1]=ab[t]-fy;
@@ -924,7 +924,7 @@ if (atype[t]==87){
 
 
 
-//プレイヤーのメッセージ
+// 玩家死亡／中陷阱時的台詞
 setc0();
 if (mmsgtm>=1){
 mmsgtm--;
@@ -957,7 +957,7 @@ str(xs[0],(ma+mnobia+300)/100,mb/100);
 }//mmsgtm
 
 
-//敵キャラのメッセージ
+// 敵人擊敗玩家時的嗆聲台詞
 setc0();
 for (t=0;t<amax;t++){
 if (amsgtm[t]>=1){
@@ -1044,7 +1044,7 @@ ChangeFontType(DX_FONTTYPE_NORMAL);
 
 
 
-//メッセージブロック
+// 訊息磚塊（碰到會跳出文字框）
 if (tmsgtm>0){
 ttmsg();
 if (tmsgtype==1){
@@ -1068,7 +1068,7 @@ tmsgtm--;
 }//tmsgtm
 
 
-//メッセージ
+// 對話框／訊息提示
 if (mainmsgtype>=1){
 setfont(20,4);
 if (mainmsgtype==1){DrawFormatString(126,100,GetColor(255,255,255),"WELCOME TO OWATA ZONE");}
@@ -1077,7 +1077,7 @@ setfont(20,5);
 }//mainmsgtype>=1
 
 
-//画面黒
+// 畫面整片黑用的計時器
 if (blacktm>0){
 blacktm--;
 fillrect(0,0,fxmax,fymax);
@@ -1134,7 +1134,7 @@ DrawFormatString(230,200,GetColor(255,255,255)," × %d",nokori);
 }//if (main==10){
 
 
-//タイトル
+// 標題畫面
 if (main==100){
 
 setcolor(160,180,250);
@@ -1145,7 +1145,7 @@ drawimage(mgrap[30],240-380/2,60);
 drawimage(grap[0][4],12*30,10*29-12);
 drawimage(grap[1][4],6*30,12*29-12);
 
-//プレイヤー
+// 玩家狀態（位置、方向、跳躍計時等）
 drawimage(grap[0][0],2*30,12*29-12-6);
 for (t=0;t<=16;t++){
 drawimage(grap[5][1],29*t,13*29-12);
@@ -1172,7 +1172,7 @@ ScreenFlip();
 
 
 
-//メインプログラム
+// 主程式
 void Mainprogram(){
 
 stime=long(GetNowCount());
@@ -1181,7 +1181,7 @@ stime=long(GetNowCount());
 if (ending==1)main=2;
 
 
-//キー
+// 按鍵處理
 key = GetJoypadInputState(DX_INPUT_KEY_PAD1);
 
 
@@ -1207,7 +1207,7 @@ stageonoff=0;
 
 
 
-//チーターマン　入れ
+// 「Cheetahmen」彩蛋（出現條件）
 bgmchange(oto[100]);
 
 stagecls();
@@ -1215,7 +1215,7 @@ stagecls();
 stage();
 
 
-//ランダムにさせる
+// 隨機化
 if (over==1){
 //for (t=0;t<;t++){na[t]=rand(300000);nb[t]=rand(3000);}
 for (t=0;t<tmax;t++){if (rand(3)<=1){ta[t]=(rand(500)-1)*29*100;tb[t]=rand(14)*100*29-1200;ttype[t]=rand(142);if (ttype[t]>=9 && ttype[t]<=99){ttype[t]=rand(8);}txtype[t]=rand(4);}}
@@ -1233,7 +1233,7 @@ if (rand(4)==0)stagecolor=rand(4);
 StopSoundMem(oto[0]);
 
 
-//メインBGM
+// 主要 BGM
 PlaySoundMem(oto[0],DX_PLAYTYPE_LOOP) ;
 //PlayMusic("BGM/titerman.mp3",DX_PLAYTYPE_LOOP) ;
 
@@ -1248,7 +1248,7 @@ PlaySoundMem(oto[0],DX_PLAYTYPE_LOOP) ;
 
 
 
-//プレイヤーの移動
+// 玩家移動處理
 xx[0]=0;actaon[2]=0;actaon[3]=0;
 if (mkeytm<=0){
 if (( key & PAD_INPUT_LEFT) && keytm<=0){actaon[0]=-1;mmuki=0;actaon[4]=-1;}	
@@ -1271,7 +1271,7 @@ actaon[2]=1;
 if (key & PAD_INPUT_UP || CheckHitKey(KEY_INPUT_Z)==1){
 if (mjumptm==8 && md>=-900){
 md=-1300;
-//ダッシュ中
+// 衝刺中
 xx[22]=200;if (mc>=xx[22] || mc<=-xx[22]){md=-1400;}
 xx[22]=600;if (mc>=xx[22] || mc<=-xx[22]){md=-1500;}
 }
@@ -1291,11 +1291,11 @@ if (xx[0]==0)actaon[1]=10;
 //if (actaon[0]==1){ma+=xx[0];}
 
 
-//加速による移動
+// 加速度移動
 xx[0]=40;xx[1]=700;xx[8]=500;xx[9]=700;
 xx[12]=1;xx[13]=2;
 
-//すべり補正
+// 滑行補正（離地後速度衰減）
 if (mrzimen==1){xx[0]=20;xx[12]=9;xx[13]=10;}
 
 
@@ -1322,11 +1322,11 @@ if (mc<-100 && mzimen==1){mc+=xx[0];if (mzimen==1){mc+=xx[0]*1/2;}}actaon[0]=3;m
 }}
 if (actaon[0]==0 && mkasok>0){mkasok-=2;}if (mkasok>8){mkasok=8;}
 
-//すべり補正初期化
+// 滑行補正歸零
 if (mzimen!=1)mrzimen=0;
 
 
-//ジャンプ
+// 跳躍處理
 if (mjumptm>=0)mjumptm--;
 if (actaon[1]==1 && mzimen==1){
 mb-=400;md=-1200;mjumptm=10;
@@ -1357,13 +1357,13 @@ if (actaon[1]<=9)actaon[1]=0;
 
 //if (actaon[1]==1){my+=xx[1];actaon[1]=0;}
 
-//}//陸地
+// } // 陸地判定結束
 
 
 if (mmutekitm>=-1)mmutekitm--;
 
 
-//HPがなくなったとき
+// HP 歸零時
 if (mhp<=0 && mhp>=-9){
 mkeytm=12;mhp=-20;mtype=200;mtm=0;ot(oto[12]);StopSoundMem(oto[0]);StopSoundMem(oto[11]);StopSoundMem(oto[16]);
 }//mhp
@@ -1378,7 +1378,7 @@ if (mtm>=100 || fast==1){zxon=0;main=10;mtm=0;mkeytm=0;nokori--;if (fast==1)mtyp
 
 
 
-//音符によるワープ
+// 音符傳送（特殊機關）
 if (mtype==2){
 mtm++;
 
@@ -1387,17 +1387,17 @@ md=-1500;
 if (mb<=-6000){blackx=1;blacktm=20;stc+=5;stagerr=0;StopSoundMem(oto[0]);mtm=0;mtype=0;mkeytm=-1;}
 }//2
 
-//ジャンプ台アウト
+// 離開彈跳台
 if (mtype==3){
 md=-2400;
 if (mb<=-6000){mb=-80000000;mhp=0;}
 }
 
 
-//mtypeによる特殊的な移動
+// 依 mtype 進行特殊移動
 if (mtype>=100){mtm++;
 
-//普通の土管
+// 一般水管
 if (mtype==100){
 if (mxtype==0){
 mc=0;md=0;t=28;
@@ -1421,7 +1421,7 @@ if (mtm==160){mtype=0;mhp--;}
 
 }
 
-//ふっとばし
+// 被擊飛
 else if (mxtype==10){
 mc=0;md=0;
 if (mtm<=16){ma+=240;}//mzz=100;}
@@ -1487,7 +1487,7 @@ if(mtype==301){
   na[nco]=155*29*100-1100;nb[nco]=6*29*100;ntype[nco]=102;nco++;if (nco>=nmax)nco=0;
 }
 }
-//スタッフロールへ
+// 進入工作人員字幕
 
 if (mtm==440){
   if(mtype==301){
@@ -1512,7 +1512,7 @@ if (mtm==250)end();
 
 
 
-//移動
+// 移動
 if (mkeytm>=1){mkeytm--;}//mc=0;}
 ma+=mc;mb+=md;
 if (mc<0)mactp+=(-mc);
@@ -1521,7 +1521,7 @@ if (mc>=0)mactp+=mc;
 if (mtype<=9 || mtype==200 || mtype==300 || mtype==301 || mtype==302)md+=100;
 
 
-//走る際の最大値
+// 跑步時的速度上限
 if (mtype==0){
 xx[0]=800;xx[1]=1600;
 if (mc>xx[0] && mc<xx[0]+200){mc=xx[0];}
@@ -1531,8 +1531,8 @@ if (mc<-xx[0]-200){mc+=200;}
 if (md>xx[1]){md=xx[1];}
 }
 
-//プレイヤー
-//地面の摩擦
+// 玩家狀態（位置、方向、跳躍計時等）
+// 地面摩擦力
 if (mzimen==1 && actaon[0]!=3){
 if ((mtype<=9) || mtype==300 || mtype==301 || mtype==302){
 if (mrzimen==0){
@@ -1550,10 +1550,10 @@ if (mc<=-xx[2]){mc+=xx[1];}
 }}
 
 
-//地面判定初期化
+// 地面判定歸零
 mzimen=0;
 
-//場外
+// 飛出畫面外
 if (mtype<=9 && mhp>=1){
 if (ma<100){ma=100;mc=0;}
 if (ma+mnobia>fxmax){ma=fxmax-mnobia;mc=0;}
@@ -1567,8 +1567,8 @@ if (mb>=52000 && mhp>=0){mhp=-2;}
 
 
 
-//ブロック
-//1-れんが、コイン、無し、土台、7-隠し
+// 磚塊（會被頂、會出道具、可踩）
+// 1=磚頭, 2=金幣, 3=空, 4=平台, 7=隱藏磚
 
 xx[15]=0;
 for (t=0;t<tmax;t++){
@@ -1582,7 +1582,7 @@ if (ttype[t]<1000 && ttype[t]!=800 && ttype[t]!=140 && ttype[t]!=141){// && ttyp
 if (!(mztype==1)){
 xx[16]=0;xx[17]=0;
 
-//上
+// 從下往上頂磚塊
 if (ttype[t]!=7 && ttype[t]!=110 && !(ttype[t]==114)){
 if (ma+mnobia>xx[8]+xx[0]*2+100 && ma<xx[8]+xx[1]-xx[0]*2-100 && mb+mnobib>xx[9] && mb+mnobib<xx[9]+xx[1] && md>=-100){
 if (ttype[t]!=115 && ttype[t]!=400 && ttype[t]!=117 && ttype[t]!=118 && ttype[t]!=120){
@@ -1596,14 +1596,14 @@ eyobi(ta[t]+1200,tb[t]+1200,240,-1400,0,160,1000,1000,1,120);
 eyobi(ta[t]+1200,tb[t]+1200,-240,-1400,0,160,1000,1000,1,120);
 brockbreak(t);
 }
-//Pスイッチ
+// P 開關（踩了會切換場景的特殊開關）
 else if (ttype[t]==400){
 md=0;ta[t]=-8000000;ot(oto[13]);
 for (tt=0;tt<tmax;tt++){if (ttype[tt]!=7){ttype[tt]=800;}}
 StopSoundMem(oto[0]);
 }
 
-//音符+
+// 音符類磚塊
 else if (ttype[t]==117){
 ot(oto[14]);
 md=-1500;mtype=2;mtm=0;
@@ -1611,7 +1611,7 @@ if (txtype[t]>=2 && mtype==2){mtype=0;md=-1600;txtype[t]=3;}
 if (txtype[t]==0)txtype[t]=1;
 }
 
-//ジャンプ台
+// 彈跳台
 else if (ttype[t]==120){
 //txtype[t]=0;
 md=-2400;mtype=3;mtm=0;
@@ -1622,17 +1622,17 @@ md=-2400;mtype=3;mtm=0;
 
 
 //sstr=""+mjumptm;
-//ブロック判定の入れ替え
+// 磚塊判定切換
 if (!(mztm>=1 && mztype==1)){
 xx[21]=0;xx[22]=1;//xx[12]=0;
 if (mzimen==1 || mjumptm>=10){xx[21]=3;xx[22]=0;}
 for (t3=0;t3<=1;t3++){
 
-//下
+// 從上方落到磚塊
 if (t3==xx[21] && mtype!=100 && ttype[t]!=117){// && xx[12]==0){
 if (ma+mnobia>xx[8]+xx[0]*2+800 && ma<xx[8]+xx[1]-xx[0]*2-800 && mb>xx[9]-xx[0]*2 && mb<xx[9]+xx[1]-xx[0]*2 && md<=0){xx[16]=1;xx[17]=1;
 mb=xx[9]+xx[1]+xx[0];if (md<0){md=-md*2/3;}//}
-//壊れる
+// 磚塊被打破
 if (ttype[t]==1 && mzimen==0){
 ot(oto[3]);
 eyobi(ta[t]+1200,tb[t]+1200,300,-1000,0,160,1000,1000,1,120);
@@ -1641,19 +1641,19 @@ eyobi(ta[t]+1200,tb[t]+1200,240,-1400,0,160,1000,1000,1,120);
 eyobi(ta[t]+1200,tb[t]+1200,-240,-1400,0,160,1000,1000,1,120);
 brockbreak(t);
 }
-//コイン
+// 金幣
 if (ttype[t]==2 && mzimen==0){
 ot(oto[4]);
 eyobi(ta[t]+10,tb[t],0,-800,0,40,3000,3000,0,16);
 ttype[t]=3;
 }
-//隠し
+// 隱藏磚塊（看不見、頂到才會出現）
 if (ttype[t]==7){
 ot(oto[4]);
 eyobi(ta[t]+10,tb[t],0,-800,0,40,3000,3000,0,16);
 mb=xx[9]+xx[1]+xx[0];ttype[t]=3;if (md<0){md=-md*2/3;}
 }
-// トゲ
+// 尖刺
 if (ttype[t]==10){
   mmsgtm=30;
   mmsgtype=3;
@@ -1662,7 +1662,7 @@ if (ttype[t]==10){
 }}
 
 
-//左右
+// 左右側碰撞
 if (t3==xx[22] && xx[15]==0){
 if (ttype[t]!=7 && ttype[t]!=110 && ttype[t]!=117){
 if (!(ttype[t]==114)){// && txtype[t]==1)){
@@ -1692,7 +1692,7 @@ if (mb>xx[9]-xx[0]*2-2000 && mb<xx[9]+xx[1]-xx[0]*2+2000 && ma+mnobia>xx[8]-400 
 ta[t]=-800000;ot(oto[4]);
 }}
 
-//剣とってクリア
+// 拿到劍即過關
 if (ttype[t]==140){
 if (mb>xx[9]-xx[0]*2-2000 && mb<xx[9]+xx[1]-xx[0]*2+2000 && ma+mnobia>xx[8]-400 && ma<xx[8]+xx[1]){
 ta[t]=-800000;//ot(oto[4]);
@@ -1702,7 +1702,7 @@ StopSoundMem(oto[0]);mtype=301;mtm=0;ot(oto[16]);
 }}
 
 
-//特殊的
+// 特殊磚塊
 if (ttype[t]==100){//xx[9]+xx[1]+3000<mb && // && mb>xx[9]-xx[0]*2
 if (mb>xx[9]-xx[0]*2-2000 && mb<xx[9]+xx[1]-xx[0]*2+2000 && ma+mnobia>xx[8]-400 && ma<xx[8]+xx[1] && md<=0){
 if (txtype[t]==0)tb[t]=mb+fy-1200-xx[1];
@@ -1721,7 +1721,7 @@ ttype[t]=3;
 }
 }//100
 
-//敵出現
+// 敵人出現排程（從哪裡冒出來）
 if (ttype[t]==101){//xx[9]+xx[1]+3000<mb && // && mb>xx[9]-xx[0]*2
 if (xx[17]==1){
 ot(oto[8]);
@@ -1735,7 +1735,7 @@ if (txtype[t]==10)ayobi(ta[t],tb[t],0,0,0,101,0);
 }
 }//101
 
-//おいしいきのこ出現
+// 噴出好吃的香菇（增強道具）
 if (ttype[t]==102){
 if (xx[17]==1){
 ot(oto[8]);
@@ -1745,7 +1745,7 @@ if (txtype[t]==2)ayobi(ta[t],tb[t],0,0,0,100,2);
 if (txtype[t]==3)ayobi(ta[t],tb[t],0,0,0,102,1);
 }}//102
 
-//まずいきのこ出現
+// 噴出難吃的香菇（毒香菇陷阱）
 if (ttype[t]==103){
 if (xx[17]==1){
 ot(oto[8]);
@@ -1753,7 +1753,7 @@ ttype[t]=3;abrocktm[aco]=16;ayobi(ta[t],tb[t],0,0,0,100,1);
 }}//103
 
 
-//悪スター出し
+// 噴出惡星星（陷阱）
 if (ttype[t]==104){
 if (xx[17]==1){
 ot(oto[8]);
@@ -1763,7 +1763,7 @@ ttype[t]=3;abrocktm[aco]=16;ayobi(ta[t],tb[t],0,0,0,110,0);
 
 
 
-//毒きのこ量産
+// 大量噴毒香菇
 if (ttype[t]==110){
 if (xx[17]==1){
 ttype[t]=111;thp[t]=999;
@@ -1775,7 +1775,7 @@ abrocktm[aco]=16;ayobi(ta[t],tb[t],0,0,0,102,1);
 }}
 
 
-//コイン量産
+// 大量噴金幣
 if (ttype[t]==112){
 if (xx[17]==1){
 ttype[t]=113;thp[t]=999;titem[t]=0;
@@ -1789,7 +1789,7 @@ eyobi(ta[t]+10,tb[t],0,-800,0,40,3000,3000,0,16);
 }}
 
 
-//隠し毒きのこ
+// 隱藏的毒香菇
 if (ttype[t]==114){
 if (xx[17]==1){
 if (txtype[t]==0){
@@ -1806,13 +1806,13 @@ else{ot(oto[4]);eyobi(ta[t]+10,tb[t],0,-800,0,40,3000,3000,0,16);ttype[t]=3;}
 }//114
 
 
-//もろいブロック
+// 易碎磚塊
 if (ttype[t]==115){
 
 }//115
 
 
-//Pスイッチ
+// P 開關（踩了會切換場景的特殊開關）
 if (ttype[t]==116){
 if (xx[17]==1){
 ot(oto[8]);
@@ -1822,7 +1822,7 @@ tyobi(ta[t]/100,(tb[t]/100)-29,400);
 }}//116
 
 
-//ファイアバー強化
+// 強化版火棒
 if (ttype[t]==124){
 if (xx[17]==1){
 ot(oto[13]);
@@ -1830,7 +1830,7 @@ for (t=0;t<amax;t++){if (atype[t]==87 || atype[t]==88){if (axtype[t]==101){axtyp
 ttype[t]=3;
 }}
 
-//ONスイッチ
+// ON 開關（場景切換用）
 if (ttype[t]==130){
 if (xx[17]==1){
 if (txtype[t]!=1){
@@ -1845,7 +1845,7 @@ bxtype[3]=105;
 }
 }}
 
-//ヒント
+// 提示
 if (ttype[t]==300){
 if (xx[17]==1){
 ot(oto[15]);
@@ -1884,7 +1884,7 @@ brockbreak(t);
 if (ttype[t]==130 && stageonoff==0){ttype[t]=131;}
 if (ttype[t]==131 && stageonoff==1){ttype[t]=130;}
 
-//ヒント
+// 提示
 if (ttype[t]==300){
 if (txtype[t]>=500 && ta[t]>=-6000){// && ta[t]>=-6000){
 if (txtype[t]<=539)txtype[t]++;
@@ -1892,7 +1892,7 @@ if (txtype[t]>=540){ta[t]-=500;}
 }}//300
 
 
-}}//ブロック
+}} // 磚塊處理結束
 
 
 
@@ -1900,7 +1900,7 @@ if (txtype[t]>=540){ta[t]-=500;}
 
 
 
-//壁
+// 牆壁
 for (t=0;t<smax;t++){
 if (sa[t]-fx+sc[t]>=-12000 && sa[t]-fx<=fxmax){
 xx[0]=200;xx[1]=2400;xx[2]=1000;xx[7]=0;
@@ -1908,7 +1908,7 @@ xx[0]=200;xx[1]=2400;xx[2]=1000;xx[7]=0;
 xx[8]=sa[t]-fx;xx[9]=sb[t]-fy;
 if ((stype[t]<=99 || stype[t]==200) && mtype<10){
 
-//おちるブロック
+// 掉落磚塊
 if (stype[t]==51){
 if (ma+mnobia>xx[8]+xx[0]+3000 && ma<xx[8]+sc[t]-xx[0] && mb+mnobib>xx[9]+3000 && sgtype[t]==0){
 if (sxtype[t]==0){
@@ -1938,7 +1938,7 @@ mhp--;xx[7]=1;
 }}
 }
 
-//おちるブロック2
+// 掉落磚塊（第二種）
 if (stype[t]==52){
 if (sgtype[t]==0 && ma+mnobia>xx[8]+xx[0]+2000 && ma<xx[8]+sc[t]-xx[0]-2500 && mb+mnobib>xx[9]-3000){
 sgtype[t]=1;sr[t]=0;
@@ -1951,7 +1951,7 @@ sb[t]+=sr[t];
 
 
 
-//通常地面
+// 一般地面
 if (xx[7]==0){
 if (ma+mnobia>xx[8]+xx[0] && ma<xx[8]+sc[t]-xx[0] && mb+mnobib>xx[9] && mb+mnobib<xx[9]+xx[1] && md>=-100){mb=sb[t]-fy-mnobib+100;md=0;mzimen=1;}
 if (ma+mnobia>xx[8]-xx[0] && ma<xx[8]+xx[2] && mb+mnobib>xx[9]+xx[1]*3/4 && mb<xx[9]+sd[t]-xx[2]){ma=xx[8]-xx[0]-mnobia;mc=0;}
@@ -1961,34 +1961,34 @@ mb=xx[9]+sd[t]+xx[0];if (md<0){md=-md*2/3;}
 }
 }//xx[7]
 
-//入る土管
+// 可進入的水管
 if (stype[t]==50){
 if (ma+mnobia>xx[8]+2800 && ma<xx[8]+sc[t]-3000 && mb+mnobib>xx[9]-1000 && mb+mnobib<xx[9]+xx[1]+3000 && mzimen==1 && actaon[3]==1 && mtype==0){
-//飛び出し
+// 從水管飛出
 if (sxtype[t]==0){
 mtype=100;mtm=0;ot(oto[7]);mxtype=0;
 }
-//普通
+// 一般類型
 if (sxtype[t]==1){
 mtype=100;mtm=0;ot(oto[7]);mxtype=1;
 }
-//普通
+// 一般類型
 if (sxtype[t]==2){
 mtype=100;mtm=0;ot(oto[7]);mxtype=2;
 }
 if (sxtype[t]==5){
 mtype=100;mtm=0;ot(oto[7]);mxtype=5;
 }
-// ループ
+// 迴圈
 if (sxtype[t]==6){
 mtype=100;mtm=0;ot(oto[7]);mxtype=6;
 }
 }}//50
 
-//入る土管(左から)
+// 可進入的水管（從左側進）
 if (stype[t]==40){
 if (ma+mnobia>xx[8]-300 && ma<xx[8]+sc[t]-1000 && mb>xx[9]+1000 && mb+mnobib<xx[9]+xx[1]+4000 && mzimen==1 && actaon[4]==1 && mtype==0){//end();
-//飛び出し
+// 從水管飛出
 if (sxtype[t]==0){
 mtype=500;mtm=0;ot(oto[7]);//mxtype=1;
 mtype=100;mxtype=10;
@@ -1999,7 +1999,7 @@ mxtype=3;
 mtm=0;ot(oto[7]);//mxtype=1;
 mtype=100;
 }
-// ループ
+// 迴圈
 if (sxtype[t]==6){
 mtype=3;mtm=0;ot(oto[7]);mxtype=6;
 }
@@ -2035,12 +2035,12 @@ if (sxtype[t]==12){
 for (t3=1;t3<=3;t3++){ayobi(sa[t]+t3*3000-1000,40000,0,-2600,0,9,0);}
 }
 
-//スクロール消し
+// 取消捲動
 if (sxtype[t]==20){
 scrollx=0;
 }
 
-//クリア
+// 通關
 if (sxtype[t]==30){sa[t]=-80000000;md=0;
 StopSoundMem(oto[0]);mtype=302;mtm=0;ot(oto[16]);
 }
@@ -2074,7 +2074,7 @@ if (stype[t]==105 && mzimen==0 && md>=0){ta[1]-=1000;ta[2]+=1000;sxtype[t]++;if 
 
 if (stype[t]==300 && mtype==0 && mb<xx[9]+sd[t]+xx[0]-3000 && mhp>=1){StopSoundMem(oto[0]);mtype=300;mtm=0;ma=sa[t]-fx-2000;ot(oto[11]);}
 
-//中間ゲート
+// 中繼點（中間旗子）狀態
 if (stype[t]==500 && mtype==0 && mhp>=1){
 tyuukan+=1;
 sa[t]=-80000000;
@@ -2090,7 +2090,7 @@ ayobi(sa[t],30000,rand(600)-300,-1600-rand(900),0,84,0);
 }
 
 }
-}}//壁
+}} // 牆壁處理結束
 
 
 
@@ -2101,7 +2101,7 @@ ayobi(sa[t],30000,rand(600)-300,-1600-rand(900),0,84,0);
 
 
 
-//キー入力初期化
+// 按鍵狀態歸零
 //for (t=0;t<=6;t++)
 actaon[0]=0;actaon[4]=0;
 
@@ -2109,7 +2109,7 @@ actaon[0]=0;actaon[4]=0;
 
 
 
-//リフト
+// 升降梯／移動平台
 for (t=0;t<srmax;t++){
 xx[10]=sra[t];xx[11]=srb[t];xx[12]=src[t];xx[13]=srd[t];
 xx[8]=xx[10]-fx;xx[9]=xx[11]-fy;
@@ -2128,7 +2128,7 @@ sre[t]+=srf[t];
 
 
 
-//動き
+// 動作
 switch(sracttype[t]){
 
 case 1:
@@ -2176,7 +2176,7 @@ break;
 
 //if (srtype[t]==1){sre[10]=300;sre[11]=300;}
 
-//乗ったとき
+// 踩上去的瞬間
 if (!(mztm>=1 && mztype==1 && actaon[3]==1) && mhp>=1){
 if (ma+mnobia>xx[8]+xx[0] && ma<xx[8]+xx[12]-xx[0] && mb+mnobib>xx[9] && mb+mnobib<xx[9]+xx[1] && md>=-100){
 mb=xx[9]-mnobib+100;
@@ -2187,7 +2187,7 @@ if (srtype[t]==1){sre[10]=900;sre[11]=900;}
 if (srsp[t]!=12){
 mzimen=1;md=0;
 }else {
-//すべり
+// 滑行
 //md=0;mrzimen=1;mzimen=1;
 md=-800;
 }
@@ -2203,7 +2203,7 @@ if (srmuki[t]==1)ma+=srsok[t];
 }
 */
 
-//落下
+// 落下
 if ((sracttype[t]==1) && sron[t]==0)sron[t]=1;
 
 if (sracttype[t]==1 && sron[t]==1 || sracttype[t]==3 || sracttype[t]==5){
@@ -2221,7 +2221,7 @@ if (actaon[2]==1){mb-=400;md=-1400;mjumptm=10;}
 }
 
 
-//特殊
+// 特殊處理
 if (srsp[t]==1){
 ot(oto[3]);
 eyobi(sra[t]+200,srb[t]-1000,-240,-1400,0,160,4500,4500,2,120);
@@ -2240,10 +2240,10 @@ if (srmove[t]>=100){mhp=0;mmsgtype=53;mmsgtm=30;srmove[t]=-5000;}
 
 
 //if (srtype[t]==1){md=-600;mb-=610;mhp-=1;if (mmutekion!=1)mmutekitm=40;}
-}//判定内
+} // 判定範圍內
 
 
-//疲れ初期化
+// 疲勞值歸零
 if (srsp[t]==2 && mc!=-2400 && srmove[t]>0){srmove[t]--;}
 
 if (srsp[t]==11){
@@ -2252,11 +2252,11 @@ if (sron[t]==1){srf[t]=60;srb[t]+=sre[t];}
 }
 
 
-//トゲ(下)
+// 尖刺（朝下）
 if (ma+mnobia>xx[8]+xx[0] && ma<xx[8]+xx[12]-xx[0] && mb>xx[9]-xx[1]/2 && mb<xx[9]+xx[1]/2){
 if (srtype[t]==2){if (md<0){md=-md;}mb+=110;if (mmutekitm<=0)mhp-=1;if (mmutekion!=1)mmutekitm=40;}
 }
-//落下
+// 落下
 if (sracttype[t]==6){
 if (ma+mnobia>xx[8]+xx[0] && ma<xx[8]+xx[12]-xx[0]){sron[t]=1;}
 }
@@ -2264,7 +2264,7 @@ if (ma+mnobia>xx[8]+xx[0] && ma<xx[8]+xx[12]-xx[0]){sron[t]=1;}
 }//!
 
 /*
-//ジャンプ台
+// 彈跳台
 if (sracttype[t]==7){
 if (ma+mnobia>xx[8]+xx[0] && ma<xx[8]+xx[12]-xx[0] && mb+mnobib>xx[9]+xx[1]/2 && mb+mnobib<xx[9]+xx[1]*3/2 && md>=-100){
 if (actaon[2]!=1){md=-600;mb-=810;}
@@ -2287,7 +2287,7 @@ if (srmuki[t]==1)srb[t]+=srsok[t];
 
 
 
-//敵キャラ適用
+// 敵人邏輯套用
 for (tt=0;tt<amax;tt++){
 if (azimentype[tt]==1){
 if (aa[tt]+anobia[tt]-fx>xx[8]+xx[0] && aa[tt]-fx<xx[8]+xx[12]-xx[0] && ab[tt]+anobib[tt]>xx[11]-100 && ab[tt]+anobib[tt]<xx[11]+xx[1]+500 && ad[tt]>=-100){
@@ -2295,7 +2295,7 @@ ab[tt]=xx[9]-anobib[tt]+100;ad[tt]=0;axzimen[tt]=1;
 }}}
 
 
-}}//リフト
+}} // 升降梯處理結束
 
 
 
@@ -2315,7 +2315,7 @@ ab[tt]=xx[9]-anobib[tt]+100;ad[tt]=0;axzimen[tt]=1;
 
 
 
-//グラ
+// 圖元
 for (t=0;t<emax;t++){
 xx[0]=ea[t]-fx;xx[1]=eb[t]-fy;
 xx[2]=enobia[t]/100;xx[3]=enobib[t]/100;
@@ -2333,7 +2333,7 @@ ec[t]+=ee[t];ed[t]+=ef[t];
 
 
 
-//敵キャラの配置
+// 敵人配置（生成位置）
 for (t=0;t<bmax;t++){
 if (ba[t]>=-80000){
 
@@ -2367,7 +2367,7 @@ ayobi(ba[t],bb[t],0,0,0,btype[t],bxtype[t]);
 
 
 
-//敵キャラ
+// 敵人角色
 for (t=0;t<amax;t++){
 xx[0]=aa[t]-fx;xx[1]=ab[t]-fy;
 xx[2]=anobia[t];xx[3]=anobib[t];xx[14]=12000*1;
@@ -2382,18 +2382,18 @@ case 0:
 xx[10]=100;
 break;
 
-//こうらの敵
+// 龜殼類敵人
 case 1:
 xx[10]=100;
 break;
 
-//こうら
+// 龜殼
 case 2:
 xx[10]=0;xx[17]=800;
 if (axtype[t]>=1)xx[10]=xx[17];
 //if (axtype[t]==1)xx[10]=xx[17];
 //if (axtype[t]==2)xx[10]=-xx[17];
-//他の敵を倒す
+// 順便擊倒其他敵人
 if (axtype[t]>=1){
 for (tt=0;tt<amax;tt++){
 xx[0]=250;xx[5]=-800;xx[12]=0;xx[1]=1600;
@@ -2406,7 +2406,7 @@ aa[tt]=-800000;ot(oto[6]);
 
 break;
 
-//あらまき
+// 「アラマキ」（射飛鏢的敵人）
 case 3:
 azimentype[t]=0;//end();
 if (axtype[t]==0){
@@ -2418,7 +2418,7 @@ ab[t]+=1200;
 //xx[10]=100;
 break;
 
-//スーパージエン
+// 超級ジエン（強化版炮兵）
 case 4:
 xx[10]=120;
 xx[0]=250;
@@ -2434,13 +2434,13 @@ if (abs(ma+mnobia-xx[8]-xx[0]*2) < 9000 &&
 }// 
 break;
 
-//クマー
+// 「クマー」（熊型敵人）
 case 5:
 xx[10]=160;
 //azimentype[t]=2;
 break;
 
-//デフラグさん
+// 「重組先生」（原作惡搞角色）
 case 6:
 if (azimentype[t]==30){ad[t]=-1600;ab[t]+=ad[t];}
 
@@ -2454,7 +2454,7 @@ if (atm[t]==20){mc=700;mkeytm=24;md=-1200;mb=xx[1]-1000-3000;amuki[t]=1;if (axty
 if (atm[t]==40){amuki[t]=0;atm[t]=0;}
 }}
 
-//ポール捨て
+// 棄置旗杆
 if (axtype[t]==1){
 for (tt=0;tt<smax;tt++){
 if (stype[tt]==300){
@@ -2473,7 +2473,7 @@ if (atm[t]==140){amuki[t]=0;atm[t]=0;}
 }
 if (atm[t]>=220){atm[t]=0;amuki[t]=0;}
 
-//他の敵を投げる
+// 把其他敵人扔出去
 for (tt=0;tt<amax;tt++){
 xx[0]=250;xx[5]=-800;xx[12]=0;xx[1]=1600;
 xx[8]=aa[tt]-fx;xx[9]=ab[tt]-fy;
@@ -2486,7 +2486,7 @@ atm[t]=200;amuki[t]=1;
 
 break;
 
-//ジエン大砲
+// ジエン大砲（會射子彈的炮台）
 case 7:
 azimentype[t]=0;
 xx[10]=0;xx[11]=400;
@@ -2496,7 +2496,7 @@ if (axtype[t]==2)ab[t]-=xx[11];
 if (axtype[t]==3)ab[t]+=xx[11];
 break;
 
-//スーパーブーン
+// 超級ブーン（飛行類）
 case 8:
 azimentype[t]=0;
 xx[22]=20;
@@ -2509,12 +2509,12 @@ if (af[t]<-0)atm[t]=0;
 ab[t]+=ad[t];
 //atype[t]=151;
 break;
-//ノーマルブーン
+// 一般ブーン（飛行類）
 case 151:
 azimentype[t]=2;
 break;
 
-//ファイアー玉
+// 火球
 case 9:
 azimentype[t]=5;
 ab[t]+=ad[t];ad[t]+=100;
@@ -2524,7 +2524,7 @@ ab[t]=fymax;ad[t]=-2600;
 }
 break;
 
-//ファイアー
+// 火焰
 case 10:
 azimentype[t]=0;
 xx[10]=0;xx[11]=400;
@@ -2533,7 +2533,7 @@ if (axtype[t]==1)xx[10]=-xx[11];
 break;
 
 
-//モララー
+// 「モララー」（2ch 表情符號惡搞角色）
 case 30:
 atm[t]+=1;
 if (axtype[t]==0){
@@ -2554,7 +2554,7 @@ ab[t]+=ad[t];ad[t]+=120;
 }
 break;
 
-//レーザー
+// 雷射
 case 79:
 azimentype[t]=0;
 xx[10]=1600;
@@ -2564,7 +2564,7 @@ if (axtype[t]==3){xx[10]=900;ab[t]-=600;}
 if (axtype[t]==4){xx[10]=900;ab[t]+=600;}
 break;
 
-//雲の敵
+// 雲朵型敵人
 case 80:
 azimentype[t]=0;
 //xx[10]=100;
@@ -2598,7 +2598,7 @@ if (ma>=aa[t]-fx-mnobia-xx[26] && ma<=aa[t]-fx+anobia[t]+xx[26]){atm[t]=1;}
 if (atm[t]==1){ab[t]+=1200;}
 break;
 
-//ファイアバー
+// 火棒（旋轉的火焰陷阱）
 case 87:
 azimentype[t]=0;
 if (aa[t]%10!=1)atm[t]+=6;
@@ -2655,12 +2655,12 @@ xx[10]=160;
 break;
 
 
-//おいしいキノコ
+// 好吃的香菇（會跑的增強道具）
 case 100:
 azimentype[t]=1;
 xx[10]=100;
 
-//ほかの敵を巨大化
+// 把其他敵人巨大化
 if (axtype[t]==2){
 for (tt=0;tt<amax;tt++){
 xx[0]=250;xx[5]=-800;xx[12]=0;xx[1]=1600;
@@ -2677,14 +2677,14 @@ ot(oto[9]);aa[t]=-80000000;
 
 break;
 
-//毒キノコ
+// 毒香菇
 case 102:
 azimentype[t]=1;
 xx[10]=100;
 if (axtype[t]==1)xx[10]=200;
 break;
 
-//悪スター
+// 惡星星
 case 110:
 azimentype[t]=1;
 xx[10]=200;
@@ -2833,7 +2833,7 @@ if (amuki[t]==1)aacta[t]+=xx[10];
 
 
 
-//最大値
+// 上限值
 xx[0]=850;xx[1]=1200;
 
 //if (mc>xx[0]){mc=xx[0];}
@@ -2841,7 +2841,7 @@ xx[0]=850;xx[1]=1200;
 if (ad[t]>xx[1] && azimentype[t]!=5){ad[t]=xx[1];}
 
 
-//行動
+// 行為（AI）
 aa[t]+=aacta[t];//ab[t]+=aactb[t];
 
 
@@ -2852,7 +2852,7 @@ aa[t]+=aacta[t];//ab[t]+=aactb[t];
 if ((azimentype[t]>=1 || azimentype[t]==-1) && abrocktm[t]<=0){
 //if (atype[t]==4)end();
 
-//移動
+// 移動
 aa[t]+=ac[t];
 if (azimentype[t]>=1 && azimentype[t]<=3){ab[t]+=ad[t];ad[t]+=120;}//ad[t]+=180;
 
@@ -2869,7 +2869,7 @@ axzimen[t]=0;
 
 
 
-//地面判定
+// 地面碰撞判定
 if (azimentype[t]!=2){
 tekizimen();
 }
@@ -2878,7 +2878,7 @@ tekizimen();
 
 }//azimentype[t]>=1
 
-//ブロックから出現するさい
+// 從磚塊內出現時
 if (abrocktm[t]>0){
 abrocktm[t]--;
 if (abrocktm[t]<100){ab[t]-=180;}
@@ -2890,7 +2890,7 @@ if (abrocktm[t]==100){ab[t]-=800;ad[t]=-1200;ac[t]=700;abrocktm[t]=0;}
 
 
 
-//プレイヤーからの判定
+// 與玩家的碰撞判定
 xx[0]=250;xx[1]=1600;xx[2]=1000;
 xx[4]=500;xx[5]=-800;
 
@@ -2913,7 +2913,7 @@ if (atype[t]==1){
 atype[t]=2;anobib[t]=3000;axtype[t]=0;
 }
 
-//こうら
+// 龜殼
 else if (atype[t]==2 && md>=0){
 if (axtype[t]==1 || axtype[t]==2){axtype[t]=0;}
 else if (axtype[t]==0){
@@ -2959,7 +2959,7 @@ if (actaon[2]==1){md=-1600;actaon[2]=0;}
 xx[15]=-500;
 
 
-//プレイヤーに触れた時
+// 碰到玩家的瞬間
 xx[16]=0;
 if (atype[t]==4 || atype[t]==9 || atype[t]==10)xx[16]=-3000;
 if (atype[t]==82 || atype[t]==83 || atype[t]==84)xx[16]=-3200;
@@ -2970,7 +2970,7 @@ if (mmutekitm<=0 && (atype[t]<=99 || atype[t]>=200)){
 if (mmutekion!=1 && mtype!=200){
 //if (mmutekitm<=0)
 
-//ダメージ
+// 玩家受傷
 if ((atype[t]!=2 || axtype[t]!=0) && mhp>=1){
 if (atype[t]!=6){
 mhp-=1;
@@ -2984,7 +2984,7 @@ atm[t]=10;
 }
 
 
-//せりふ
+// 台詞
 if (mhp==0){
 
 if (atype[t]==0 || atype[t]==7){
@@ -3040,7 +3040,7 @@ amsgtm[t]=60;amsgtype[t]=rand(1)+85;
 }
 
 
-//雲
+// 雲朵
 if (atype[t]==80){
 atype[t]=81;
 }
@@ -3049,7 +3049,7 @@ atype[t]=81;
 }//mhp==0
 
 
-//こうら
+// 龜殼
 if (atype[t]==2){
 //if (axtype[t]==1 || axtype[t]==2){axtype[t]=0;}
 if (axtype[t]==0){
@@ -3063,7 +3063,7 @@ axtype[t]=1;amuki[t]=0;aa[t]=ma-anobia[t]+fx-mc;mmutekitm=5;
 
 }}
 //else if (mmutekitm>=0 && mmutekitm<=2){mmutekitm+=1;}
-//アイテム
+// 道具
 if (atype[t]>=100 && atype[t]<=199){
 
 if (atype[t]==100 && axtype[t]==0){mmsgtm=30;mmsgtype=1;ot(oto[9]);}
@@ -3074,7 +3074,7 @@ if (atype[t]==101){mhp-=1;mmsgtm=30;mmsgtype=11;}
 if (atype[t]==102){mhp-=1;mmsgtm=30;mmsgtype=10;}
 
 
-//?ボール
+// 「?」球（神祕道具）
 if (atype[t]==105){
 if (axtype[t]==0){
 ot(oto[4]);sgtype[26]=6;
@@ -3140,13 +3140,13 @@ else{aa[t]=-9000000;}
 
 
 
-//スクロール
+// 畫面捲動
 //xx[0]=xx[0];
 //x
 if (kscroll!=1 && kscroll!=2){
 xx[2]=mascrollmax;xx[3]=0;
 xx[1]=xx[2];if (ma>xx[1] && fzx<scrollx){xx[5]=ma-xx[1];ma=xx[1];fx+=xx[5];fzx+=xx[5];if (xx[1]<=5000)xx[3]=1;}
-//if (kscroll!=5){//戻りなし
+//if (kscroll!=5){ // 不可回頭
 //xx[1]=xx[2]-500;if (ma<xx[1] && fzx>700){xx[5]=xx[1]-ma;ma=xx[1];fx-=xx[5];fzx-=xx[5];}
 //}
 //if (xx[3]==1){if (tyuukan==1)tyuukan=1;}
@@ -3159,7 +3159,7 @@ xx[1]=xx[2];if (ma>xx[1] && fzx<scrollx){xx[5]=ma-xx[1];ma=xx[1];fx+=xx[5];fzx+=
 }//if (main==1){
 
 
-//スタッフロール
+// 工作人員名單（過關後跑的字幕）
 if (main==2){
 maintm++;
 
@@ -3205,7 +3205,7 @@ if (maintm>=30){maintm=0;main=1;zxon=0;}
 }//if (main==10){
 
 
-//タイトル
+// 標題畫面
 if (main==100){
 maintm++;xx[0]=0;
 if (maintm<=10){maintm=11;sta=1;stb=1;stc=0;over=0;}
@@ -3238,7 +3238,7 @@ fast=0;trap=0;tyuukan=0;
 
 
 
-//描画
+// 繪圖相關
 rpaint();
 
 
@@ -3253,7 +3253,7 @@ wait2(stime,long(GetNowCount()),1000/xx[0]);
 
 void tekizimen(){
 
-//壁
+// 牆壁
 for (tt=0;tt<smax;tt++){
 if (sa[tt]-fx+sc[tt]>=-12010 && sa[tt]-fx<=fxmax+12100 && stype[tt]<=99){
 xx[0]=200;xx[2]=1000;
@@ -3277,21 +3277,21 @@ ab[t]=xx[9]+sd[tt]+xx[0]+fy;if (ad[t]<0){ad[t]=-ad[t]*2/3;}//axzimen[t]=1;
 
 
 
-//ブロック
+// 磚塊（會被頂、會出道具、可踩）
 for (tt=0;tt<tmax;tt++){
 xx[0]=200;xx[1]=3000;xx[2]=1000;
 xx[8]=ta[tt]-fx;xx[9]=tb[tt]-fy;
 if (ta[tt]-fx+xx[1]>=-12010 && ta[tt]-fx<=fxmax+12000){
 if (atype[t]!=86 && atype[t]!=90 && ttype[tt]!=140){
 
-//上
+// 從下往上頂磚塊
 if (ttype[tt]!=7){
 //if (ttype[tt]==117 && txtype[t]==1){ad[t]=-1500;}
 if (!(ttype[tt]==117)){
 //if (!(ttype[tt]==120 && txtype[t]==0)){
 if (aa[t]+anobia[t]-fx>xx[8]+xx[0] && aa[t]-fx<xx[8]+xx[1]-xx[0]*1 && ab[t]+anobib[t]-fy>xx[9] && ab[t]+anobib[t]-fy<xx[9]+xx[1] && ad[t]>=-100){
 ab[t]=xx[9]-anobib[t]+100+fy;ad[t]=0;axzimen[t]=1;
-//ジャンプ台
+// 彈跳台
 if (ttype[tt]==120){ad[t]=-1600;azimentype[t]=30;}
 //}
 
@@ -3299,7 +3299,7 @@ if (ttype[tt]==120){ad[t]=-1600;azimentype[t]=30;}
 }}
 
 
-//下
+// 從上方落到磚塊
 if (ttype[tt]!=117){
 if (aa[t]+anobia[t]-fx>xx[8]+xx[0] && aa[t]-fx<xx[8]+xx[1]-xx[0]*1 && ab[t]-fy>xx[9]+xx[1]-xx[1] && ab[t]-fy<xx[9]+xx[1]+xx[0]){
 ab[t]=xx[9]+xx[1]+xx[0]+fy;if (ad[t]<0){ad[t]=0;}//=-ad[t]*2/3;}
@@ -3308,12 +3308,12 @@ ab[t]=xx[9]+xx[1]+xx[0]+fy;if (ad[t]<0){ad[t]=0;}//=-ad[t]*2/3;}
 //}
 }}
 
-//左右
+// 左右側碰撞
 xx[27]=0;
 if ((atype[t]>=100 || (ttype[tt]!=7 || ttype[tt]==7 && atype[t]==2)) && ttype[tt]!=117){
 if (aa[t]+anobia[t]-fx>xx[8] && aa[t]-fx<xx[8]+xx[2] && ab[t]+anobib[t]-fy>xx[9]+xx[1]/2-xx[0] && ab[t]-fy<xx[9]+xx[2]){aa[t]=xx[8]-anobia[t]+fx;ac[t]=0;amuki[t]=0;xx[27]=1;}
 if (aa[t]+anobia[t]-fx>xx[8]+xx[1]-xx[0]*2 && aa[t]-fx<xx[8]+xx[1] && ab[t]+anobib[t]-fy>xx[9]+xx[1]/2-xx[0] && ab[t]-fy<xx[9]+xx[2]){aa[t]=xx[8]+xx[1]+fx;ac[t]=0;amuki[t]=1;xx[27]=1;}
-//こうらブレイク
+// 龜殼擊破
 if (xx[27]==1 && (ttype[tt]==7 || ttype[tt]==1) && atype[t]==2){
 if (ttype[tt]==7){
 ot(oto[4]);ttype[tt]=3;
@@ -3344,7 +3344,7 @@ brockbreak(tt);
 
 
 }
-//剣とってクリア
+// 拿到劍即過關
 if (ttype[tt]==140){
 if (ab[t]-fy>xx[9]-xx[0]*2-2000 && ab[t]-fy<xx[9]+xx[1]-xx[0]*2+2000 && aa[t]+anobia[t]-fx>xx[8]-400 && aa[t]-fx<xx[8]+xx[1]){
 ta[tt]=-800000;//ot(oto[4]);
@@ -3356,54 +3356,54 @@ sracttype[20]=1;sron[20]=1;
 
 
 
-//スリープ
+// 等待（sleep）
 static void wait(int interval){
 WaitTimer(interval) ;
 }
 
-//タイマー測定
+// 計時器（用來測 frame 時間）
 static void wait2(long stime, long etime,int FLAME_TIME){
 if (etime-stime<FLAME_TIME)
 wait(FLAME_TIME-(etime-stime));
 }
 
 
-//乱数作成
+// 產生亂數
 static int rand(int Rand){
 return GetRand(Rand);
 }
 
-//終了
+// 結束
 void end(){
 //maint=3;
 DxLib_End() ;
 }
 
 
-//画像関係
+// 圖像相關
 //{
-//色かえ(指定)
+// 改變顏色（指定 RGB）
 void setcolor(int red, int green, int blue){
 color=GetColor(red,green,blue) ;
 }
-//色かえ(黒)(白)
+// 改變顏色（純黑／純白快捷）
 void setc0(){color=GetColor(0,0,0);}
 void setc1(){color=GetColor(255,255,255);}
 
-//点
+// 像素
 void drawpixel(int a,int b){DrawPixel(a,b,color);}
-//線
+// 線段
 void drawline(int a,int b,int c,int d){DrawLine(a,b,c,d,color);}
-//四角形(塗り無し)
+// 矩形（不填色）
 void drawrect(int a,int b,int c,int d){DrawBox(a,b,a+c,b+d,color,FALSE);}
-//四角形(塗り有り)
+// 矩形（填色）
 void fillrect(int a,int b,int c,int d){DrawBox(a,b,a+c,b+d,color,TRUE);}
-//円(塗り無し)
+// 圓形（不填色）
 void drawarc(int a,int b,int c,int d){DrawOval(a,b,c,d,color,FALSE);}
-//円(塗り有り)
+// 圓形（填色）
 void fillarc(int a,int b,int c,int d){DrawOval(a,b,c,d,color,TRUE);}
 
-//画像の読み込み
+// 圖像載入
 int loadimage(string x){
 //mgrap[a]=LoadGraph(b);
 return LoadGraph(x.c_str());
@@ -3412,7 +3412,7 @@ int loadimage(int a,int x,int y,int r,int z){
 return DerivationGraph(x,y,r,z,a);
 }
 
-//画像表示
+// 圖像顯示
 void drawimage(int mx,int a,int b){
 if (mirror==0)
 DrawGraph(a,b,mx,TRUE);
@@ -3428,22 +3428,22 @@ if (mirror==1)
 DrawTurnGraph(a,b,m,TRUE);
 }
 
-//反転
+// 翻轉（鏡像）
 void setre(){}//g.setFlipMode(Graphics.FLIP_HORIZONTAL);}
 void setre2(){}//g.setFlipMode(Graphics.FLIP_VERTICAL);}
 void setno(){}//g.setFlipMode(Graphics.FLIP_NONE);}
 
 /*
-//文字
+// 文字繪製
 void str(char d[],int a,int b){
 //char d[]=c;
 DrawString(a,b,d,color);
 }
 */
 
-//文字
+// 文字繪製
 void str(string x,int a,int b){
-//char d[]="あ";
+//char d[]="啊";
 DrawString(a,b,x.c_str(),color);
 //DrawString(10,10,xs[3].c_str(),color);
 
@@ -3453,13 +3453,13 @@ xx[2]=4;
 }
 
 /*
-//数値を文字に変換
+// 數值轉字串
 void strchange(string x,int a){
 }
 */
 
 /*
-//中央にあわせる//(font)
+// 對齊中央 // (font)
 void str1(String c,int r,int b){
 int a=0,x=0;
 int d=6;
@@ -3482,7 +3482,7 @@ num = atoi(str);
 */
 
 
-//文字ラベル変更
+// 變更字型樣式
 void setfont(int a){
 /*
 if (a==0)g.setFont(Font.getFont(Font.SIZE_TINY));
@@ -3492,7 +3492,7 @@ if (a==3)g.setFont(Font.getFont(Font.SIZE_LARGE));
 */
 }
 
-//音楽再生
+// 播放音樂
 void ot(int x){
 PlaySoundMem(x, DX_PLAYTYPE_BACK) ;
 }
@@ -3522,7 +3522,7 @@ sco=0;tco=0;aco=0;bco=0;eco=0;nco=0;
 
 
 
-//ステージロード
+// 關卡載入
 void stage(){
 
 //fzx=6000*100;
@@ -3532,7 +3532,7 @@ scrollx=3600*100;
 //byte stagedate2[16][801];
 
 
-//1-レンガ,2-コイン,3-空,4-土台//5-6地面//7-隠し//
+// 1=磚頭, 2=金幣, 3=空, 4=平台 // 5-6=地面 // 7=隱藏磚
 
 
 
@@ -3556,14 +3556,14 @@ if (xx[10]==41){sa[sco]=xx[21]*100+500;sb[sco]=xx[22]*100;sc[sco]=5000;sd[sco]=3
 if (xx[10]==43){sa[sco]=xx[21]*100;sb[sco]=xx[22]*100+500;sc[sco]=2900;sd[sco]=5300;stype[sco]=1;sco++;if (sco>=smax)sco=0;}
 if (xx[10]==44){sa[sco]=xx[21]*100;sb[sco]=xx[22]*100+700;sc[sco]=3900;sd[sco]=5000;stype[sco]=5;sco++;if (sco>=smax)sco=0;}
 
-//これなぜかバグの原因ｗ
+// 不知為何這行是 bug 來源 w
 if (xx[10]>=50 && xx[10]<=79){
 ba[bco]=xx[21]*100;bb[bco]=xx[22]*100;btype[bco]=xx[23]-50;bco++;if (bco>=bmax)bco=0;
 }
 
 if (xx[10]>=80 && xx[10]<=89){na[nco]=xx[21]*100;nb[nco]=xx[22]*100;ntype[nco]=xx[23]-80;nco++;if (nco>=nmax)nco=0;}
 
-//コイン
+// 金幣
 if (xx[10]==9){tyobi(tt*29,t*29-12,800);}
 if (xx[10]==99){sa[sco]=xx[21]*100;sb[sco]=xx[22]*100;sc[sco]=3000;sd[sco]=(12-t)*3000;stype[sco]=300;sco++;if (sco>=smax)sco=0;}
 }}
@@ -3592,7 +3592,7 @@ tyuukan+=xx[17];
 void stagep(){
 
 
-//ステージロード
+// 關卡載入
 //void stage(){
 
 
@@ -3604,7 +3604,7 @@ scrollx=3600*100;
 //byte stagedate2[16][801];
 
 
-//1-レンガ,2-コイン,3-空,4-土台//5-6地面//7-隠し//
+// 1=磚頭, 2=金幣, 3=空, 4=平台 // 5-6=地面 // 7=隱藏磚
 
 //1-1
 if (sta==1 && stb==1 && stc==0){
@@ -3632,7 +3632,7 @@ byte stagedatex[17][1001]={
 } ;
 
 
-//追加情報
+// 額外資訊
 tyobi(8*29,9*29-12,100);
 txtype[tco]=2;
 tyobi(13*29,9*29-12,102);
@@ -3668,10 +3668,10 @@ stagedate[t][tt]=0;stagedate[t][tt]=stagedatex[t][tt];
 }//sta1
 
 
-//1-2(地上)
+// 1-2（地面關）
 if (sta==1 && stb==2 && stc==0){
 
-//マリ　地上　入れ
+// 馬利歐風地面關卡放入物件
 //StopSoundMem(oto[0]);
 bgmchange(oto[100]);
 //PlaySoundMem(oto[0],DX_PLAYTYPE_LOOP) ;
@@ -3700,11 +3700,11 @@ byte stagedatex[17][1001]={
 
 
 tco=0;
-//ヒント1
+// 提示磚 1
 txtype[tco]=1;tyobi(4*29,9*29-12,300);
 //tyobi(7*29,9*29-12,300);
 
-//毒1
+// 毒磚 1
 tyobi(13*29,8*29-12,114);
 
 //t=28;
@@ -3713,7 +3713,7 @@ t=sco;sa[t]=14*29*100+500;sb[t]=(9*29-12)*100;sc[t]=6000;sd[t]=12000-200;stype[t
 t=sco;sa[t]=12*29*100;sb[t]=(11*29-12)*100;sc[t]=3000;sd[t]=6000-200;stype[t]=40;sxtype[t]=0;sco++;
 t=sco;sa[t]=14*29*100+1000;sb[t]=-6000;sc[t]=5000;sd[t]=70000;stype[t]=100;sxtype[t]=1;sco++;
 
-//ブロックもどき
+// 假磚塊（看起來是磚塊但其實不一樣）
 //t=bco;ba[t]=7*29*100;bb[t]=(9*29-12)*100;btype[t]=82;bxtype[t]=0;bco++;
 
 
@@ -3725,10 +3725,10 @@ stagedate[t][tt]=0;stagedate[t][tt]=stagedatex[t][tt];
 }//sta2
 
 
-//1-2-1(地下)
+// 1-2-1（地下關）
 if (sta==1 && stb==2 && stc==1){
 
-//マリ　地下　入れ
+// 馬利歐風地下關卡放入物件
 bgmchange(oto[103]);
 
 scrollx=4080*100;
@@ -3774,7 +3774,7 @@ txtype[tco]=2;tyobi(78*29,5*29-12,102);
 
 
 
-//txtype[tco]=1;tyobi(11*29,9*29-12,114);//毒1
+//txtype[tco]=1;tyobi(11*29,9*29-12,114); // 毒磚 1
 
 sco=0;
 t=sco;sa[t]=2*29*100;sb[t]=(13*29-12)*100;sc[t]=3000*1-1;sd[t]=3000;stype[t]=52;sco++;
@@ -3785,13 +3785,13 @@ t=sco;sa[t]=53*29*100+500;sb[t]=-6000;sc[t]=3000;sd[t]=70000;stype[t]=102;sxtype
 t=sco;sa[t]=129*29*100;sb[t]=(7*29-12)*100;sc[t]=3000;sd[t]=6000-200;stype[t]=40;sxtype[t]=2;sco++;
 t=sco;sa[t]=154*29*100;sb[t]=3000;sc[t]=9000;sd[t]=3000;stype[t]=102;sxtype[t]=7;sco++;
 
-//ブロックもどき
+// 假磚塊（看起來是磚塊但其實不一樣）
 
 t=27;sa[t]=69*29*100;sb[t]=(1*29-12)*100;sc[t]=9000*2-1;sd[t]=3000;stype[t]=51;sxtype[t]=0;sgtype[t]=0;sco++;
 t=28;sa[t]=66*29*100;sb[t]=(1*29-12)*100;sc[t]=9000-1;sd[t]=3000;stype[t]=51;sxtype[t]=1;sgtype[t]=0;sco++;
 t=29;sa[t]=66*29*100;sb[t]=(-2*29-12)*100;sc[t]=9000*3-1;sd[t]=3000;stype[t]=51;sxtype[t]=2;sgtype[t]=0;sco++;
 
-//26 ファイアー土管
+// 26 號 = 噴火水管
 t=26;sa[t]=103*29*100-1500;sb[t]=(9*29-12)*100-2000;sc[t]=3000;sd[t]=3000;stype[t]=180;sxtype[t]=0;sr[t]=0;sgtype[t]=48;sco++;
 t=sco;sa[t]=102*29*100;sb[t]=(9*29-12)*100;sc[t]=6000;sd[t]=12000-200;stype[t]=50;sxtype[t]=2;sco++;
 t=sco;sa[t]=123*29*100;sb[t]=(9*29-12)*100;sc[t]=3000*5-1;sd[t]=3000*5;stype[t]=52;sxtype[t]=1;sco++;
@@ -3800,7 +3800,7 @@ t=sco;sa[t]=131*29*100;sb[t]=(1*29-12)*100;sc[t]=4700;sd[t]=3000*8-700;stype[t]=
 
 //t=sco;sa[t]=44*29*100;sb[t]=-6000;sc[t]=9000;sd[t]=70000;stype[t]=102;sco++;
 
-//オワタゾーン
+// OWATA 區（owata 在日本網路俚語意為 終 / 完蛋了）
 t=sco;sa[t]=143*29*100;sb[t]=(9*29-12)*100;sc[t]=6000;sd[t]=12000-200;stype[t]=50;sxtype[t]=5;sco++;
 t=sco;sa[t]=148*29*100;sb[t]=(9*29-12)*100;sc[t]=6000;sd[t]=12000-200;stype[t]=50;sxtype[t]=5;sco++;
 t=sco;sa[t]=153*29*100;sb[t]=(9*29-12)*100;sc[t]=6000;sd[t]=12000-200;stype[t]=50;sxtype[t]=5;sco++;
@@ -3812,11 +3812,11 @@ t=bco;ba[t]=18*29*100;bb[t]=(10*29-12)*100;btype[t]=82;bxtype[t]=1;bco++;
 //t=bco;ba[t]=52*29*100;bb[t]=(2*29-12)*100;btype[t]=82;bxtype[t]=1;bco++;
 t=bco;ba[t]=51*29*100+1000;bb[t]=(2*29-12+10)*100;btype[t]=80;bxtype[t]=1;bco++;
 
-//？ボール
+// 「？」球
 t=bco;ba[t]=96*29*100+100;bb[t]=(10*29-12)*100;btype[t]=105;bxtype[t]=0;bco++;
 
 
-//リフト
+// 升降梯／移動平台
 srco=0;
 t=srco;sra[t]=111*29*100;srb[t]=(8*29-12)*100;src[t]=90*100;srtype[t]=0;sracttype[t]=5;sre[t]=-300;srco++;
 t=srco;sra[t]=111*29*100;srb[t]=(0*29-12)*100;src[t]=90*100;srtype[t]=0;sracttype[t]=5;sre[t]=-300;srco++;
@@ -3824,11 +3824,11 @@ t=10;sra[t]=116*29*100;srb[t]=(4*29-12)*100;src[t]=90*100;srtype[t]=1;sracttype[
 t=11;sra[t]=116*29*100;srb[t]=(12*29-12)*100;src[t]=90*100;srtype[t]=1;sracttype[t]=5;sre[t]=300;srco++;
 
 
-//ヒント1
+// 提示磚 1
 //tyobi(4*29,9*29-12,300);
 //tyobi(7*29,9*29-12,300);
 
-//毒1
+// 毒磚 1
 //tyobi(13*29,8*29-12,114);
 
 //t=28;
@@ -3848,10 +3848,10 @@ stagedate[t][tt]=0;stagedate[t][tt]=stagedatex[t][tt];
 
 
 
-//1-2(地上)
+// 1-2（地面關）
 if (sta==1 && stb==2 && stc==2){
 
-//マリ　地上　入れ
+// 馬利歐風地面關卡放入物件
 //StopSoundMem(oto[0]);
 bgmchange(oto[100]);
 //PlaySoundMem(oto[0],DX_PLAYTYPE_LOOP) ;
@@ -3880,7 +3880,7 @@ byte stagedatex[17][1001]={
 
 
 /*
-//毒1
+// 毒磚 1
 tyobi(13*29,8*29-12,114);
 
 //t=28;
@@ -3891,10 +3891,10 @@ t=sco;sa[t]=14*29*100+1000;sb[t]=-6000;sc[t]=5000;sd[t]=70000;stype[t]=100;sxtyp
 */
 
 t=sco;sa[t]=5*29*100+500;sb[t]=-6000;sc[t]=3000;sd[t]=70000;stype[t]=102;sxtype[t]=8;sco++;
-//空飛ぶ土管
+// 飛天水管
 t=28;sa[t]=44*29*100+500;sb[t]=(10*29-12)*100;sc[t]=6000;sd[t]=9000-200;stype[t]=50;sco++;
 
-//ポールもどき
+// 假旗杆（看起來像終點但其實是陷阱）
 bco=0;
 t=bco;ba[t]=19*29*100;bb[t]=(2*29-12)*100;btype[t]=85;bxtype[t]=0;bco++;
 
@@ -3908,9 +3908,9 @@ stagedate[t][tt]=0;stagedate[t][tt]=stagedatex[t][tt];
 
 
 
-//必要BGM+SE
+// 必要的 BGM 與音效
 
-//1-3(地上)
+// 1-3（地面關）
 if (sta==1 && stb==3 && stc==6){stc=0;}
 if (sta==1 && stb==3 && stc==0){
 
@@ -3942,33 +3942,33 @@ byte stagedatex[17][1001]={//                                                   
 
 tco=0;
 tyobi(22*29,3*29-12,1);
-//毒1
+// 毒磚 1
 tyobi(54*29,9*29-12,116);
-//音符+
+// 音符類磚塊
 tyobi(18*29,14*29-12,117);
 tyobi(19*29,14*29-12,117);
 tyobi(20*29,14*29-12,117);
 txtype[tco]=1;tyobi(61*29,9*29-12,101);//5
 tyobi(74*29,9*29-12,7);//6
 
-//ヒント2
+// 提示磚 2
 txtype[tco]=2;tyobi(28*29,9*29-12,300);//7
-//ファイア
+// 火焰
 txtype[tco]=3;tyobi(7*29,9*29-12,101);
-//ヒント3
+// 提示磚 3
 txtype[tco]=4;tyobi(70*29,8*29-12,300);//9
 
-//もろいぶろっく×３
+// 易碎磚塊 × 3
 txtype[tco]=1;tyobi(58*29,13*29-12,115);
 txtype[tco]=1;tyobi(59*29,13*29-12,115);
 txtype[tco]=1;tyobi(60*29,13*29-12,115);
 
-//ヒントブレイク
+// 提示磚被擊破
 txtype[tco]=0;tyobi(111*29,6*29-12,301);
-//ジャンプ
+// 跳躍處理
 txtype[tco]=0;tyobi(114*29,9*29-12,120);
 
-//ファイア
+// 火焰
 //tyobi(7*29,9*29-12,101);
 
 
@@ -3979,27 +3979,27 @@ t=bco;ba[t]=146*29*100;bb[t]=(10*29-12)*100;btype[t]=6;bxtype[t]=1;bco++;
 t=sco;sa[t]=9*29*100;sb[t]=(13*29-12)*100;sc[t]=9000-1;sd[t]=3000;stype[t]=52;sco++;
 //t=sco;sa[t]=58*29*100;sb[t]=(13*29-12)*100;sc[t]=9000-1;sd[t]=3000;stype[t]=52;sco++;
 
-//土管
+// 水管
 t=sco;sa[t]=65*29*100+500;sb[t]=(10*29-12)*100;sc[t]=6000;sd[t]=9000-200;stype[t]=50;sxtype[t]=1;sco++;
 //t=28;sa[t]=65*29*100;sb[t]=(10*29-12)*100;sc[t]=6000;sd[t]=9000-200;stype[t]=50;sco++;
 
-//トラップ
+// 陷阱
 t=sco;sa[t]=74*29*100;sb[t]=(8*29-12)*100-1500;sc[t]=6000;sd[t]=3000;stype[t]=103;sxtype[t]=1;sco++;
 t=sco;sa[t]=96*29*100-3000;sb[t]=-6000;sc[t]=9000;sd[t]=70000;stype[t]=102;sxtype[t]=10;sco++;
-//ポール砲
+// 旗杆砲
 t=sco;sa[t]=131*29*100-1500;sb[t]=(1*29-12)*100-3000;sc[t]=15000;sd[t]=14000;stype[t]=104;sco++;
 
 
-//？ボール
+// 「？」球
 t=bco;ba[t]=10*29*100+100;bb[t]=(11*29-12)*100;btype[t]=105;bxtype[t]=1;bco++;
-//ブロックもどき
+// 假磚塊（看起來是磚塊但其實不一樣）
 t=bco;ba[t]=43*29*100;bb[t]=(11*29-12)*100;btype[t]=82;bxtype[t]=1;bco++;
 //t=bco;ba[t]=146*29*100;bb[t]=(12*29-12)*100;btype[t]=82;bxtype[t]=1;bco++;
-//うめぇ
+// 「好吃」（吃磚塊敵人的反應）
 t=bco;ba[t]=1*29*100;bb[t]=(2*29-12+10)*100-1000;btype[t]=80;bxtype[t]=0;bco++;
 
 
-//リフト
+// 升降梯／移動平台
 srco=0;
 t=srco;sra[t]=33*29*100;srb[t]=(3*29-12)*100;src[t]=90*100;srtype[t]=0;sracttype[t]=0;sre[t]=0;srsp[t]=1;srco++;
 t=srco;sra[t]=39*29*100-2000;srb[t]=(6*29-12)*100;src[t]=90*100;srtype[t]=0;sracttype[t]=1;sre[t]=0;srco++;
@@ -4024,10 +4024,10 @@ stagedate[t][tt]=0;stagedate[t][tt]=stagedatex[t][tt];
 
 
 
-//1-3(地下)
+// 1-3（地下關）
 if (sta==1 && stb==3 && stc==1){
 
-//マリ　地上　入れ
+// 馬利歐風地面關卡放入物件
 //StopSoundMem(oto[0]);
 bgmchange(oto[103]);
 //PlaySoundMem(oto[0],DX_PLAYTYPE_LOOP) ;
@@ -4072,7 +4072,7 @@ stagedate[t][tt]=0;stagedate[t][tt]=stagedatex[t][tt];
 
 
 
-//1-3(空中)
+// 1-3（空中關）
 if (sta==1 && stb==3 && stc==5){
 
 stagecolor=3;
@@ -4109,7 +4109,7 @@ t=sco;sa[t]=14*29*100-5;sb[t]=(11*29-12)*100;sc[t]=6000;sd[t]=15000-200;stype[t]
 
 
 txtype[tco]=0;tyobi(12*29,4*29-12,112);
-//ヒント3
+// 提示磚 3
 txtype[tco]=3;tyobi(12*29,8*29-12,300);
 //txtype[tco]=0;tyobi(13*29,4*29-12,110);
 
@@ -4127,10 +4127,10 @@ stagedate[t][tt]=0;stagedate[t][tt]=stagedatex[t][tt];
 
 
 
-//1-4(地下)
+// 1-4（地下關）
 if (sta==1 && stb==4 && stc==0){
 
-//マリ　地上　入れ
+// 馬利歐風地面關卡放入物件
 //StopSoundMem(oto[0]);
 bgmchange(oto[105]);
 //PlaySoundMem(oto[0],DX_PLAYTYPE_LOOP) ;
@@ -4166,14 +4166,14 @@ t=sco;sa[t]=73*29*100;sb[t]=(13*29-12)*100;sc[t]=3000*1-1;sd[t]=3000;stype[t]=52
 //t=sco;sa[t]=79*29*100;sb[t]=(13*29-12)*100;sc[t]=30*3*100-1;sd[t]=6000-200;stype[t]=51;sxtype[t]=4;sco++;
 //t=sco;sa[t]=83*29*100;sb[t]=(-2*29-12)*100;sc[t]=30*5*100-1;sd[t]=3000-200;stype[t]=51;sxtype[t]=4;sco++;
 t=sco;sa[t]=123*29*100;sb[t]=(1*29-12)*100;sc[t]=30*6*100-1+0;sd[t]=3000-200;stype[t]=51;sxtype[t]=10;sco++;
-//スクロール消し
+// 取消捲動
 t=sco;sa[t]=124*29*100+3000;sb[t]=(2*29-12)*100;sc[t]=3000*1-1;sd[t]=300000;stype[t]=102;sxtype[t]=20;sco++;
 t=sco;sa[t]=148*29*100+1000;sb[t]=(-12*29-12)*100;sc[t]=3000*1-1;sd[t]=300000;stype[t]=102;sxtype[t]=30;sco++;
 
-//3連星
+// 三連星
 t=sco;sa[t]=100*29*100+1000;sb[t]=-6000;sc[t]=3000;sd[t]=70000;stype[t]=102;sxtype[t]=12;sco++;
 
-//地面1
+// 地面 1
 t=sco;sa[t]=0*29*100-0;sb[t]=9*29*100+1700;sc[t]=3000*7-1;sd[t]=3000*5-1;stype[t]=200;sxtype[t]=0;sco++;
 t=sco;sa[t]=11*29*100;sb[t]=-1*29*100+1700;sc[t]=3000*8-1;sd[t]=3000*4-1;stype[t]=200;sxtype[t]=0;sco++;
 
@@ -4187,64 +4187,64 @@ t=bco;ba[t]=70*29*100+1500;bb[t]=(9*29-12)*100+1500;btype[t]=87;bxtype[t]=105;bc
 t=bco;ba[t]=66*29*100+1501;bb[t]=(4*29-12)*100+1500;btype[t]=87;bxtype[t]=101;bco++;
 t=bco;ba[t]=85*29*100+1501;bb[t]=(4*29-12)*100+1500;btype[t]=87;bxtype[t]=105;bco++;
 
-//ステルスうめぇ
+// 隱形版「好吃」
 t=bco;ba[t]=57*29*100;bb[t]=(2*29-12+10)*100-500;btype[t]=80;bxtype[t]=1;bco++;
-//ブロックもどき
+// 假磚塊（看起來是磚塊但其實不一樣）
 t=bco;ba[t]=77*29*100;bb[t]=(5*29-12)*100;btype[t]=82;bxtype[t]=2;bco++;
-//ボス
+// 王關 BOSS
 t=bco;ba[t]=130*29*100;bb[t]=(8*29-12)*100;btype[t]=30;bxtype[t]=0;bco++;
-//クックル
+// 「クックル」（BOSS 名）
 t=bco;ba[t]=142*29*100;bb[t]=(10*29-12)*100;btype[t]=31;bxtype[t]=0;bco++;
 
-//マグマ
+// 岩漿
 nco=0;
 na[nco]=7*29*100-300;nb[nco]=14*29*100-1200;ntype[nco]=6;nco++;if (nco>=nmax)nco=0;
 na[nco]=41*29*100-300;nb[nco]=14*29*100-1200;ntype[nco]=6;nco++;if (nco>=nmax)nco=0;
 na[nco]=149*29*100-1100;nb[nco]=10*29*100-600;ntype[nco]=100;nco++;if (nco>=nmax)nco=0;
 
 tco=0;
-//ON-OFFブロック
+// ON-OFF 切換磚塊
 txtype[tco]=1;tyobi(29*29,3*29-12,130);
 //1-2
 tyobi(34*29,9*29-12,5);
 tyobi(35*29,9*29-12,5);
-//隠し
+// 隱藏磚塊（看不見、頂到才會出現）
 tyobi(55*29+15,6*29-12,7);
 //tyobi(62*29,9*29-12,2);
-//隠しON-OFF
+// 隱藏 ON-OFF
 txtype[tco]=10;tyobi(50*29,9*29-12,114);
-//ヒント3
+// 提示磚 3
 txtype[tco]=5;tyobi(1*29,5*29-12,300);
-//ファイア
+// 火焰
 txtype[tco]=3;
 tyobi(86*29,9*29-12,101);
-//キノコなし　普通
+// 沒有香菇／一般
 //txtype[tco]=2;tyobi(81*29,1*29-12,5);
-//音符
+// 音符
 txtype[tco]=2;
 tyobi(86*29,6*29-12,117);
 
-//もろいぶろっく×３
+// 易碎磚塊 × 3
 for (t=0;t<=2;t++){
 txtype[tco]=3;tyobi((79+t)*29,13*29-12,115);
 }
 
-//ジャンプ
+// 跳躍處理
 txtype[tco]=3;tyobi(105*29,11*29-12,120);
-//毒1
+// 毒磚 1
 txtype[tco]=3;tyobi(109*29,7*29-12,102);
-//デフラグ
+// 重組
 txtype[tco]=4;tyobi(111*29,7*29-12,101);
-//剣
+// 劍
 tyobi(132*29,8*29-12-3,140);
 tyobi(131*29,9*29-12,141);
-//メロン
+// 哈密瓜
 tyobi(161*29,12*29-12,142);
-//ファイアバー強化
+// 強化版火棒
 tyobi(66*29,4*29-12,124);
 
 
-//リフト
+// 升降梯／移動平台
 srco=0;
 t=srco;sra[t]=93*29*100;srb[t]=(10*29-12)*100;src[t]=60*100;srtype[t]=0;sracttype[t]=1;sre[t]=0;srco++;
 t=20;sra[t]=119*29*100+300;srb[t]=(10*29-12)*100;src[t]=12*30*100+1000;srtype[t]=0;sracttype[t]=0;srsp[t]=21;sre[t]=0;srco++;
@@ -4385,7 +4385,7 @@ byte stagedatex[17][1001]={
   }
 }
 
-if (sta==2 && stb==2 && stc==0){//2-2(地上)
+if (sta==2 && stb==2 && stc==0){// 2-2（地面關）
   bgmchange(oto[100]);
   stagecolor=1;
   scrollx=2900*(19-19);
@@ -4448,7 +4448,7 @@ byte stagedatex[17][1001]={
   }
 }
 
-if (sta==2 && stb==2 && stc==1){//2-2(地下)
+if (sta==2 && stb==2 && stc==1){// 2-2（地下關）
   bgmchange(oto[103]);
   stagecolor=2;
   ma=7500;mb=9000;
@@ -4658,7 +4658,7 @@ byte stagedatex[17][1001]={
   }
 }
 
-if (sta==2 && stb==2 && stc==2){// 2-2 地上
+if (sta==2 && stb==2 && stc==2){// 2-2 地面
 //
   bgmchange(oto[100]);
   stagecolor = 1;
@@ -4873,7 +4873,7 @@ byte stagedatex[17][1001]={
   }
 }
 //
-if (sta==2 && stb==4 && (stc == 0 || stc == 10 || stc == 12)){// 2-4(1番)
+if (sta==2 && stb==4 && (stc == 0 || stc == 10 || stc == 12)){// 2-4（第 1 段）
   if(stc == 0){
     ma = 7500;
     mb = 3000 * 4;
@@ -4971,7 +4971,7 @@ byte stagedatex[17][1001]={
   }
 }
 
-if (sta==2 && stb==4 && stc == 1){// 2-4(2番)
+if (sta==2 && stb==4 && stc == 1){// 2-4（第 2 段）
   ma = 4500;
   mb = 3000*11;
   bgmchange(oto[105]);
@@ -5050,7 +5050,7 @@ byte stagedatex[17][1001]={
   }
 }
 
-if (sta==2 && stb==4 && stc == 2){// 2-4(3番)
+if (sta==2 && stb==4 && stc == 2){// 2-4（第 3 段）
   ma = 4500;
   mb = 3000*11;
   bgmchange(oto[105]);
@@ -5297,7 +5297,7 @@ byte stagedatex[17][1001]={
 
 }//stagep
 
-//BGM変更
+// 切換 BGM
 void bgmchange(int x){
 StopSoundMem(oto[0]);
 oto[0]=0;
@@ -5307,7 +5307,7 @@ oto[0]=x;
 
 
 
-//ブロック出現
+// 產生新磚塊
 
 void tyobi(int x,int y,int type){
 
@@ -5317,7 +5317,7 @@ tco++;if (tco>=tmax)tco=0;
 }//tyobi
 
 
-//ブロック破壊
+// 破壞磚塊
 void brockbreak(int t){
 if (titem[t]==1){
 //eyobi(ta[t],tb[t],0,-800,0,80,xx[1],xx[1],titem[t],8);
@@ -5332,7 +5332,7 @@ ta[t]=-800000;
 }//brock
 
 
-//メッセージ
+// 對話框／訊息提示
 void ttmsg(){
 xx[1]=6000/100;xx[2]=4000/100;
 if (tmsgtype==1 || tmsgtype==2){
@@ -5342,12 +5342,12 @@ setc1();
 drawrect(xx[1],xx[2],360,tmsgy/100);
 }
 if (tmsgtype==2){
-//フォント
+// 字型設定
 setfont(20,5);
 
 if (tmsg==0){
 setc1();
-//フォント
+// 字型設定
 setfont(20,5);
 txmsg("テスト　hoge",0);
 }
@@ -5443,7 +5443,7 @@ str(x,60+xx,40+xx+a*24);
 }//txmsg
 
 
-//フォント変更
+// 切換字型
 void setfont(int x,int y){
 SetFontSize(x);
 SetFontThickness(y);
@@ -5451,7 +5451,7 @@ SetFontThickness(y);
 
 
 
-//グラ作成
+// 產生圖元
 void eyobi(int xa,int xb,int xc,int xd,int xe,int xf,int xnobia,int xnobib,int xgtype,int xtm){
 
 ea[eco]=xa;eb[eco]=xb;ec[eco]=xc;ed[eco]=xd;ee[eco]=xe;ef[eco]=xf;
@@ -5469,7 +5469,7 @@ eco++;if (eco>=emax)eco=0;
 
 
 
-//敵キャラ、アイテム作成
+// 產生敵人 / 道具
 void ayobi(int xa,int xb,int xc,int xd,int xnotm,int xtype,int xxtype){
 int rz=0;
 for (t1=0;t1<=1;t1++){t1=2;
@@ -5495,9 +5495,9 @@ if (abrocktm[aco]==20)amuki[aco]=0;
 anobia[aco]=anx[atype[aco]];anobib[aco]=any[atype[aco]];
 
 
-//大砲音
+// 大砲音效
 if (xtype==7 && CheckSoundMem(oto[10])==0){ot(oto[10]);}
-//ファイア音
+// 火焰音效
 if (xtype==10 && CheckSoundMem(oto[18])==0){ot(oto[18]);}
 
 
