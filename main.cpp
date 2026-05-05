@@ -289,19 +289,25 @@ loadg();
 SetFontSize(16) ;
 SetFontThickness(4) ;
 
-// 迴圈用的暫存變數
+// 主迴圈：Windows 用 while loop；HTML5/WASM 用 emscripten_set_main_loop callback
+// （browser 不允許 wasm 緊迴圈卡 main thread，必須把每幀變成 callback）
+#ifdef __EMSCRIPTEN__
+emscripten_set_main_loop([](){
+    if (ProcessMessage() != 0 || CheckHitKey(KEY_INPUT_ESCAPE) != 0) {
+        emscripten_cancel_main_loop();
+        return;
+    }
+    maint=0;
+    Mainprogram();
+    if (maint==3) emscripten_cancel_main_loop();
+}, 0, 1);  // fps=0 讓 browser 用 requestAnimationFrame，simulate_infinite_loop=1
+#else
 //for (maint=0;maint<=2;maint++){
 while( ProcessMessage() == 0 && CheckHitKey( KEY_INPUT_ESCAPE ) == 0){
-
-maint=0;Mainprogram();
-if (maint==3)break;
-
-#ifdef __EMSCRIPTEN__
-// HTML5 / WebAssembly 必須每幀 yield 給 browser，否則 ASYNCIFY 不會 frame，
-// 整個 tab 會卡死黑屏。emscripten_sleep(1) 跟 requestAnimationFrame 接得起來
-emscripten_sleep(1);
-#endif
+    maint=0;Mainprogram();
+    if (maint==3)break;
 }
+#endif
 
 
 
