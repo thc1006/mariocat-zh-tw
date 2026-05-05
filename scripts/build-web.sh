@@ -42,8 +42,11 @@ if [ ! -f docs/web/shell.html ]; then
 fi
 
 echo "[build-web] em++ 編譯中..."
-docker run --rm \
-    -v "$(pwd):/src" -w /src \
+# Git Bash on Windows 會把 $(pwd) 轉成 C:/... 撞 docker mount 錯誤，
+# 用 MSYS_NO_PATHCONV/MSYS2_ARG_CONV_EXCL 關掉路徑轉換 + 顯式 /c/... mount
+WIN_PROJECT_PATH="$(pwd | sed -E 's|^([A-Za-z]):|/\L\1|; s|\\|/|g')"
+MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL='*' docker run --rm \
+    -v "${WIN_PROJECT_PATH}:/src" -w /src \
     "emscripten/emsdk:${EMSDK_VER}" \
     em++ \
         -O2 \
