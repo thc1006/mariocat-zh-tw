@@ -1,0 +1,220 @@
+/* 貓利歐 landing page — 黑底復古遊戲感 */
+*  { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+    background: #0a0a14;
+    color: #f5f5f5;
+    font-family: "Microsoft JhengHei", "微軟正黑體", "PingFang TC", "Noto Sans TC", system-ui, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a { color: #6cf; text-decoration: none; transition: color 0.15s; }
+a:hover { color: #fff; text-decoration: underline; }
+
+/* 背景星星 */
+.stars {
+    position: fixed; inset: 0; z-index: -1;
+    background:
+        radial-gradient(2px 2px at 20% 30%, #fff 0%, transparent 100%),
+        radial-gradient(1px 1px at 60% 70%, #fff 0%, transparent 100%),
+        radial-gradient(2px 2px at 80% 10%, #ddd 0%, transparent 100%),
+        radial-gradient(1px 1px at 35% 85%, #aaa 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 50%, #fff 0%, transparent 100%);
+    background-size: 100% 100%;
+    opacity: 0.4;
+}
+
+header {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    border-bottom: 1px solid #222;
+}
+.title-logo {
+    image-rendering: pixelated;
+    width: min(80%, 500px);
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 12px rgba(255, 200, 80, 0.3));
+}
+.subtitle {
+    font-size: 1.2rem;
+    color: #ffc850;
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+}
+.warning {
+    font-size: 0.95rem;
+    color: #888;
+    font-style: italic;
+}
+
+/* CTA 按鈕區 */
+.cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    padding: 2rem 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border: 2px solid #444;
+    border-radius: 8px;
+    min-width: 220px;
+    color: #fff !important;
+    text-decoration: none !important;
+    transition: transform 0.15s, border-color 0.15s, background 0.15s;
+}
+.btn:hover {
+    transform: translateY(-3px);
+    border-color: #fff;
+}
+.btn-primary {
+    background: linear-gradient(135deg, #c4471c, #8b1a1a);
+    border-color: #ffc850;
+}
+.btn-primary:hover { background: linear-gradient(135deg, #e35525, #a52020); }
+.btn-secondary {
+    background: linear-gradient(135deg, #2c5282, #1a365d);
+    border-color: #6cf;
+}
+.btn-tertiary { background: #1a1a24; }
+.btn-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+.btn-main { font-size: 1.1rem; font-weight: bold; }
+.btn-sub { font-size: 0.85rem; color: #ccc; margin-top: 0.3rem; }
+
+/* sections */
+section {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+}
+section h2 {
+    font-size: 1.6rem;
+    border-left: 4px solid #ffc850;
+    padding-left: 0.8rem;
+    margin-bottom: 1.5rem;
+    color: #ffc850;
+}
+
+/* 功能卡片 */
+.feat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+}
+.feat {
+    background: #15151f;
+    padding: 1.2rem;
+    border-radius: 6px;
+    border-left: 3px solid #444;
+    transition: border-color 0.15s;
+}
+.feat:hover { border-left-color: #ffc850; }
+.feat h3 {
+    font-size: 1.05rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+.feat p { color: #bbb; font-size: 0.95rem; }
+
+/* 操作步驟 */
+.howto ol { margin-left: 1.5rem; color: #ddd; }
+.howto li { margin-bottom: 0.5rem; }
+.howto code {
+    background: #2a2a35;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-family: "Consolas", "Cascadia Code", monospace;
+    font-size: 0.9em;
+}
+.keys {
+    width: 100%;
+    margin-top: 1rem;
+    border-collapse: collapse;
+    background: #15151f;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.keys th, .keys td {
+    padding: 0.7rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #2a2a35;
+}
+.keys th { background: #222230; color: #ffc850; }
+.keys tr:last-child td { border-bottom: none; }
+
+/* 致謝區 */
+.credits {
+    background: #131320;
+    border-radius: 8px;
+    padding: 2rem;
+    border: 1px solid #2a2a35;
+}
+.orig-author {
+    color: #ddd;
+    margin-bottom: 1rem;
+}
+.credits details {
+    margin-top: 1rem;
+    color: #aaa;
+}
+.credits summary {
+    cursor: pointer;
+    color: #6cf;
+    margin-bottom: 0.5rem;
+}
+.credits blockquote {
+    background: #0d0d18;
+    padding: 0.8rem 1rem;
+    border-left: 3px solid #6cf;
+    margin: 0.5rem 0;
+    font-style: italic;
+}
+
+/* 對照圖 */
+.compare {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+.compare figure { text-align: center; flex: 1; min-width: 250px; }
+.compare img {
+    image-rendering: pixelated;
+    width: 100%;
+    max-width: 400px;
+    border: 2px solid #333;
+    border-radius: 6px;
+    background: #000;
+    padding: 0.8rem;
+}
+.compare figcaption {
+    margin-top: 0.5rem;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+footer {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    margin-top: 3rem;
+    border-top: 1px solid #222;
+    color: #888;
+    font-size: 0.9rem;
+}
+footer .small { font-size: 0.85rem; margin-top: 0.5rem; }
+
+/* 行動版 */
+@media (max-width: 600px) {
+    header { padding: 2rem 1rem 1.5rem; }
+    .subtitle { font-size: 1rem; letter-spacing: 0.1em; }
+    .cta { flex-direction: column; padding: 1.5rem 1rem; }
+    .btn { width: 100%; }
+    section { margin: 2rem auto; }
+    section h2 { font-size: 1.3rem; }
+}

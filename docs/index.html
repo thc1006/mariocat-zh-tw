@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>貓利歐：屎喔棒大冒險 — 繁體中文化版 | Cat Mario zh-TW</title>
+<meta name="description" content="2007 年日本經典整人遊戲『しょぼんのアクション (Syobon Action / Cat Mario)』的繁體中文化版。原作：ちく。中文化、PTT/Dcard 風格在地化、死亡計數搞怪、單檔 portable launcher。">
+<meta name="author" content="thc1006 (繁中化) / ちく (原作)">
+
+<meta property="og:title" content="貓利歐：屎喔棒大冒險 — 繁體中文化版">
+<meta property="og:description" content="把日本經典整人遊戲完整翻譯成台灣繁體中文，加上死亡計數嗆聲、PTT/Dcard 風格本地化。雙擊即玩。">
+<meta property="og:image" content="https://thc1006.github.io/mariocat-zh-tw/title.png">
+<meta property="og:type" content="website">
+
+<link rel="icon" type="image/png" href="player.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="stars" aria-hidden="true"></div>
+
+<header>
+    <img src="title.png" alt="貓貓貓 瑪利歐" class="title-logo">
+    <p class="subtitle">屎喔棒大冒險 · 繁體中文化版 · v1.1</p>
+    <p class="warning">⚠ 玩了之後可能會對人類產生不信任感。請小心服用。</p>
+</header>
+
+<section class="cta">
+    <a href="https://github.com/thc1006/mariocat-zh-tw/releases/download/v1.1/MarioCat_zh_Launcher.exe" class="btn btn-primary">
+        <span class="btn-icon">⬇</span>
+        <span class="btn-main">下載 Windows 版</span>
+        <span class="btn-sub">單檔 6.4 MB · 雙擊即玩</span>
+    </a>
+    <a href="https://tiwb.github.io/catmario/" class="btn btn-secondary" target="_blank" rel="noopener">
+        <span class="btn-icon">▶</span>
+        <span class="btn-main">瀏覽器試玩</span>
+        <span class="btn-sub">社群移植版（非本專案）</span>
+    </a>
+    <a href="https://github.com/thc1006/mariocat-zh-tw" class="btn btn-tertiary">
+        <span class="btn-icon">{ }</span>
+        <span class="btn-main">原始碼</span>
+        <span class="btn-sub">GitHub Repo</span>
+    </a>
+</section>
+
+<section class="features">
+    <h2>本繁中化做了什麼</h2>
+    <div class="feat-grid">
+        <div class="feat">
+            <h3>📖 全程式碼翻譯</h3>
+            <p>5,551 行原作日文註解、92 條遊戲台詞，全部翻成台灣繁體中文。</p>
+        </div>
+        <div class="feat">
+            <h3>🌶 PTT/Dcard 在地化</h3>
+            <p>不是直譯。「貴様の死に場所はここだ」變「你的葬身之地就在這」、「屑が」變「雜碎」、「俺、最強」變「老子最頂」。</p>
+        </div>
+        <div class="feat">
+            <h3>💀 死亡計數嗆聲</h3>
+            <p>累積死到第 5 / 30 / 70 / 150 / 500 次，視窗標題會冒出來酸你。500 次：「你已經沒救了 但繼續加油」。</p>
+        </div>
+        <div class="feat">
+            <h3>🎲 5 條新死亡哏</h3>
+            <p>「我選擇死亡」「笑死 又寄了」「已寄爆」「真的會謝」「不忍卒睹」混進原作的死亡台詞池裡。</p>
+        </div>
+        <div class="feat">
+            <h3>📦 單檔 portable</h3>
+            <p>朋友拿到單一 .exe 雙擊即玩，自動解壓 + 執行 + 清理。不用任何資料夾。</p>
+        </div>
+        <div class="feat">
+            <h3>🔧 64-bit 重編</h3>
+            <p>原作是 2007 年的 32-bit .exe。本版重新用 MinGW-w64 GCC 12.2 編成 64-bit、靜態連結，現代 Windows 直接跑。</p>
+        </div>
+    </div>
+</section>
+
+<section class="howto">
+    <h2>怎麼開始玩</h2>
+    <ol>
+        <li>點上方<strong>「下載 Windows 版」</strong>取得 <code>MarioCat_zh_Launcher.exe</code></li>
+        <li>Windows Defender / SmartScreen 會擋一下沒簽署的 .exe，請點「<strong>其他資訊</strong>」→「<strong>仍要執行</strong>」</li>
+        <li>遊戲會自動跳出。鍵盤操作：</li>
+    </ol>
+    <table class="keys">
+        <thead><tr><th>鍵</th><th>動作</th></tr></thead>
+        <tbody>
+            <tr><td>← →</td><td>移動</td></tr>
+            <tr><td>↑ / Z</td><td>跳躍</td></tr>
+            <tr><td>空白（按住）</td><td>兩倍速</td></tr>
+            <tr><td>O</td><td>自我了斷</td></tr>
+            <tr><td>1 ～ 8</td><td>標題畫面選關</td></tr>
+            <tr><td>F1</td><td>回標題</td></tr>
+            <tr><td>ESC</td><td>結束遊戲</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<section class="credits">
+    <h2>致謝原作者</h2>
+    <p class="orig-author">
+        本專案是 2007 年由日本作者 <strong>「ちく」(Chiku)</strong> 發表的免費遊戲
+        <strong>「しょぼんのアクション」(Syobon Action / Cat Mario)</strong> 之繁體中文化衍生作品。
+    </p>
+    <p class="orig-author">
+        <strong>遊戲設計、引擎程式碼、所有圖片素材、音樂與音效之著作權皆屬原作者「ちく」所有</strong>。
+        本中文化版本依原作 freeware 條款散布並完整保留原作者署名。
+    </p>
+    <details>
+        <summary>原作條款（出自原作 _____.txt）</summary>
+        <blockquote>不特定多数の人間に配布する場合には、著作者 ちく を明記して下さい。</blockquote>
+        <blockquote>散布給不特定多數人時，請務必註明原作者「ちく」。</blockquote>
+    </details>
+</section>
+
+<section class="originals">
+    <h2>對照</h2>
+    <div class="compare">
+        <figure>
+            <img src="title-original.png" alt="原作日文標題">
+            <figcaption>原作日文版（しょぼんのアクション）</figcaption>
+        </figure>
+        <figure>
+            <img src="title.png" alt="本中文化版標題">
+            <figcaption>本繁中化版（貓貓貓 瑪利歐）</figcaption>
+        </figure>
+    </div>
+</section>
+
+<footer>
+    <p>
+        © 2007 <strong>ちく (Chiku)</strong> · 原作 freeware<br>
+        © 2026 <strong>thc1006</strong> · 中文化內容 MIT License<br>
+        <a href="https://github.com/thc1006/mariocat-zh-tw/blob/main/LICENSE">完整授權</a> ·
+        <a href="https://github.com/thc1006/mariocat-zh-tw">源碼</a> ·
+        <a href="https://github.com/thc1006/mariocat-zh-tw/releases">所有版本</a>
+    </p>
+    <p class="small">
+        DxLib by <a href="https://dxlib.xsrv.jp/" target="_blank" rel="noopener">山田巧</a> ·
+        7zsfxmm by <a href="https://github.com/chrislake/7zsfxmm" target="_blank" rel="noopener">chrislake</a>
+    </p>
+</footer>
+
+</body>
+</html>
